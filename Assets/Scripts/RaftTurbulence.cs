@@ -40,6 +40,7 @@ public class RaftTurbulence : MonoBehaviour
     void Update(){
         if (childCount != transform.childCount) calculateMotion();
         rotation += speed * Time.deltaTime;
+        rotation %= 2 * Mathf.PI;
         float height = Mathf.Sin(rotation) * strenght / 2;
         float angle = height==0 || sizeX == 0 ? 0 : Mathf.Atan((float)(height / hipotenusa)) * Mathf.Rad2Deg;
         transform.rotation= Quaternion.Euler(x * angle, 0, z * angle);
