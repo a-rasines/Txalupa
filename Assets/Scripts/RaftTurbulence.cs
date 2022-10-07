@@ -41,7 +41,7 @@ public class RaftTurbulence : MonoBehaviour
         if (childCount != transform.childCount) calculateMotion();
         rotation += speed * Time.deltaTime;
         float height = Mathf.Sin(rotation) * strenght / 2;
-        float angle = height==0 || sizeX == 0 ? 0 : Mathf.Atan((float)(height / hipotenusa)/*Cambiar por el tamaño de la balsa*/) * Mathf.Rad2Deg;
+        float angle = height==0 || sizeX == 0 ? 0 : Mathf.Atan((float)(height / hipotenusa)) * Mathf.Rad2Deg;
         transform.rotation= Quaternion.Euler(x * angle, 0, z * angle);
 
     }
