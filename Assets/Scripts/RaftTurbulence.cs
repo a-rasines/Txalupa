@@ -8,6 +8,10 @@ public class RaftTurbulence : MonoBehaviour
         calculateMotion();
     }
     private void calculateMotion() {
+        float maxX = 0;
+        float maxY = 0;
+        float minX = 0;
+        float minY = 0;
         childCount = transform.childCount;
         for (int i = 0; i < childCount; i++) {
             Transform t = transform.GetChild(i);
@@ -21,6 +25,8 @@ public class RaftTurbulence : MonoBehaviour
             } else if (t.localPosition.y - t.lossyScale.y / 2 < minY) {
                 minY = t.localPosition.y - t.lossyScale.y / 2;
             }
+            sizeX = maxX - minX;
+            hipotenusa = Mathf.Sqrt(Mathf.Pow(maxY - minY, 2) + Mathf.Pow(sizeX, 2));
         }
     }
     private float rotation = 0;
@@ -28,17 +34,14 @@ public class RaftTurbulence : MonoBehaviour
     public float strenght = 1;
     public float x = 1;
     public float z = 1;
-    private float maxX;
-    private float maxY;
-    private float minX;
-    private float minY;
     private int childCount;
+    private float sizeX;
+    private float hipotenusa;
     void Update(){
         if (childCount != transform.childCount) calculateMotion();
         rotation += speed * Time.deltaTime;
         float height = Mathf.Sin(rotation) * strenght / 2;
-        print(""+height + " (" + maxX + ":"+maxY+") ("+minX+":"+minY+")");
-        float angle = height==0 || maxX == minX ? 0 : Mathf.Atan((float)(height / Mathf.Sqrt(Mathf.Pow(maxY - minY,2) + Mathf.Pow(maxX - minX, 2)))/*Cambiar por el tamaño de la balsa*/) * Mathf.Rad2Deg;
+        float angle = height==0 || sizeX == 0 ? 0 : Mathf.Atan((float)(height / hipotenusa)/*Cambiar por el tamaño de la balsa*/) * Mathf.Rad2Deg;
         transform.rotation= Quaternion.Euler(x * angle, 0, z * angle);
 
     }
