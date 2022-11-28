@@ -61,19 +61,17 @@ public class WaterMesh : MonoBehaviour
     public float sizeX = 1;
     public float sizeZ = 1;
     public float q = 1;
-    public float speed = 1;
-    private float start = 0;
+    public int speed = 1;
     void Update(){
-        start += speed * Time.deltaTime;
-        start %= (2 * Mathf.PI);
-        print(start);
+        Vector3[] copy = new Vector3[newVertices.Length];
+        newVertices.CopyTo(copy, 0);
         for(int i = 0; i < newVertices.Length; i++) {
-            newVertices[i].y = maxHeight * Mathf.Sin(start + newVertices[i].z * q);
+            newVertices[i].y = copy[(i + speed)%newVertices.Length].y;
         }
-        mesh.Clear();
+        //mesh.Clear();
         mesh.vertices = newVertices;
-        mesh.uv = newUV;
+        //mesh.uv = newUV;
         mesh.triangles = newTriangles;
-        mesh.RecalculateNormals();
+        //mesh.RecalculateNormals();
     }
 }

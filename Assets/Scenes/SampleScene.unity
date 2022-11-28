@@ -842,7 +842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 565a1cda0e4f8c747a0bb1168fe71d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1.8
   strenght: 0.2
   x: 0
   z: 1
@@ -1917,8 +1917,8 @@ MonoBehaviour:
   vertexStep: 0.01
   sizeX: 200
   sizeZ: 200
-  quantity: 1
-  speed: 2
+  q: 1
+  speed: 3
 --- !u!4 &1098481075
 Transform:
   m_ObjectHideFlags: 0
