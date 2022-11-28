@@ -71,7 +71,7 @@ public class WaterMesh : MonoBehaviour
         //mesh.Clear();
         mesh.vertices = newVertices;
         //mesh.uv = newUV;
-        mesh.triangles = newTriangles;
+        //mesh.triangles = newTriangles;
         //mesh.RecalculateNormals();
     }
 }
