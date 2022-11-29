@@ -14,7 +14,6 @@ public class WaterMesh : MonoBehaviour
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
         float f = sizeZ * 2 / vertexStep;
-        print(""+ sizeZ+ ":"+ vertexStep + " " + f + ":" + ((int)(sizeZ / vertexStep) * 2));
         newVertices = new Vector3[(int)f];
         newUV = new Vector2[newVertices.Length];
         newTriangles = new int[(newVertices.Length - 2) * 3];
@@ -28,7 +27,6 @@ public class WaterMesh : MonoBehaviour
          */
         int index = 0;
         for (float z = 0; z <= sizeZ && index < newVertices.Length; z += vertexStep) {
-            print("" + index + ":" + Mathf.Sin(z*q) * maxHeight);
             newVertices[index] = new Vector3(0, Mathf.Sin(z *q) * maxHeight, z);
             newUV[index] = new Vector2(newVertices[index].x, newVertices[index].z);
             index++;
@@ -61,17 +59,18 @@ public class WaterMesh : MonoBehaviour
     public float sizeX = 1;
     public float sizeZ = 1;
     public float q = 1;
-    public int speed = 1;
-    void Update(){
-        Vector3[] copy = new Vector3[newVertices.Length];
-        newVertices.CopyTo(copy, 0);
-        for(int i = 0; i < newVertices.Length; i++) {
-            newVertices[i].y = copy[(i + speed)%newVertices.Length].y;
+    public float speed = 1;
+    float start = 0;
+    void Update() {
+        start += speed * Time.deltaTime;
+        start %= (2 * Mathf.PI);
+        //Vector3[] copy = new Vector3[newVertices.Length];
+        //newVertices.CopyTo(copy, 0);
+        for (int i = 0; i < newVertices.Length; i++) {
+            //newVertices[i].y = copy[(i + speed) % newVertices.Length].y;
+            newVertices[i].y = maxHeight * Mathf.Sin(start + newVertices[i].z * q);
         }
         //mesh.Clear();
         mesh.vertices = newVertices;
-        //mesh.uv = newUV;
-        //mesh.triangles = newTriangles;
-        //mesh.RecalculateNormals();
     }
 }

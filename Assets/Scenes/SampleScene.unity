@@ -1861,7 +1861,7 @@ MonoBehaviour:
   sizeX: 200
   sizeZ: 200
   q: 1
-  speed: 3
+  speed: 1.8
 --- !u!4 &1098481075
 Transform:
   m_ObjectHideFlags: 0
