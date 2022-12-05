@@ -1190,7 +1190,7 @@ GameObject:
   - component: {fileID: 993365336}
   - component: {fileID: 993365342}
   - component: {fileID: 993365341}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RightHand Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1481,7 +1481,7 @@ GameObject:
   - component: {fileID: 1003175811}
   - component: {fileID: 1003175813}
   - component: {fileID: 1003175812}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LeftHand Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1829,7 +1829,7 @@ GameObject:
   - component: {fileID: 1098481074}
   - component: {fileID: 1098481073}
   - component: {fileID: 1098481076}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}

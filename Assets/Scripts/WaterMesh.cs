@@ -53,6 +53,7 @@ public class WaterMesh : MonoBehaviour
         mesh.uv = newUV;
         mesh.triangles = newTriangles;
         mesh.RecalculateNormals();
+        gameObject.AddComponent<MeshCollider>();
     }
     public float maxHeight = 1;
     public float vertexStep = 0.1f;
