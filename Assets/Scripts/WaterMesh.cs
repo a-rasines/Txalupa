@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class WaterMesh : MonoBehaviour
 {
+    public delegate void SampleEventHandler(Mesh m);
+    public event SampleEventHandler MeshChanged;
     // Start is called before the first frame update
-    Mesh mesh;
+    public Mesh mesh;
 
     Vector3[] newVertices;
     Vector2[] newUV;
     int[] newTriangles;
+    private void csharpapesta(Mesh _) {
+
+    }
     void Start() {
+        MeshChanged += csharpapesta;
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
         float f = sizeZ * 2 / vertexStep;
@@ -53,7 +59,7 @@ public class WaterMesh : MonoBehaviour
         mesh.uv = newUV;
         mesh.triangles = newTriangles;
         mesh.RecalculateNormals();
-        gameObject.AddComponent<MeshCollider>();
+        MeshChanged.Invoke(mesh);
     }
     public float maxHeight = 1;
     public float vertexStep = 0.1f;

@@ -385,7 +385,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 319945861}
   m_LocalRotation: {x: -0, y: 0.8701185, z: -0, w: -0.4928426}
-  m_LocalPosition: {x: 1.2075676, y: 0.51970327, z: -9.738326}
+  m_LocalPosition: {x: 0, y: 0.51970327, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -929,7 +929,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 758935450}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2075676, y: 0.51970327, z: -9.738326}
+  m_LocalPosition: {x: 0, y: 0.51970327, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1166,7 +1166,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 806799575}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.83, y: 1.02, z: -9.6760025}
+  m_LocalPosition: {x: 0, y: 1.02, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1904,6 +1904,7 @@ GameObject:
   - component: {fileID: 1098481074}
   - component: {fileID: 1098481073}
   - component: {fileID: 1098481076}
+  - component: {fileID: 1098481077}
   m_Layer: 4
   m_Name: Water
   m_TagString: Untagged
@@ -1931,6 +1932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 551645a6b6cdce546ac05d06b82c25c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mesh: {fileID: 0}
   maxHeight: 0.25
   vertexStep: 0.01
   sizeX: 200
@@ -1994,6 +1996,34 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1098481077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098481072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a21003bfdd8e23d4885769c991b47777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trashObjects:
+  - {fileID: 8468863046579194029, guid: 51ab3a0608210de4686f0bb99ed02777, type: 3}
+  - {fileID: 7552871734967353393, guid: 9c81e9d98643b424ca4c70c04c4c0af4, type: 3}
+  - {fileID: 6739800063662741026, guid: 84fc000b171895849862f142e32dca4e, type: 3}
+  - {fileID: 5165171163654030630, guid: 9a32045ea965f5948bf9b4e171da1aae, type: 3}
+  - {fileID: 1142302043082457641, guid: 68d2527ef86afdb4a8c3ec224dd3fbee, type: 3}
+  - {fileID: 5910558478019568554, guid: 0429cd92f2ea45045ae3de206b746a35, type: 3}
+  - {fileID: 2670041715724044434, guid: 64f6157c2dadc7c47aa2bc7da7825dd1, type: 3}
+  - {fileID: 1817406355523975180, guid: 8a1e928978dea0446bd222bfeed72a7f, type: 3}
+  - {fileID: 5836975598337784505, guid: 3fea5a74f68312c4396929dfd284ae43, type: 3}
+  - {fileID: 4629887627253338102, guid: 40902b644b9bc8d4ea9c9040b0002545, type: 3}
+  - {fileID: 5553795535709472465, guid: a40acd58ed89be24ca2daf55d3ae0bee, type: 3}
+  - {fileID: 7796198806209273873, guid: cd7bddbdfa24a9a42b692406657be74e, type: 3}
+  - {fileID: 882936412774956376, guid: f611ad4842e67ba4b847ecfe9b4f38a1, type: 3}
+  direction: 0
+  probability: 0.03
 --- !u!1001 &1287664094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2075,7 +2105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327049735}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.3, y: 0.69, z: 10.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
