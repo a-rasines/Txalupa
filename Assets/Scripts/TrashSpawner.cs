@@ -61,12 +61,12 @@ public class TrashSpawner : MonoBehaviour {
                 go,
                 gameObject.transform.position + new Vector3(0, 0, -maxVertex.y)/*No se el por qué de esta suma, pero funciona*/ +
                 new Vector3(
-                    startPosition[direction].x == -1 ? Random.Range(maxVertex.x *1/3, maxVertex.x * 2 / 3) : startPosition[direction].x,
+                    startPosition[direction].x == -1 ? Random.Range(maxVertex.x * 1 / 3, maxVertex.x * 2 / 3) : startPosition[direction].x,
                     transform.position.y + 0.1f,
                     startPosition[direction].y == -1 ? Random.Range(maxVertex.y * 1 / 3, maxVertex.y * 2 / 3) : startPosition[direction].y
                 ),
                 go.transform.rotation
-            ).GetComponent<TrashMovement>().Init(directions[direction], new Vector2(transform.position.x, -transform.position.z) + startPosition[OppositeDirection(direction)]);
+            ).GetComponent<TrashMovement>().Init(directions[direction], new Vector2(transform.position.x, -transform.position.z) + startPosition[OppositeDirection(direction)], GetComponent<WaterMesh>().maxHeight) ;
         }
     }
 }

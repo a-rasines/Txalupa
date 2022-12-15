@@ -60,6 +60,8 @@ public class WaterMesh : MonoBehaviour
         mesh.triangles = newTriangles;
         mesh.RecalculateNormals();
         MeshChanged.Invoke(mesh);
+        BoxCollider col = gameObject.AddComponent<BoxCollider>();
+        col.center = new Vector3(col.center.x, col.center.y - maxHeight, col.center.z);
     }
     public float maxHeight = 1;
     public float vertexStep = 0.1f;
