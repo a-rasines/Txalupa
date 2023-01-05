@@ -15,17 +15,18 @@ public class InventoryVR : MonoBehaviour
 
     private void Start()
     {
-        Inventory.SetActive(true);
-        UIActive = true;
+        Inventory.SetActive(false);
+        UIActive = false;
     }
 
     private void Update()
     {
-       /* if (UnityEngine.Input.GetJoystickNames().Equals(Button.Four))
+        // if (UnityEngine.Input.GetJoystickNames().Equals(Button.Four))
+        if (Input.GetKeyDown(KeyCode.K))
         {
             UIActive = !UIActive;
             Inventory.SetActive(UIActive);
-        }*/
+        }
         if (UIActive)
         {
             Inventory.transform.position = Anchor.transform.position;
