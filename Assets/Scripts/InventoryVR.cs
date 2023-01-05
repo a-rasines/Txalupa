@@ -10,12 +10,15 @@ using UnityEngine.UI;
 public class InventoryVR : MonoBehaviour
 {
     public GameObject Inventory;
-    public GameObject Anchor;
+    public GameObject Anchor1;
+    public GameObject HUD;
+    public GameObject Anchor2;
     bool UIActive;
 
     private void Start()
     {
         Inventory.SetActive(false);
+        HUD.SetActive(false);
         UIActive = false;
     }
 
@@ -26,11 +29,15 @@ public class InventoryVR : MonoBehaviour
         {
             UIActive = !UIActive;
             Inventory.SetActive(UIActive);
+            HUD.SetActive(UIActive);
         }
         if (UIActive)
         {
-            Inventory.transform.position = Anchor.transform.position;
-            Inventory.transform.eulerAngles = new Vector3(Anchor.transform.eulerAngles.x + 15, Anchor.transform.eulerAngles.y, 0);
+            Inventory.transform.position = Anchor1.transform.position;
+            Inventory.transform.eulerAngles = new Vector3(Anchor1.transform.eulerAngles.x + 15, Anchor1.transform.eulerAngles.y, 0);
+
+            HUD.transform.position = Anchor2.transform.position;
+            HUD.transform.eulerAngles = new Vector3(Anchor2.transform.eulerAngles.x + 15, Anchor2.transform.eulerAngles.y, 0);
         }
     }
 }
