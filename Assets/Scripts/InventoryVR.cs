@@ -15,8 +15,8 @@ public class InventoryVR : MonoBehaviour
 
     private void Start()
     {
-        Inventory.SetActive(false);
-        UIActive = false;
+        Inventory.SetActive(true);
+        UIActive = true;
     }
 
     private void Update()

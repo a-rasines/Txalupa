@@ -17,6 +17,7 @@ public class Slot : MonoBehaviour
         if (ItemInSlot != null) return;
         GameObject obj = other.gameObject;
         if (!IsItem(obj)) return;
+        InsertItem(obj);
     }
 
     bool IsItem(GameObject obj)
