@@ -19,13 +19,22 @@ public class Slot : MonoBehaviour
         if (!IsItem(obj)) return;
         InsertItem(obj);
     }
+    private void OnTriggerExit(Collider other) {
+        if(other.gameObject == ItemInSlot) {
+            ItemInSlot = null;
+            Item item = other.gameObject.GetComponent<Item>();
+            ResetColor();
+            item.currentSlot = null;
+            item.inSlot = false;
+        }
+    }
 
     bool IsItem(GameObject obj)
     {
         return obj.GetComponent<Item>();
     }
 
-    void InsertItem(GameObject obj)
+    public void InsertItem(GameObject obj)
     {
         obj.GetComponent<Rigidbody>().isKinematic = true;
         obj.transform.SetParent(gameObject.transform, true);
