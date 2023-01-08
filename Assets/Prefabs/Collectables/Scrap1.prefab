@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: -452970250740187587}
   m_Layer: 3
   m_Name: Scrap1
-  m_TagString: Untagged
+  m_TagString: Grabable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,7 +131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7b91374769c9247b97cb26b008f25a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 0
 --- !u!54 &5856963092339426700
 Rigidbody:
   m_ObjectHideFlags: 0
