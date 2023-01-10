@@ -50,7 +50,6 @@ public class IATiburonV1 : MonoBehaviour
                 if (attackShip && objetivo != null && !attackingRaft)
                 {
                     transform.position = Vector3.MoveTowards(transform.position, objetivo.transform.position, 0.05f);
-                    Debug.Log("MOVING");
                     if (Vector3.Distance(transform.position, objetivo.transform.position) <= 0.75f) attackingRaft = true;
                 }
                 if (attackShip && !waitingForShip)
