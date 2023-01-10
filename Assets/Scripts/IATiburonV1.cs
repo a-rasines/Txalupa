@@ -5,70 +5,153 @@ using UnityEngine;
 public class IATiburonV1 : MonoBehaviour
 {
     [SerializeField] GameObject tF;
-    private bool agua; //cambiar para que detecte si el jugador toca agua.
     private bool attackShip;
+    private bool waitingForShip;
     private bool attackPlayer;
+    public bool attackedPlayer;
+    public bool damageFloor;
+    public bool attackingRaft;
+    public bool keepAttackingRaft;
     private int health;
     private bool alive;
+    private int initialHealth;
+    private Vector3 initialPos;
+    TrozosBalsa objetivo;
+    [SerializeField] GameObject raft;
+    private
     // Start is called before the first frame update
     void Start()
     {
-        agua = false;
-        health = 100;
+        initialPos = transform.position;
+        health = 50;
         alive = true;
         attackShip = false;
+        StartCoroutine(CanAttackShip());
+        waitingForShip = false;
+        attackedPlayer = false;
         attackPlayer = false;
+        attackingRaft = false;
+        damageFloor = true;
+        keepAttackingRaft = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (health <= 0)
+        if (health <= 0 && alive)
         {
             alive = false;
             StartCoroutine(CanRevive());
         }
-        if (attackShip == false)
+        else
         {
-            StartCoroutine(CanAttackShip());
-        }
-        if (alive)
-        {
-            if (!agua)
+            if (alive)
             {
-                tF.transform.Rotate(0, 15 * Time.deltaTime, 0);
-            }
-            else
-            {
-                if (attackPlayer)
+                if (attackShip && objetivo != null && !attackingRaft)
                 {
-                    AttackPlayer();
-                    attackPlayer = false;
+                    transform.position = Vector3.MoveTowards(transform.position, objetivo.transform.position, 0.05f);
+                    Debug.Log("MOVING");
+                    if (Vector3.Distance(transform.position, objetivo.transform.position) <= 0.75f) attackingRaft = true;
+                }
+                if (attackShip && !waitingForShip)
+                {
+                    if (!keepAttackingRaft)
+                    {
+                        AttackShip();
+                        initialHealth = health;
+                        keepAttackingRaft = true;
+                    }
+                    else
+                    {
+                        if (health <= initialHealth - 6)
+                        {
+                            keepAttackingRaft = false;
+                            attackingRaft = false;
+                            StartCoroutine(CanAttackShip());
+                            objetivo = null;
+                        }
+                    }
+                    if (objetivo != null && damageFloor && attackingRaft && keepAttackingRaft)
+                    {
+                        damageFloor = false;
+                        StartCoroutine(CanDamageFloor());
+                        objetivo.vida--;
+                        if (objetivo.vida < 0)
+                        {
+                            attackingRaft = false;
+                            Destroy(objetivo);
+                            keepAttackingRaft = false;
+                            StartCoroutine(CanAttackShip());
+                        }
+                    }
+                }
+                else if (attackPlayer && !attackedPlayer)
+                {
+                    StartCoroutine(CanAttackPlayer());
+                }
+                else
+                {
+                    if (transform.position != initialPos)
+                    {
+                        transform.position = Vector3.MoveTowards(transform.position, initialPos, 0.05f);
+                    }
+                    else
+                    {
+                        tF.transform.Rotate(0, 15 * Time.deltaTime, 0);
+                        initialPos = transform.position;
+                    }
                 }
             }
         }
     }
-    private void ReciveDamage(int damage)
+
+    private void AttackShip()
+    {
+        bool select = false;
+        while (!select)
+        {
+            int n = Random.Range(0, raft.transform.childCount);
+            TrozosBalsa tb = raft.transform.GetChild(n).GetComponent<TrozosBalsa>();
+            if (tb.norte != null || tb.sur != null || tb.este != null || tb.oeste != null)
+            {
+                objetivo = tb;
+            }
+            select = true;
+        }
+    }
+
+    public void AttackThePlayer(bool fuera)
+    {
+        attackPlayer = fuera;
+    }
+    public void RecievePlayerAttack(int damage)
     {
         health -= damage;
     }
-    private void AttackPlayer()
-    {
-
-    }
     private IEnumerator CanRevive()
     {
+        GetComponentInChildren<MeshRenderer>().enabled = false;
         yield return new WaitForSeconds(120f);
-        health = 100;
+        GetComponentInChildren<MeshRenderer>().enabled = true;
+        health = 50;
+        alive = true;
     }
     private IEnumerator CanAttackPlayer()
     {
+        attackedPlayer = true;
         yield return new WaitForSeconds(25f);
-        attackPlayer = true;
+        attackedPlayer = false;
+    }
+    private IEnumerator CanDamageFloor()
+    {
+        yield return new WaitForSeconds(10f);
+        damageFloor = true;
     }
     private IEnumerator CanAttackShip()
     {
-        yield return new WaitForSeconds(60f);
+        waitingForShip = true;
+        yield return new WaitForSeconds(15f);
+        waitingForShip = false;
         attackShip = true;
     }
 }
