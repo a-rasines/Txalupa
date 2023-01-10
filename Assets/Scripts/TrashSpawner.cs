@@ -33,7 +33,7 @@ public class TrashSpawner : MonoBehaviour {
     private Dictionary<Direction, Vector2> startPosition;
     private float heightMid;
     public Direction direction;
-    public float probability;
+    public int probability;
     void Start() {
         GetComponent<WaterMesh>().MeshChanged += UpdateVertex;
     }
@@ -55,7 +55,7 @@ public class TrashSpawner : MonoBehaviour {
     void Update() {
         if (maxVertex == Vector2.zero)
             UpdateVertex(GetComponent<WaterMesh>().mesh);
-        if (Random.Range(0, 100) < probability * 100) {
+        if (Random.Range(0, 100) < probability) {
             GameObject go = trashObjects[Random.Range(0, trashObjects.Length)];
             Instantiate(
                 go,

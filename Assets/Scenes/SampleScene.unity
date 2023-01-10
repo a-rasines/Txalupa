@@ -4237,7 +4237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mesh: {fileID: 0}
   maxHeight: 0.25
-  vertexStep: 0.01
+  vertexStep: 0.5
   sizeX: 200
   sizeZ: 200
   q: 1
@@ -4326,7 +4326,7 @@ MonoBehaviour:
   - {fileID: 7796198806209273873, guid: cd7bddbdfa24a9a42b692406657be74e, type: 3}
   - {fileID: 882936412774956376, guid: f611ad4842e67ba4b847ecfe9b4f38a1, type: 3}
   direction: 0
-  probability: 0.03
+  probability: 0
 --- !u!65 &1098481078
 BoxCollider:
   m_ObjectHideFlags: 0
