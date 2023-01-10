@@ -2141,7 +2141,7 @@ MonoBehaviour:
   damageFloor: 0
   attackingRaft: 0
   keepAttackingRaft: 0
-  raft: {fileID: 0}
+  raft: {fileID: 758935450}
 --- !u!95 &684748834
 Animator:
   serializedVersion: 4
