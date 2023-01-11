@@ -29,7 +29,7 @@ public class TrozosBalsa : MonoBehaviour
             }
             else if(transform.position.z == pos.z)
             {
-                if ((transform.position.x - 1.5f) == pos.x)
+                if ((transform.position.x + 1.5f) == pos.x)
                 {
                     oeste = transform.parent.GetChild(i).gameObject;
                     transform.parent.GetChild(i).GetComponent<TrozosBalsa>().este = gameObject;
