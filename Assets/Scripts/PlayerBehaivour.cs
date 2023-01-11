@@ -28,7 +28,7 @@ public class PlayerBehaivour : MonoBehaviour
         if(agua)
         {
             tiburon.transform.position = Vector3.MoveTowards(tiburon.transform.position, this.transform.position, 0.2f);
-            if (Vector3.Distance(this.transform.position, tiburon.transform.position)< 1.5f)
+            if (Vector3.Distance(this.transform.position, tiburon.transform.position)< 0.25f)
             {
                 vida -= 20;
             }
