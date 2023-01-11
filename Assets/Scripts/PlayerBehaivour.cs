@@ -33,6 +33,10 @@ public class PlayerBehaivour : MonoBehaviour
                 vida -= 20;
             }
         }
+        if (vida < 100)
+        {
+            StartCoroutine(RegenerateLife());
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -49,5 +53,10 @@ public class PlayerBehaivour : MonoBehaviour
             agua = false;
             tiburon.AttackThePlayer(false);
         }
+    }
+    private IEnumerator RegenerateLife()
+    {
+        yield return new WaitForSeconds(90f);
+        vida += 20;
     }
 }

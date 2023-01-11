@@ -10,4 +10,24 @@ public class CrafteableObject : MonoBehaviour
     [SerializeField] private int plasticRequirements;
     [SerializeField] private int scrapRequirements;
     [SerializeField] private int leavesRequirements;
+    public int GetWood()
+    {
+        return woodRequirements;
+    }
+    public GameObject GetPrefab()
+    {
+        return crafteablePrefab;
+    }
+    public int GetPlastic()
+    {
+        return plasticRequirements;
+    }
+    public int GetScrap()
+    {
+        return scrapRequirements;
+    }
+    public int GetLeaves()
+    {
+        return leavesRequirements;
+    }
 }
