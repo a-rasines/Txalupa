@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour {
-    private Dictionary<int, Stack> inventory = new Dictionary<int, Stack>();
-    public Dictionary<ItemType, int> itemCounts = new Dictionary<ItemType, int>();
+    private Dictionary<int, Stack> inventory = new Dictionary<int, Stack>();//Por slot
+    private Dictionary<ItemType, int> itemCounts = new Dictionary<ItemType, int>();//Por material
     public struct Stack{
         public ItemType it;
         public int q;
@@ -15,6 +15,30 @@ public class Inventory : MonoBehaviour {
             it = null;
             q = 0;
         }
+    }
+    public int GetAmountOf(ItemType type) {
+        int outV = 0;
+        itemCounts.TryGetValue(type, out outV);
+        return outV;
+    }
+    public bool RemoveFromInventory(ItemType type, int amount) {
+        if (GetAmountOf(type) < amount)
+            return false;
+        Dictionary<int, Stack> cl = new Dictionary<int, Stack>(inventory);
+        foreach(int key in inventory.Keys) {
+            Stack s = cl[key];
+            if (s.it.Equals(type)) {
+                int newAm = s.q - amount;
+                amount -= s.q;
+                if(newAm < 0) {
+                    RemoveFromInventory(key);
+                } else {
+                    s.q = newAm;
+                    return true;
+                }
+            }
+        }
+        return false;
     }
     public bool AddToInventory(int position, GameObject g) {
         ItemType it = ItemType.Of(g);
