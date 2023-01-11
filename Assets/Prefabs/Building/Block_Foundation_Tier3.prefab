@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 3328975423492719811}
   - component: {fileID: 3006255005811268583}
   - component: {fileID: 8644267501311678951}
+  - component: {fileID: 2715142200527115096}
   m_Layer: 0
   m_Name: Block_Foundation_Tier3
   m_TagString: Untagged
@@ -142,3 +143,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4e133aaa5f9134b9b435a940a09cb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  norte: {fileID: 0}
+  sur: {fileID: 0}
+  este: {fileID: 0}
+  oeste: {fileID: 0}
+  vida: 3
+--- !u!114 &2715142200527115096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2700247923638820473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 870212d8edbc3244fa629fe285e4167f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: suelo
+  crafteablePrefab: {fileID: 2700247923638820473}
+  woodRequirements: 5
+  plasticRequirements: 5
+  scrapRequirements: 0
+  leavesRequirements: 0
