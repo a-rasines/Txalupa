@@ -153,4 +153,9 @@ public class IATiburonV1 : MonoBehaviour
         waitingForShip = false;
         attackShip = true;
     }
+    private void OnCollisionEnter(Collision collision) {
+        if(collision.transform.tag == "Arma") {
+            health -= 3;
+        }
+    }
 }
