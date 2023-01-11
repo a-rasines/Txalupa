@@ -43,11 +43,11 @@ public class Inventory : MonoBehaviour {
     public bool AddToInventory(int position, GameObject g) {
         ItemType it = ItemType.Of(g);
         Stack stack = new Stack(0);
-        int outV = 0;
-        itemCounts.TryGetValue(it, out outV);
         if (it is null)
             return false;
-        if(!inventory.TryGetValue(position, out stack)) {//La posición está vacía
+        int outV = 0;
+        itemCounts.TryGetValue(it, out outV);
+        if (!inventory.TryGetValue(position, out stack)) {//La posición está vacía
             inventory[position] = new Stack(it, it.GetCuantityFrom(g));
             itemCounts[it] = outV;
             return true;

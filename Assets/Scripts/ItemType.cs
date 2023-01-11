@@ -52,15 +52,18 @@ public class ItemType : MonoBehaviour {
     public new readonly string name;
     public int GetCuantityFrom(GameObject g) {
         try {
-            foreach(GameObject g1 in go.Keys)
-                if(g1.GetComponent<ItemID>().id == g.GetComponent<ItemID>().id)
+            foreach (GameObject g1 in go.Keys)
+                if (g1.GetComponent<ItemID>().id == g.GetComponent<ItemID>().id) {
+                    if (g.GetComponent<ItemStack>() != null)
+                        return g.GetComponent<ItemStack>().quantity;
                     return go[g1];
+                }
             return 0;
         } catch {
             return 0;
         }
     }
-    public GameObject getModel() {
+    public GameObject GetModel() {
         return go.GetEnumerator().Current.Key;
     }
     private ItemType(string name, int stackCount, Sprite icon, Dictionary<GameObject, int> go) {
