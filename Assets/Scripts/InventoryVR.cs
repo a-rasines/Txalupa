@@ -13,12 +13,15 @@ public class InventoryVR : MonoBehaviour
     public GameObject Anchor1;
     public GameObject HUD;
     public GameObject Anchor2;
+    public GameObject fullInv;
+    public GameObject Anchor3;
     bool UIActive;
 
     private void Start()
     {
         Inventory.SetActive(false);
         HUD.SetActive(false);
+        fullInv.SetActive(false);
         UIActive = false;
     }
 
@@ -30,6 +33,7 @@ public class InventoryVR : MonoBehaviour
             UIActive = !UIActive;
             Inventory.SetActive(UIActive);
             HUD.SetActive(UIActive);
+            fullInv.SetActive(UIActive);
         }
         if (UIActive)
         {
@@ -38,6 +42,9 @@ public class InventoryVR : MonoBehaviour
 
             HUD.transform.position = Anchor2.transform.position;
             HUD.transform.eulerAngles = new Vector3(Anchor2.transform.eulerAngles.x + 15, Anchor2.transform.eulerAngles.y, 0);
+
+            fullInv.transform.position = Anchor3.transform.position;
+            fullInv.transform.eulerAngles = new Vector3(Anchor3.transform.eulerAngles.x + 15, Anchor3.transform.eulerAngles.y, 0);
         }
     }
 }
