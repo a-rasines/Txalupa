@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InventoryGrab : MonoBehaviour
 {
-    bool inInventory = false;
+    /*bool inInventory = false;
     private GameObject parent = null;
     public void Update(){
         if (transform.parent == null && parent != null) {
@@ -35,5 +35,5 @@ public class InventoryGrab : MonoBehaviour
     private void OnParentSet(GameObject newParent) {
         //print("Parent set: " + newParent);
         inInventory = newParent.GetComponentInParent<Slot>() != null;
-    }
+    }*/
 }
