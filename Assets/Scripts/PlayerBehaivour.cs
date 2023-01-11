@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehaivour : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class PlayerBehaivour : MonoBehaviour
     {
         if (vida <= 0)
         {
-
+            SceneManager.LoadScene("MuerteScene");
         }
         if(agua)
         {
