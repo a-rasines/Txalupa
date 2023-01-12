@@ -12,7 +12,7 @@ public class Hook : MonoBehaviour {
     private Vector3 startRotation;
     private Vector3 endPosition;
     private Vector3 endRotation;
-    public Collider collider;
+    public Collider collider1;
     public int vertex = 8;
     public float thickness = 0.5f;
     private bool thrown = false;
@@ -23,7 +23,7 @@ public class Hook : MonoBehaviour {
         endPosition = end.position;
         endRotation = end.eulerAngles;
     }
-    private void OnTriggerEnter(Collider other) {
+    private void OnCollisionEnter(Collision other) {
         if (thrown && other.gameObject.tag == "Grabable")
             other.transform.parent = transform;
     }
@@ -33,7 +33,7 @@ public class Hook : MonoBehaviour {
     }
     public void OnGrab() {
         thrown = false;
-        collider.enabled = false;
+        collider1.enabled = false;
         rope.mesh = null;
         GetComponent<Collider>().isTrigger = true;
     }
@@ -56,7 +56,7 @@ public class Hook : MonoBehaviour {
             GetComponent<XRGrabInteractable>().enabled = false;
             StartCoroutine(ResetGrabable());
             thrown = true;
-            collider.enabled = true;
+            collider1.enabled = true;
             CreateRope();
         }
 

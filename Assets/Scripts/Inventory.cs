@@ -16,6 +16,12 @@ public class Inventory : MonoBehaviour {
             q = 0;
         }
     }
+    public delegate void ItemChangeEventHandler(int position, ItemType it, int quantity);
+    public event ItemChangeEventHandler OnItemChanged;
+    private void _(int _, ItemType __, int ___) {}
+    private void Start() {
+        OnItemChanged += _;
+    }
     public int GetAmountOf(ItemType type) {
         int outV = 0;
         itemCounts.TryGetValue(type, out outV);
@@ -50,11 +56,13 @@ public class Inventory : MonoBehaviour {
         if (!inventory.TryGetValue(position, out stack)) {//La posición está vacía
             inventory[position] = new Stack(it, it.GetCuantityFrom(g));
             itemCounts[it] = outV;
+            OnItemChanged(position, it, it.GetCuantityFrom(g));
             return true;
         } else if(stack.it.Equals(it) && stack.q + it.GetCuantityFrom(g) <= it.stackCount){//La posición tiene el mismo objeto y no sobrepasan el máximo
             stack.q += it.GetCuantityFrom(g);
             inventory[position] = stack;
             itemCounts[it] = outV;
+            OnItemChanged(position, it, stack.q);
             return true;
         } else {
             return false;
@@ -69,6 +77,7 @@ public class Inventory : MonoBehaviour {
         Stack s = inventory[position];
         itemCounts[s.it] -= s.q;
         inventory.Remove(position);
+        OnItemChanged(position, null, 0);
         return s;
 
     }

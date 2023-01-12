@@ -7,12 +7,25 @@ public class Slot : MonoBehaviour
     public Image icon;
     public int position;
     private GameObject pulled;
+    private void Start() {
+        inv.OnItemChanged += OnItemChange;
+    }
+    private void OnItemChange(int position, ItemType it, int quantity) {
+        if (this.position != position)
+            return;
+        if(!(it is null)) {
+            icon.sprite = it.icon;
+            icon.color = Color.white;
+        } else {
+            icon.sprite = null;
+            icon.color = new Color(0, 0, 0, 0);
+        }
+
+    }
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.Equals(pulled))
             return;
         if(inv.AddToInventory(position, other.gameObject)) {
-            icon.sprite = inv.GetSlot(position).it.icon;
-            icon.color = Color.white;
             Destroy(other.gameObject);
         }
     }
