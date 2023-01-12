@@ -15,17 +15,27 @@ public class Hook : MonoBehaviour {
     public Collider collider1;
     public int vertex = 8;
     public float thickness = 0.5f;
-    private bool thrown = false;
+    private bool thrown = true;
     private float startTime = 0;
     void Start() {
         startPosition = start.position;
         startRotation = start.eulerAngles;
         endPosition = end.position;
         endRotation = end.eulerAngles;
+        CreateRope();
     }
-    private void OnCollisionEnter(Collision other) {
-        if (thrown && other.gameObject.tag == "Grabable")
+    private void OnTriggerEnter(Collider other) {
+        print(other.name);
+        if (thrown && other.gameObject.tag == "Grabable") {
             other.transform.parent = transform;
+            Destroy(other.GetComponent<TrashMovement>());
+        }
+    }
+    private void OnCollisionEnter(Collision collision) {
+        if(collision.gameObject.layer == 4) {
+            GetComponent<Collider>().enabled = false;
+            GetComponent<Rigidbody>().useGravity = false;
+        }
     }
     public void OnRopeInteraction() {
         transform.parent.position = Vector3.MoveTowards(endPosition, startPosition, 1);
@@ -35,6 +45,8 @@ public class Hook : MonoBehaviour {
         thrown = false;
         collider1.enabled = false;
         rope.mesh = null;
+        GetComponent<Collider>().enabled = true;
+        GetComponent<Rigidbody>().useGravity = true;
         GetComponent<Collider>().isTrigger = true;
     }
     public void OnGrabEnd() {
@@ -73,24 +85,32 @@ public class Hook : MonoBehaviour {
         startRotation = start.eulerAngles;
         endPosition = end.position;
         endRotation = end.eulerAngles;
+        Mesh mesh;
+        if (rope.mesh == null) {
+            mesh = new Mesh();
+            rope.mesh = mesh;
+        } else
+            mesh = rope.mesh;
+        mesh.Clear();
         float step = 2 * Mathf.PI / vertex;
         Vector3[] vertices = new Vector3[vertex * 2 + 2];
-        vertices[0] = startPosition - new Vector3(transform.position.x, transform.position.y + offsetY, transform.position.z);
+        vertices[0] = transform.worldToLocalMatrix.MultiplyPoint3x4(startPosition);
         for (int i = 1; i < vertex + 1; i++) {//Start
             //(Sp + cos(a), Sp + sen(a), S+cos(Sr))
-            vertices[i] = new Vector3(startPosition.x - transform.position.x + Mathf.Cos(step * (i - 1)) * thickness, startPosition.y - transform.position.y - offsetY + Mathf.Sin(step * (i - 1)) * thickness, startPosition.z - transform.position.z + Mathf.Cos(startRotation.y) * Mathf.Cos(step * (i - 1)) * thickness) ;
+            vertices[i] = transform.worldToLocalMatrix.MultiplyPoint3x4(new Vector3(startPosition.x + Mathf.Cos(step * (i - 1)) * thickness, startPosition.y + Mathf.Sin(step * (i - 1)) * thickness, startPosition.z + Mathf.Cos(startRotation.y) * Mathf.Cos(step * (i - 1)) * thickness));
         }
         for (int i = vertex + 1; i < 2 * vertex + 1; i++) {//End
-            vertices[i] = new Vector3(endPosition.x - transform.position.x + Mathf.Cos(step * (i - 1)) * thickness, endPosition.y - transform.position.y - offsetY + Mathf.Sin(step * (i - 1)) * thickness, endPosition.z - transform.position.z + Mathf.Cos(endRotation.y) * Mathf.Cos(step * (i - 1)) * thickness);
+            vertices[i] = transform.worldToLocalMatrix.MultiplyPoint3x4(new Vector3(endPosition.x + Mathf.Cos(step * (i - 1)) * thickness, endPosition.y + Mathf.Sin(step * (i - 1)) * thickness, endPosition.z + Mathf.Cos(endRotation.y) * Mathf.Cos(step * (i - 1)) * thickness));
         }
-        vertices[2 * vertex + 1] = endPosition - new Vector3(transform.position.x, transform.position.y + offsetY, transform.position.z);
-        rope.mesh.vertices = vertices;
-        rope.mesh.RecalculateNormals();
+        
+        vertices[2 * vertex + 1] = transform.worldToLocalMatrix.MultiplyPoint3x4(endPosition);
+        mesh.vertices = vertices;
+        mesh.RecalculateNormals();
         if (triangles.Length != 12 * vertex) {//3 * vertices + 6 * vertices + 3 * vertices
             triangles = new int[12 * vertex];
             int trianglesIndex = 0;
             //Cara 1
-            for(int i = 1; i < vertex; i++) {
+            for (int i = 1; i < vertex; i++) {
                 triangles[trianglesIndex++] = i;
                 triangles[trianglesIndex++] = 0;
                 triangles[trianglesIndex++] = i + 1;
@@ -98,9 +118,9 @@ public class Hook : MonoBehaviour {
             triangles[trianglesIndex++] = 0;
             triangles[trianglesIndex++] = 1;
             triangles[trianglesIndex++] = vertex;
-            
+
             //Lados
-            for(int i = 1; i < vertex; i++) {
+            for (int i = 1; i < vertex; i++) {
                 triangles[trianglesIndex++] = i;
                 triangles[trianglesIndex++] = i + 1;
                 triangles[trianglesIndex++] = i + vertex + 1;
@@ -132,8 +152,9 @@ public class Hook : MonoBehaviour {
             triangles[trianglesIndex++] = vertex + 1;
             triangles[trianglesIndex++] = 2 * vertex + 1;
             triangles[trianglesIndex++] = 2 * vertex;
-            rope.mesh.triangles = triangles;
-        }
+            mesh.triangles = triangles;
+        } else if (mesh.triangles.Length != 12 * vertex)
+            mesh.triangles = triangles;
     }
     // Update is called once per frame
     void Update() {
