@@ -34,6 +34,14 @@ public class TrashSpawner : MonoBehaviour {
     private float heightMid;
     public Direction direction;
     public int probability;
+    public int _probability {
+        get {
+            return probability;
+        }
+        set {
+            probability = value;
+        }
+    }
     void Start() {
         GetComponent<WaterMesh>().MeshChanged += UpdateVertex;
     }

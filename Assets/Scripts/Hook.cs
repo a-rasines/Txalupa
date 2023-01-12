@@ -28,7 +28,7 @@ public class Hook : MonoBehaviour {
             other.transform.parent = transform;
     }
     public void OnRopeInteraction() {
-        transform.parent.Translate(Vector3.MoveTowards(endPosition, startPosition, 1));
+        transform.parent.position = Vector3.MoveTowards(endPosition, startPosition, 1);
         CreateRope();
     }
     public void OnGrab() {
