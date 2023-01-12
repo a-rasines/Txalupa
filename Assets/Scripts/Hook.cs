@@ -25,7 +25,6 @@ public class Hook : MonoBehaviour {
         CreateRope();
     }
     private void OnTriggerEnter(Collider other) {
-        print(other.name);
         if (thrown && other.gameObject.tag == "Grabable") {
             other.transform.parent = transform;
             Destroy(other.GetComponent<TrashMovement>());
@@ -34,7 +33,7 @@ public class Hook : MonoBehaviour {
     private void OnCollisionEnter(Collision collision) {
         if(collision.gameObject.layer == 4) {
             GetComponent<Collider>().enabled = false;
-            GetComponent<Rigidbody>().useGravity = false;
+            GetComponent<Rigidbody>().constraints = GetComponent<Rigidbody>().constraints | RigidbodyConstraints.FreezePositionY;
         }
     }
     public void OnRopeInteraction() {
@@ -46,7 +45,7 @@ public class Hook : MonoBehaviour {
         collider1.enabled = false;
         rope.mesh = null;
         GetComponent<Collider>().enabled = true;
-        GetComponent<Rigidbody>().useGravity = true;
+        GetComponent<Rigidbody>().constraints = GetComponent<Rigidbody>().constraints & ~RigidbodyConstraints.FreezePositionY;
         GetComponent<Collider>().isTrigger = true;
     }
     public void OnGrabEnd() {
@@ -94,16 +93,15 @@ public class Hook : MonoBehaviour {
         mesh.Clear();
         float step = 2 * Mathf.PI / vertex;
         Vector3[] vertices = new Vector3[vertex * 2 + 2];
-        vertices[0] = transform.worldToLocalMatrix.MultiplyPoint3x4(startPosition);
+        vertices[0] = transform.worldToLocalMatrix.MultiplyPoint(startPosition) + new Vector3(0.026f, 1.065f, -0.708f);
         for (int i = 1; i < vertex + 1; i++) {//Start
             //(Sp + cos(a), Sp + sen(a), S+cos(Sr))
-            vertices[i] = transform.worldToLocalMatrix.MultiplyPoint3x4(new Vector3(startPosition.x + Mathf.Cos(step * (i - 1)) * thickness, startPosition.y + Mathf.Sin(step * (i - 1)) * thickness, startPosition.z + Mathf.Cos(startRotation.y) * Mathf.Cos(step * (i - 1)) * thickness));
+            vertices[i] = new Vector3(0.026f, 1.065f, -0.708f) + transform.worldToLocalMatrix.MultiplyPoint(new Vector3(startPosition.x + Mathf.Cos(step * (i - 1)) * thickness, startPosition.y + Mathf.Sin(step * (i - 1)) * thickness, startPosition.z + Mathf.Cos(startRotation.y) * Mathf.Cos(step * (i - 1)) * thickness));
         }
         for (int i = vertex + 1; i < 2 * vertex + 1; i++) {//End
-            vertices[i] = transform.worldToLocalMatrix.MultiplyPoint3x4(new Vector3(endPosition.x + Mathf.Cos(step * (i - 1)) * thickness, endPosition.y + Mathf.Sin(step * (i - 1)) * thickness, endPosition.z + Mathf.Cos(endRotation.y) * Mathf.Cos(step * (i - 1)) * thickness));
+            vertices[i] = new Vector3(0.026f, 0.741f, -0.708f) + transform.worldToLocalMatrix.MultiplyPoint(new Vector3(endPosition.x + Mathf.Cos(step * (i - 1)) * thickness, endPosition.y + Mathf.Sin(step * (i - 1)) * thickness, endPosition.z + Mathf.Cos(endRotation.y) * Mathf.Cos(step * (i - 1)) * thickness));
         }
-        
-        vertices[2 * vertex + 1] = transform.worldToLocalMatrix.MultiplyPoint3x4(endPosition);
+        vertices[2 * vertex + 1] = new Vector3(0.026f, 0.741f, -0.708f) + transform.worldToLocalMatrix.MultiplyPoint(endPosition);
         mesh.vertices = vertices;
         mesh.RecalculateNormals();
         if (triangles.Length != 12 * vertex) {//3 * vertices + 6 * vertices + 3 * vertices
