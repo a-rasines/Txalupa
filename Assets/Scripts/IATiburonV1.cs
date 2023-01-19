@@ -78,7 +78,7 @@ public class IATiburonV1 : MonoBehaviour
                         if (objetivo.vida < 0)
                         {
                             attackingRaft = false;
-                            Destroy(objetivo);
+                            Destroy(objetivo.gameObject);
                             keepAttackingRaft = false;
                             StartCoroutine(CanAttackShip());
                         }
