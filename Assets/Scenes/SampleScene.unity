@@ -2329,7 +2329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4183,7 +4183,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 585538982}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 896b359ff72ed3942a00fb16f4b89819, type: 3}
   m_Name: 
@@ -4473,7 +4473,7 @@ GameObject:
   - component: {fileID: 646319678}
   - component: {fileID: 646319677}
   - component: {fileID: 646319680}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: LeftHand Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4508,8 +4508,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.05
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.08990932
+  m_Center: {x: -0.015076935, y: -0.03561815, z: -0.030350678}
 --- !u!114 &646319678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7006,7 +7006,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1037655537}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: HUD Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8194,7 +8194,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1200574362}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Inventory Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9090,7 +9090,7 @@ GameObject:
   - component: {fileID: 1373391215}
   - component: {fileID: 1373391214}
   - component: {fileID: 1373391213}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: XRCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9185,7 +9185,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1373391212}
   m_LocalRotation: {x: 0, y: 0.9988775, z: -0.047367994, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0116}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.0019999999, y: 0.001, z: 0.0010054008}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12440,7 +12440,7 @@ GameObject:
   - component: {fileID: 1666894979}
   - component: {fileID: 1666894978}
   - component: {fileID: 1666894977}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: RightHand Controller RC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12781,8 +12781,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.09741047
+  m_Center: {x: 0.013652064, y: -0.03561813, z: -0.024183847}
 --- !u!114 &1666894981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13740,7 +13740,7 @@ GameObject:
   - component: {fileID: 1832006806}
   - component: {fileID: 1832006805}
   - component: {fileID: 1832006804}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: RightHand Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13773,8 +13773,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.09741047
+  m_Center: {x: 0.013652064, y: -0.03561813, z: -0.024183847}
 --- !u!114 &1832006805
 MonoBehaviour:
   m_ObjectHideFlags: 0

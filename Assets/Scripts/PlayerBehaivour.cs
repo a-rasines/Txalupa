@@ -23,6 +23,7 @@ public class PlayerBehaivour : MonoBehaviour
     {
         if (vida <= 0)
         {
+            print("Muerto");
             SceneManager.LoadScene("MuerteScene");
         }
         if(agua)
