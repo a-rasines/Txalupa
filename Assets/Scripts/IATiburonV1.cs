@@ -16,6 +16,7 @@ public class IATiburonV1 : MonoBehaviour
     private bool alive;
     private int initialHealth;
     private Vector3 initialPos;
+    private Quaternion initialRot; //ENARA
     TrozosBalsa objetivo;
     [SerializeField] GameObject raft;
     private
@@ -23,6 +24,7 @@ public class IATiburonV1 : MonoBehaviour
     void Start()
     {
         initialPos = transform.position;
+        initialRot = transform.rotation; //ENARA
         health = 50;
         alive = true;
         attackShip = false;
@@ -50,6 +52,7 @@ public class IATiburonV1 : MonoBehaviour
                 if (attackShip && objetivo != null && !attackingRaft)
                 {
                     transform.position = Vector3.MoveTowards(transform.position, objetivo.transform.position, 0.05f);
+                    transform.LookAt(objetivo.transform); //ENARA
                     if (Vector3.Distance(transform.position, objetivo.transform.position) <= 0.75f) attackingRaft = true;
                 }
                 if (attackShip && !waitingForShip)
@@ -93,11 +96,13 @@ public class IATiburonV1 : MonoBehaviour
                     if (transform.position != initialPos)
                     {
                         transform.position = Vector3.MoveTowards(transform.position, initialPos, 0.05f);
+                        transform.rotation = Quaternion.Lerp(transform.rotation, initialRot, 0.05f); //ENARA
                     }
                     else
                     {
                         tF.transform.Rotate(0, 15 * Time.deltaTime, 0);
                         initialPos = transform.position;
+                        initialRot = transform.rotation; //ENARA
                     }
                 }
             }

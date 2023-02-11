@@ -24,7 +24,7 @@ public class PlayerBehaivour : MonoBehaviour
         if (vida <= 0)
         {
             print("Muerto");
-            SceneManager.LoadScene("MuerteScene");
+            SceneManager.LoadScene(2);// ("MuerteScene"); //ENARA mejor por orden
         }
         if(agua)
         {

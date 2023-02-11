@@ -7,7 +7,7 @@ public class MenuController : MonoBehaviour
 {
     public void StartBtn()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(1); // ("SampleScene"); //ENARA Mejor por orden
     }
 
     public void ExitBtn()
