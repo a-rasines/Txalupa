@@ -15494,14 +15494,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 56853276}
     m_Modifications:
-    - target: {fileID: 7120902039985307633, guid: 275e2ebc5123e4e41960236594a1880f, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7120902039985307633, guid: 275e2ebc5123e4e41960236594a1880f, type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
     - target: {fileID: 7120902040236092580, guid: 275e2ebc5123e4e41960236594a1880f, type: 3}
       propertyPath: m_InteractionManager
       value: 
