@@ -112,10 +112,13 @@ public class IATiburonV1 : MonoBehaviour
     private void AttackShip()
     {
         bool select = false;
-        while (!select)
-        {
+        while (!select) {
             int n = Random.Range(0, raft.transform.childCount);
-            TrozosBalsa tb = raft.transform.GetChild(n).GetComponent<TrozosBalsa>();
+            TrozosBalsa tb = null;
+            while (tb == null) {
+                n = Random.Range(0, raft.transform.childCount);
+                tb = raft.transform.GetChild(n).GetComponent<TrozosBalsa>();
+            }
             if (tb.norte != null || tb.sur != null || tb.este != null || tb.oeste != null)//NullPointer
             {
                 objetivo = tb;

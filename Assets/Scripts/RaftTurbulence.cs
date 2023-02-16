@@ -7,13 +7,20 @@ public class RaftTurbulence : MonoBehaviour
     void Start(){
         calculateMotion();
     }
+    public void SetupBuild(GameObject go) {
+        if (go.transform.localPosition.x % 1.5 != 0 || go.transform.localPosition.x % 1.5 != 0)
+            return;//No sigue la cuadricula
+        else if(go.transform.localPosition.y == 0)
+            go.AddComponent<TrozosBalsa>();//Es suelo
+        calculateMotion();
+
+    }
     private void calculateMotion() {
         float maxX = 0;
         float maxY = 0;
         float minX = 0;
         float minY = 0;
-        childCount = transform.childCount;
-        for (int i = 0; i < childCount; i++) {
+        for (int i = 0; i < transform.childCount; i++) {
             Transform t = transform.GetChild(i);
             if (t.localPosition.x + t.lossyScale.x / 2 > maxX) {
                 maxX = t.localPosition.x + t.lossyScale.x / 2;
@@ -34,11 +41,9 @@ public class RaftTurbulence : MonoBehaviour
     public float strenght = 1;
     public float x = 1;
     public float z = 1;
-    private int childCount;
     private float sizeX;
     private float hipotenusa;
     void Update(){
-        if (childCount != transform.childCount) calculateMotion();
         rotation += speed * Time.deltaTime;
         rotation %= 2 * Mathf.PI;
         float height = Mathf.Sin(rotation) * strenght / 2;
