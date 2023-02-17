@@ -22,6 +22,7 @@ public class BuildManager : MonoBehaviour {
         }
         
     }
+    /*
     public void HoverChange() {
         RaycastHit rh;
         if (Physics.Raycast(transform.position, Camera.main.transform.eulerAngles, out rh)) {
@@ -36,6 +37,7 @@ public class BuildManager : MonoBehaviour {
             model = Instantiate(model, new Vector3(offsetX, isWaterBuildable?0:rh.transform.position.y, offsetZ), Quaternion.identity);
         }
     }
+    */
     // Update is called once per frame
     void Update() {
 
