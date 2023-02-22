@@ -31,27 +31,26 @@ public class BuildManager : MonoBehaviour {
     private void OnDisable() {
         hoverChange = () => {};
     }
-    public void HoverChange() {
-        hoverChange(); 
-    }
     private void HoverChangeEnabled() {
         RaycastHit rh;
         if (Physics.Raycast(transform.position, Camera.main.transform.eulerAngles, out rh)) {
             hovered = rh.transform.gameObject;
         } else
             return;
-        if (!model.IsPrefabInstance()) {
-            float offsetX = rh.transform.position.x - raftBase.transform.position.x;
-            offsetX -= offsetX % 1.5f;
-            float offsetZ = rh.transform.position.z - raftBase.transform.position.z;
-            offsetZ -= offsetZ % 1.5f;
+        float offsetX = rh.transform.position.x - raftBase.transform.position.x;
+        offsetX -= offsetX % 1.5f;
+        float offsetZ = rh.transform.position.z - raftBase.transform.position.z;
+        offsetZ -= offsetZ % 1.5f;
+        if (!model.IsPrefabInstance())
             model = Instantiate(model, new Vector3(offsetX, isWaterBuildable ? 0 : rh.transform.position.y, offsetZ), Quaternion.identity);
-        }
+        else 
+            model.transform.position = new Vector3(offsetX, model.transform.position.y, offsetZ);
+        
     }
     
     // Update is called once per frame
     void Update() {
-
+        hoverChange();
         
     }
 }
