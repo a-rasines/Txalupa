@@ -31,6 +31,7 @@ public class Slot : MonoBehaviour
     }
     public void OnInteraction() {
         Inventory.Stack s = inv.GetSlot(position);
+        if (s.q == 0) return;
         pulled = Instantiate(s.it.GetModel(), Camera.main.transform.position + Camera.main.transform.forward, Quaternion.Euler(0, 0, 0));
         pulled.AddComponent<ItemStack>().quantity = s.q;
         Destroy(pulled.GetComponent<TrashMovement>());

@@ -61,7 +61,7 @@ public class ItemType : MonoBehaviour {
     public int GetCuantityFrom(GameObject g) {
         try {
             foreach (GameObject g1 in go.Keys)
-                if (g1.GetComponent<ItemID>().id == g.GetComponent<ItemID>().id) {
+                if (g1.GetComponent<MeshFilter>().mesh == g.GetComponent<MeshFilter>().mesh) {
                     if (g.GetComponent<ItemStack>() != null)
                         return g.GetComponent<ItemStack>().quantity;
                     return go[g1];
