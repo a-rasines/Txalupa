@@ -11,7 +11,7 @@ public class BuildManager : MonoBehaviour {
     public GameObject model;
     GameObject hovered;
     public Material buildableMaterial;
-    Action hoverChange;
+    Action hoverChange = () => { };
     void OnEnable() {
         if (model == null) {
             enabled = false;
