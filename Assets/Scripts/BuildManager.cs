@@ -11,7 +11,6 @@ public class BuildManager : MonoBehaviour {
     public GameObject model;
     GameObject hovered;
     public Material buildableMaterial;
-    Action hoverChange = () => { };
     void OnEnable() {
         if (model == null) {
             enabled = false;
@@ -24,14 +23,10 @@ public class BuildManager : MonoBehaviour {
         for(int i = 0; i < renderer.materials.Length; i++) {
             renderer.materials[i] = buildableMaterial;
         }
-        hoverChange = () => { HoverChangeEnabled(); };
 
 
     }
-    private void OnDisable() {
-        hoverChange = () => {};
-    }
-    private void HoverChangeEnabled() {
+    private void HoverChange() {
         RaycastHit rh;
         if (Physics.Raycast(transform.position, Camera.main.transform.eulerAngles, out rh)) {
             hovered = rh.transform.gameObject;
@@ -50,7 +45,6 @@ public class BuildManager : MonoBehaviour {
     
     // Update is called once per frame
     void Update() {
-        hoverChange();
-        
+        HoverChange();       
     }
 }
