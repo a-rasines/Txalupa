@@ -66,7 +66,6 @@ public class WaterMesh : MonoBehaviour
     public float maxHeight = 1;
     public float vertexStep = 0.1f;
     public void Tormenta(float q) {
-            print("A");
             vertexStep = q;
             mesh = new Mesh();
             float f = sizeZ * 2 / vertexStep;

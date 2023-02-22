@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,9 +11,12 @@ public class BuildManager : MonoBehaviour {
     public GameObject model;
     GameObject hovered;
     public Material buildableMaterial;
+    Action hoverChange;
     void OnEnable() {
-        if (model == null)
+        if (model == null) {
             enabled = false;
+            return;
+        }
         MeshRenderer renderer = model.GetComponent<MeshRenderer>();
         if(renderer == null ) {
             renderer = gameObject.GetComponentInChildren<MeshRenderer>();
@@ -20,10 +24,17 @@ public class BuildManager : MonoBehaviour {
         for(int i = 0; i < renderer.materials.Length; i++) {
             renderer.materials[i] = buildableMaterial;
         }
-        
+        hoverChange = () => { HoverChangeEnabled(); };
+
+
     }
-    
+    private void OnDisable() {
+        hoverChange = () => {};
+    }
     public void HoverChange() {
+        hoverChange(); 
+    }
+    private void HoverChangeEnabled() {
         RaycastHit rh;
         if (Physics.Raycast(transform.position, Camera.main.transform.eulerAngles, out rh)) {
             hovered = rh.transform.gameObject;
@@ -34,7 +45,7 @@ public class BuildManager : MonoBehaviour {
             offsetX -= offsetX % 1.5f;
             float offsetZ = rh.transform.position.z - raftBase.transform.position.z;
             offsetZ -= offsetZ % 1.5f;
-            model = Instantiate(model, new Vector3(offsetX, isWaterBuildable?0:rh.transform.position.y, offsetZ), Quaternion.identity);
+            model = Instantiate(model, new Vector3(offsetX, isWaterBuildable ? 0 : rh.transform.position.y, offsetZ), Quaternion.identity);
         }
     }
     
