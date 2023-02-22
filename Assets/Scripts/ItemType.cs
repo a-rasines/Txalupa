@@ -60,12 +60,17 @@ public class ItemType : MonoBehaviour {
     public new readonly string name;
     public int GetCuantityFrom(GameObject g) {
         try {
-            foreach (GameObject g1 in go.Keys)
-                if (g1.GetComponent<MeshFilter>().mesh == g.GetComponent<MeshFilter>().mesh) {
+            foreach (GameObject g1 in go.Keys) {
+                Mesh f1 = g1.GetComponent<MeshFilter>().mesh;
+                if (f1 == null) f1 = g1.GetComponentInChildren<MeshFilter>().mesh;
+                Mesh f2 = g.GetComponent<MeshFilter>().mesh;
+                if (f2 == null) f2 = g.GetComponentInChildren<MeshFilter>().mesh;
+                if (f1 == f2) {
                     if (g.GetComponent<ItemStack>() != null)
                         return g.GetComponent<ItemStack>().quantity;
                     return go[g1];
                 }
+            }
             return 0;
         } catch {
             return 0;
