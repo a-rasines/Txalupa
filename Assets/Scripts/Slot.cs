@@ -9,6 +9,7 @@ public class Slot : MonoBehaviour
     private GameObject pulled;
     private void Start() {
         inv.OnItemChanged += OnItemChange;
+        inv.RegisterSlot(position);
     }
     private void OnItemChange(int position, ItemType it, int quantity) {
         if (this.position != position)

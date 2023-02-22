@@ -1,10 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour {
-    private Dictionary<int, Stack> inventory = new Dictionary<int, Stack>();//Por slot
-    private Dictionary<ItemType, int> itemCounts = new Dictionary<ItemType, int>();//Por material
-    public struct Stack{
+public abstract class AbstractInventory : MonoBehaviour {
+    public struct Stack {
         public ItemType it;
         public int q;
         public Stack(ItemType it, int q) {
@@ -16,18 +14,40 @@ public class Inventory : MonoBehaviour {
             q = 0;
         }
     }
+    public abstract void RegisterSlot(int pos);
+
+    public abstract bool AddToInventory(int position, GameObject g);
+    public abstract bool RemoveFromInventory(ItemType type, int amount);
+    public abstract Stack RemoveFromInventory(int position);
+
+    public abstract int GetAmountOf(ItemType type);
+    public abstract Stack GetSlot(int position);
+    public abstract Dictionary<int, Stack>.KeyCollection GetSlotPositions();
+
+}
+
+public class Inventory : AbstractInventory {
+    private Dictionary<int, Stack> inventory = new Dictionary<int, Stack>();//Por slot
+    private Dictionary<ItemType, int> itemCounts = new Dictionary<ItemType, int>();//Por material
+    
     public delegate void ItemChangeEventHandler(int position, ItemType it, int quantity);
     public event ItemChangeEventHandler OnItemChanged;
     private void _(int _, ItemType __, int ___) {}
     private void Start() {
         OnItemChanged += _;
     }
-    public int GetAmountOf(ItemType type) {
+    public override void RegisterSlot(int pos) {
+        inventory.Add(pos, new Stack(0));
+    }
+    public override Dictionary<int, Stack>.KeyCollection GetSlotPositions() {
+        return inventory.Keys;
+    }
+    public override int GetAmountOf(ItemType type) {
         int outV = 0;
         itemCounts.TryGetValue(type, out outV);
         return outV;
     }
-    public bool RemoveFromInventory(ItemType type, int amount) {
+    public override bool RemoveFromInventory(ItemType type, int amount) {
         if (GetAmountOf(type) < amount)
             return false;
         Dictionary<int, Stack> cl = new Dictionary<int, Stack>(inventory);
@@ -46,7 +66,7 @@ public class Inventory : MonoBehaviour {
         }
         return false;
     }
-    public bool AddToInventory(int position, GameObject g) {
+    public override bool AddToInventory(int position, GameObject g) {
         ItemType it = ItemType.Of(g);
         Stack stack = new Stack(0);
         if (it is null)
@@ -68,12 +88,12 @@ public class Inventory : MonoBehaviour {
             return false;
         }
     }
-    public Stack GetSlot(int position) {
+    public override Stack GetSlot(int position) {
         Stack s = new Stack(0);
         inventory.TryGetValue(position, out s);
         return s;
     }
-    public Stack RemoveFromInventory(int position) {
+    public override Stack RemoveFromInventory(int position) {
         Stack s = inventory[position];
         itemCounts[s.it] -= s.q;
         inventory.Remove(position);
