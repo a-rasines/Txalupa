@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
-    public Inventory inv;
+    public AbstractInventory inv;
     public Image icon;
     public int position;
     private GameObject pulled;

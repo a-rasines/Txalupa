@@ -1,7 +1,11 @@
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class AbstractInventory : MonoBehaviour {
+
+    public delegate void ItemChangeEventHandler(int position, ItemType it, int quantity);
+    public event ItemChangeEventHandler OnItemChanged;
     public struct Stack {
         public ItemType it;
         public int q;
@@ -12,10 +16,29 @@ public abstract class AbstractInventory : MonoBehaviour {
         public Stack(byte _) {//Null constructor
             it = null;
             q = 0;
+
+        }
+        public static bool operator ==(Stack a, Stack b) {
+            return a.q == b.q && a.it == b.it;
+        }
+        public static bool operator !=(Stack a, Stack b) {
+            return !(a == b);
         }
     }
+    protected void TriggerOnItemChanged(int position, ItemType it, int quantity) {
+        OnItemChanged(position, it, quantity);
+    }
+    /// <summary>
+    /// Registra una nueva posición vacía en el inventario.
+    /// </summary>
+    /// <param name="pos"> Posicion unica del slot. Ningun formato obligatorio </param>
     public abstract void RegisterSlot(int pos);
 
+    /// <summary>
+    /// Anade el objeto al inventario en la posicion indicada
+    /// </summary>
+    /// <param name="position"> Posicion unica del slot en el que meterlo, previamente definido. </param>
+    /// <param name="g"> GameObject asociado con el ItemType a añadir. </param>
     public abstract bool AddToInventory(int position, GameObject g);
     public abstract bool RemoveFromInventory(ItemType type, int amount);
     public abstract Stack RemoveFromInventory(int position);
@@ -30,8 +53,6 @@ public class Inventory : AbstractInventory {
     private Dictionary<int, Stack> inventory = new Dictionary<int, Stack>();//Por slot
     private Dictionary<ItemType, int> itemCounts = new Dictionary<ItemType, int>();//Por material
     
-    public delegate void ItemChangeEventHandler(int position, ItemType it, int quantity);
-    public event ItemChangeEventHandler OnItemChanged;
     private void _(int _, ItemType __, int ___) {}
     private void Start() {
         OnItemChanged += _;
@@ -76,13 +97,14 @@ public class Inventory : AbstractInventory {
         if (!inventory.TryGetValue(position, out stack)) {//La posición está vacía
             inventory[position] = new Stack(it, it.GetCuantityFrom(g));
             itemCounts[it] = outV;
-            OnItemChanged(position, it, it.GetCuantityFrom(g));
+            
+            TriggerOnItemChanged(position, it, it.GetCuantityFrom(g));
             return true;
         } else if(stack.it.Equals(it) && stack.q + it.GetCuantityFrom(g) <= it.stackCount){//La posición tiene el mismo objeto y no sobrepasan el máximo
             stack.q += it.GetCuantityFrom(g);
             inventory[position] = stack;
             itemCounts[it] = outV;
-            OnItemChanged(position, it, stack.q);
+            TriggerOnItemChanged(position, it, stack.q);
             return true;
         } else {
             return false;
@@ -96,8 +118,8 @@ public class Inventory : AbstractInventory {
     public override Stack RemoveFromInventory(int position) {
         Stack s = inventory[position];
         itemCounts[s.it] -= s.q;
-        inventory.Remove(position);
-        OnItemChanged(position, null, 0);
+        inventory[position] = new Stack(0);
+        TriggerOnItemChanged(position, null, 0);
         return s;
 
     }
