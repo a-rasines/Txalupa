@@ -75,9 +75,12 @@ public class InventoryFilter : AbstractInventory {
     }
 
     public override Stack RemoveFromInventory(int position) {
-        Stack res = inventory.RemoveFromInventory(position);
-        if(!ignorePositions.Contains(position))
+        if (!ignorePositions.Contains(position)) {
+            Stack s = stackMap[position];
+            RemoveFromInventory(s.it, s.q);
             OrderInventory();
-        return res;
+            return s;
+        }else
+            return RemoveFromInventory(position);
     }
 }
