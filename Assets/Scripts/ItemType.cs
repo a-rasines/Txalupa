@@ -47,24 +47,33 @@ public class ItemType : MonoBehaviour {
             new ItemType("Suelo",20, GetSprite("BuildingIcon_FoundationTier3"), new Dictionary<GameObject, int>
             {
                 {GetGameObject("Block_Foundation_Tier3"), 1 }
-            }),
+            }, BuildConstrain.WaterBuildable),
             new ItemType("Lanza", 1, GetSprite("Item_WoodSpear"), new Dictionary<GameObject, int>
             {
                 {GetGameObject("WoodSpear.L"),1 }
             })
         };
     }
+    public enum BuildConstrain {
+        NonBuildable,
+        WaterBuildable,
+        GridBuildable,
+        WallBuildable
+    }
+
     private Dictionary<GameObject, int> go;
     public readonly int stackCount;
     public readonly Sprite icon;
     public new readonly string name;
+    public readonly int buildable;
+    public readonly BuildConstrain buildConstrain;
     public int GetCuantityFrom(GameObject g) {
         try {
             foreach (GameObject g1 in go.Keys) {
-                Mesh f1 = g1.GetComponent<MeshFilter>().mesh;
-                if (f1 == null) f1 = g1.GetComponentInChildren<MeshFilter>().mesh;
-                Mesh f2 = g.GetComponent<MeshFilter>().mesh;
-                if (f2 == null) f2 = g.GetComponentInChildren<MeshFilter>().mesh;
+                Mesh f1 = g1.GetComponent<MeshFilter>().sharedMesh;
+                if (f1 == null) f1 = g1.GetComponentInChildren<MeshFilter>().sharedMesh;
+                Mesh f2 = g.GetComponent<MeshFilter>().sharedMesh;
+                if (f2 == null) f2 = g.GetComponentInChildren<MeshFilter>().sharedMesh;
                 if (f1 == f2) {
                     if (g.GetComponent<ItemStack>() != null)
                         return g.GetComponent<ItemStack>().quantity;
@@ -84,6 +93,14 @@ public class ItemType : MonoBehaviour {
         this.icon = icon;
         this.go = go;
         this.name = name;
+        this.buildConstrain = BuildConstrain.NonBuildable;
+    }
+    private ItemType(string name, int stackCount, Sprite icon, Dictionary<GameObject, int> go, BuildConstrain buildConstrain) {
+        this.stackCount = stackCount;
+        this.icon = icon;
+        this.go = go;
+        this.name = name;
+        this.buildConstrain = buildConstrain;
     }
     public bool Equals(ItemType other) {
         return this.name == other.name;

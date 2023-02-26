@@ -7,12 +7,14 @@ using UnityEngine;
 public class InventoryFilter : AbstractInventory {
     public int[] ignorePositions;
     public GameObject[] itemTypesToAllow;
-    private List<ItemType> itemTypes;
+    private List<ItemType> itemTypes = new List<ItemType>();
     public Inventory inventory;
-    private Dictionary<int, Stack> stackMap;
+    private Dictionary<int, Stack> stackMap = new Dictionary<int, Stack>();
 
     void Start() {
         OnItemChanged += (csharp, es, especial) => {};
+        foreach (GameObject o in itemTypesToAllow) 
+            itemTypes.Add(ItemType.Of(o));
         OrderInventory();
     }
     private void OrderInventory() {

@@ -6,7 +6,7 @@ public class Slot : MonoBehaviour
     public AbstractInventory inv;
     public Image icon;
     public int position;
-    private GameObject pulled;
+    protected GameObject pulled;
     private void Start() {
         inv.OnItemChanged += OnItemChange;
         inv.RegisterSlot(position);
