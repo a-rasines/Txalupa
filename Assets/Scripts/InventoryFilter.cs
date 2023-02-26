@@ -14,7 +14,7 @@ public class InventoryFilter : AbstractInventory {
     void Start() {
         OnItemChanged += (csharp, es, especial) => {};
         foreach (GameObject o in itemTypesToAllow) 
-            itemTypes.Add(ItemType.Of(o));
+            itemTypes.Add(ItemTypes.Of(o));
         OrderInventory();
     }
     private void OrderInventory() {

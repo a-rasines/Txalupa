@@ -4130,6 +4130,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf37828f6cada23458c44b3494ea4016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialInventory:
+  - position: 1
+    model: {fileID: 2700247923638820473, guid: 04f21f6ba80ea3d449ef5e1922654cb4, type: 3}
+    quantity: 1
 --- !u!114 &555998654
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class Craft : MonoBehaviour
     public int seleccionado { get; set; }
     public void Crafting()
     {
-        if (inventory.GetAmountOf(ItemType.Of("Plank")) >= crafteableObject[seleccionado].GetWood() && inventory.GetAmountOf(ItemType.Of("Plastic")) >= crafteableObject[seleccionado].GetPlastic() && inventory.GetAmountOf(ItemType.Of("Scrap")) >= crafteableObject[seleccionado].GetScrap() && inventory.GetAmountOf(ItemType.Of("Thatch")) >= crafteableObject[seleccionado].GetLeaves())
+        if (inventory.GetAmountOf(ItemTypes.Of("Plank")) >= crafteableObject[seleccionado].GetWood() && inventory.GetAmountOf(ItemTypes.Of("Plastic")) >= crafteableObject[seleccionado].GetPlastic() && inventory.GetAmountOf(ItemTypes.Of("Scrap")) >= crafteableObject[seleccionado].GetScrap() && inventory.GetAmountOf(ItemTypes.Of("Thatch")) >= crafteableObject[seleccionado].GetLeaves())
         {
             for (int x = 0; x < 5; x++)
             {

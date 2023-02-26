@@ -36,6 +36,7 @@ public class Slot : MonoBehaviour
         pulled = Instantiate(s.it.GetModel(), Camera.main.transform.position + Camera.main.transform.forward, Quaternion.Euler(0, 0, 0));
         pulled.AddComponent<ItemStack>().quantity = s.q;
         Destroy(pulled.GetComponent<TrashMovement>());
+        Destroy(pulled.GetComponent<TrozosBalsa>());
         pulled.layer = 0;
         inv.RemoveFromInventory(position);
     }

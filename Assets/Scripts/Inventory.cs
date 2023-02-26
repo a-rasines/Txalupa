@@ -1,6 +1,9 @@
 using JetBrains.Annotations;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
+using UnityEngine.UIElements;
+using System;
 
 public abstract class AbstractInventory : MonoBehaviour {
 
@@ -10,13 +13,25 @@ public abstract class AbstractInventory : MonoBehaviour {
         public ItemType it;
         public int q;
         public Stack(ItemType it, int q) {
+            if(it is null)
+                this.q = 0;
+            else
+                this.q = q;
             this.it = it;
-            this.q = q;
         }
         public Stack(byte _) {//Null constructor
             it = null;
             q = 0;
 
+        }
+        public override bool Equals(object o) {
+            return this == o;
+        }
+        public static bool operator ==(Stack a, object b) {
+            return typeof(Stack).IsInstanceOfType(b) && (Stack)b == a;
+        }
+        public static bool operator !=(Stack a, object b) {
+            return !(a == b);
         }
         public static bool operator ==(Stack a, Stack b) {
             return a.q == b.q && a.it == b.it;
@@ -48,8 +63,15 @@ public abstract class AbstractInventory : MonoBehaviour {
     public abstract Dictionary<int, Stack>.KeyCollection GetSlotPositions();
 
 }
+[Serializable]
+public struct DefaultStack {
+    public int position;
+    public GameObject model;
+    public int quantity;
+}
 
 public class Inventory : AbstractInventory {
+    public DefaultStack[] initialInventory;
     private Dictionary<int, Stack> inventory = new Dictionary<int, Stack>();//Por slot
     private Dictionary<ItemType, int> itemCounts = new Dictionary<ItemType, int>();//Por material
     
@@ -59,6 +81,15 @@ public class Inventory : AbstractInventory {
     }
     public override void RegisterSlot(int pos) {
         inventory.Add(pos, new Stack(0));
+        if (!ItemTypes.isReady)
+            FindObjectOfType<ItemTypes>().Start();
+        foreach (DefaultStack ds in initialInventory)
+            if (ds.position == pos) {
+                inventory[pos] = new Stack(ItemTypes.Of(ds.model), ds.quantity);
+                itemCounts.TryAdd(inventory[pos].it, 0);
+                itemCounts[inventory[pos].it] += ds.quantity;
+                TriggerOnItemChanged(pos, inventory[pos].it, ds.quantity);
+            }
     }
     public override Dictionary<int, Stack>.KeyCollection GetSlotPositions() {
         return inventory.Keys;
@@ -88,7 +119,7 @@ public class Inventory : AbstractInventory {
         return false;
     }
     public override bool AddToInventory(int position, GameObject g) {
-        ItemType it = ItemType.Of(g);
+        ItemType it = ItemTypes.Of(g);
         Stack stack = new Stack(0);
         if (it is null)
             return false;
@@ -117,6 +148,7 @@ public class Inventory : AbstractInventory {
     }
     public override Stack RemoveFromInventory(int position) {
         Stack s = inventory[position];
+        print(s.it.name);
         itemCounts[s.it] -= s.q;
         inventory[position] = new Stack(0);
         TriggerOnItemChanged(position, null, 0);
