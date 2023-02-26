@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,35 +16,48 @@ public class InventoryFilter : AbstractInventory {
         OnItemChanged += (csharp, es, especial) => {};
         foreach (GameObject o in itemTypesToAllow) 
             itemTypes.Add(ItemTypes.Of(o));
-        OrderInventory();
     }
     private void OrderInventory() {
         List<Stack> stacks = new List<Stack>();
         foreach (int i in inventory.GetSlotPositions()) {
             if (ignorePositions.Contains(i))
                 continue;
+            if (inventory.GetSlot(i).q != 0)
             stacks.Add(inventory.GetSlot(i));
         }
         stacks.Sort((a, b) => {
+            if (a.it == null)
+                if (a.it == b.it)
+                    return 0;
+                else
+                    return 1;
+            if (b.it == null)
+                return -1;
+
             if (a.it.name != b.it.name)
                 return a.it.name.CompareTo(b.it.name);
             else
                 return a.q.CompareTo(b.q);
         });
-        List<int> kc = new List<int>(inventory.GetSlotPositions());
+        List<int> kc = new List<int>(stackMap.Keys);
         kc.Sort();
-        for (int i = 0; i < Mathf.Min(stacks.Count, stackMap.Count); i++) {
+        for (int i = 0; i < stackMap.Count; i++) {
             if (ignorePositions.Contains(kc[i]))
                 continue;
             else {
-                if (stackMap[kc[i]] != stacks[i])
-                    TriggerOnItemChanged(kc[i], stacks[i].it, stacks[i].q);
-                stackMap[i] = stacks[i];
+                if (i >= stacks.Count && stackMap[kc[i]].q != 0) {
+                    TriggerOnItemChanged(kc[i], null, 0);
+                    stackMap[kc[i]] = new Stack(0);
+                } else if ( i < stacks.Count) {
+                    if (stackMap[kc[i]] != stacks[i])
+                        TriggerOnItemChanged(kc[i], stacks[i].it, stacks[i].q);
+                    stackMap[kc[i]] = stacks[i];
+                }
+
             }
         }
-        
-
     }
+
     public override bool AddToInventory(int position, GameObject g) {
         if(inventory.AddToInventory(position, g)) {
             OrderInventory();
@@ -67,7 +81,8 @@ public class InventoryFilter : AbstractInventory {
     }
 
     public override void RegisterSlot(int pos) {
-        stackMap.Add(pos, new Stack(0));
+        stackMap.TryAdd(pos, new Stack(0));
+        OrderInventory();
     }
 
     public override bool RemoveFromInventory(ItemType type, int amount) {

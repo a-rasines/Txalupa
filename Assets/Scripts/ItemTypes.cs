@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using UnityEngine;
 using static ItemType;
 using static UnityEditor.Progress;
@@ -139,7 +140,11 @@ public class ItemType{
         return !(a == b);
     }
     public static bool operator ==(ItemType a, ItemType b) {
-        return a.name == b.name;
+        try {
+            return a is null && b is null || a is not null && b is not null & a.name == b.name;
+        } catch {
+            return false;
+        }
     }
     public static bool operator !=(ItemType a, ItemType b) {
         return !(a == b);

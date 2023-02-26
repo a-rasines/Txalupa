@@ -78,18 +78,18 @@ public class Inventory : AbstractInventory {
     private void _(int _, ItemType __, int ___) {}
     private void Start() {
         OnItemChanged += _;
-    }
-    public override void RegisterSlot(int pos) {
-        inventory.Add(pos, new Stack(0));
         if (!ItemTypes.isReady)
             FindObjectOfType<ItemTypes>().Start();
-        foreach (DefaultStack ds in initialInventory)
-            if (ds.position == pos) {
-                inventory[pos] = new Stack(ItemTypes.Of(ds.model), ds.quantity);
-                itemCounts.TryAdd(inventory[pos].it, 0);
-                itemCounts[inventory[pos].it] += ds.quantity;
-                TriggerOnItemChanged(pos, inventory[pos].it, ds.quantity);
-            }
+        foreach (DefaultStack ds in initialInventory) {
+            ItemType type = ItemTypes.Of(ds.model);
+            inventory[ds.position] = new Stack(type, ds.quantity);
+            itemCounts.TryAdd(type, 0);
+            itemCounts[type] += ds.quantity;
+            TriggerOnItemChanged(ds.position, type, ds.quantity);
+        }
+    }
+    public override void RegisterSlot(int pos) {
+        inventory.TryAdd(pos, new Stack(0));
     }
     public override Dictionary<int, Stack>.KeyCollection GetSlotPositions() {
         return inventory.Keys;
