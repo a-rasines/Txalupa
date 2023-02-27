@@ -78,7 +78,6 @@ public class Hook : MonoBehaviour {
         GetComponent<XRGrabInteractable>().enabled = true;
     }
     int[] triangles = new int[0];
-    float offsetY = -0.17f; //Funciona con este valor y no se por qué
     private void CreateRope() {
         startPosition = start.position;
         startRotation = start.eulerAngles;
@@ -93,15 +92,15 @@ public class Hook : MonoBehaviour {
         mesh.Clear();
         float step = 2 * Mathf.PI / vertex;
         Vector3[] vertices = new Vector3[vertex * 2 + 2];
-        vertices[0] = transform.worldToLocalMatrix.MultiplyPoint(startPosition) + new Vector3(0.026f, 1.065f, -0.708f);
+        vertices[0] = start.TransformPoint(Vector3.zero);
         for (int i = 1; i < vertex + 1; i++) {//Start
-            //(Sp + cos(a), Sp + sen(a), S+cos(Sr))
-            vertices[i] = new Vector3(0.026f, 1.065f, -0.708f) + transform.worldToLocalMatrix.MultiplyPoint(new Vector3(startPosition.x + Mathf.Cos(step * (i - 1)) * thickness, startPosition.y + Mathf.Sin(step * (i - 1)) * thickness, startPosition.z + Mathf.Cos(startRotation.y) * Mathf.Cos(step * (i - 1)) * thickness));
+                                              //(Sp + cos(a), Sp + sen(a), S+cos(Sr))
+            vertices[i] = start.TransformPoint(new Vector3(Mathf.Cos(step * (i - 1)) * thickness, Mathf.Sin(step * (i - 1)) * thickness, Mathf.Cos(startRotation.y) * Mathf.Cos(step * (i - 1)) * thickness));
         }
         for (int i = vertex + 1; i < 2 * vertex + 1; i++) {//End
-            vertices[i] = new Vector3(0.026f, 0.741f, -0.708f) + transform.worldToLocalMatrix.MultiplyPoint(new Vector3(endPosition.x + Mathf.Cos(step * (i - 1)) * thickness, endPosition.y + Mathf.Sin(step * (i - 1)) * thickness, endPosition.z + Mathf.Cos(endRotation.y) * Mathf.Cos(step * (i - 1)) * thickness));
+            vertices[i] = end.TransformPoint(new Vector3(Mathf.Cos(step * (i - 1)) * thickness, Mathf.Sin(step * (i - 1)) * thickness, Mathf.Cos(endRotation.y) * Mathf.Cos(step * (i - 1)) * thickness));
         }
-        vertices[2 * vertex + 1] = new Vector3(0.026f, 0.741f, -0.708f) + transform.worldToLocalMatrix.MultiplyPoint(endPosition);
+        vertices[2 * vertex + 1] = end.TransformPoint(Vector3.zero);
         mesh.vertices = vertices;
         mesh.RecalculateNormals();
         if (triangles.Length != 12 * vertex) {//3 * vertices + 6 * vertices + 3 * vertices
