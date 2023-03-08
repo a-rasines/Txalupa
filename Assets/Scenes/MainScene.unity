@@ -12987,22 +12987,12 @@ MonoBehaviour:
     x: 0
     y: 1
     z: 0
-  exactDirection:
-    x: 0
-    y: 0
-    z: 0
   maxDirOffset: {x: 0, y: 45, z: 0}
-  realTimeDirection: 1
   position:
     x: 1
     y: 1
     z: 1
-  exactPosition:
-    x: 1
-    y: 0
-    z: 1
   maxPosOffset: {x: 0, y: -1, z: 0}
-  realTimePosition: 0
 --- !u!1 &1462920744
 GameObject:
   m_ObjectHideFlags: 0
@@ -14654,22 +14644,12 @@ MonoBehaviour:
     x: 0
     y: 1
     z: 0
-  exactDirection:
-    x: 0
-    y: 1
-    z: 0
-  maxDirOffset: {x: 0, y: 0, z: 0}
-  realTimeDirection: 0
+  maxDirOffset: {x: -1, y: 0, z: -1}
   position:
     x: 1
     y: 1
     z: 1
-  exactPosition:
-    x: 0
-    y: 0
-    z: 0
-  maxPosOffset: {x: 0, y: 0, z: 0}
-  realTimePosition: 0
+  maxPosOffset: {x: -1, y: -1, z: -1}
 --- !u!1 &1608221729
 GameObject:
   m_ObjectHideFlags: 0
