@@ -4,7 +4,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using UnityEngine;
 using static ItemType;
-using static UnityEditor.Progress;
 
 public class ItemTypes : MonoBehaviour {
     public GameObject[] gameObjects;

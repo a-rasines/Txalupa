@@ -12,6 +12,7 @@ public class BuildManager : MonoBehaviour {
     GameObject hovered;
     public Material buildableMaterial;
     void OnEnable() {
+        model.name = "BuildingSchematic";
         if (model == null) {
             enabled = false;
             return;
@@ -36,7 +37,7 @@ public class BuildManager : MonoBehaviour {
         offsetX -= offsetX % 1.5f;
         float offsetZ = rh.transform.position.z - raftBase.transform.position.z;
         offsetZ -= offsetZ % 1.5f;
-        if (!model.IsPrefabInstance())
+        if (GameObject.Find(model.name) == null) 
             model = Instantiate(model, new Vector3(offsetX, isWaterBuildable ? 0 : rh.transform.position.y, offsetZ), Quaternion.identity);
         else 
             model.transform.position = new Vector3(offsetX, model.transform.position.y, offsetZ);

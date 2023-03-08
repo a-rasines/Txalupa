@@ -2610,6 +2610,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Device Simulator
       objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187037, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
 --- !u!1 &399674834
@@ -12987,6 +12991,8 @@ MonoBehaviour:
     x: 0
     y: 0
     z: 0
+  maxDirOffset: {x: 0, y: 45, z: 0}
+  realTimeDirection: 1
   position:
     x: 1
     y: 1
@@ -12995,6 +13001,8 @@ MonoBehaviour:
     x: 1
     y: 0
     z: 1
+  maxPosOffset: {x: 0, y: -1, z: 0}
+  realTimePosition: 0
 --- !u!1 &1462920744
 GameObject:
   m_ObjectHideFlags: 0
@@ -14650,6 +14658,8 @@ MonoBehaviour:
     x: 0
     y: 1
     z: 0
+  maxDirOffset: {x: 0, y: 0, z: 0}
+  realTimeDirection: 0
   position:
     x: 1
     y: 1
@@ -14658,6 +14668,8 @@ MonoBehaviour:
     x: 0
     y: 0
     z: 0
+  maxPosOffset: {x: 0, y: 0, z: 0}
+  realTimePosition: 0
 --- !u!1 &1608221729
 GameObject:
   m_ObjectHideFlags: 0
