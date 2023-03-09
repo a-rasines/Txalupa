@@ -12,13 +12,8 @@ public class ItemTypes : MonoBehaviour {
     private static List<ItemType> items = null;
     private GameObject GetGameObject(string name) {
         foreach (GameObject g in gameObjects)
-        {
-            print(g.name + " " + name + " " + (g.name == name));
             if (g.name == name)
-            {
                 return g;
-            }
-        }
         throw new NullReferenceException(""+gameObjects.Count());
     }
     private Sprite GetSprite(string name) {
