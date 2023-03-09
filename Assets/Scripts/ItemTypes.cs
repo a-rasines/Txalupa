@@ -11,15 +11,19 @@ public class ItemTypes : MonoBehaviour {
     public static bool isReady = false;
     private static List<ItemType> items = null;
     private GameObject GetGameObject(string name) {
-        foreach (GameObject g in gameObjects) {
-            if (g.name.Equals(name))
+        foreach (GameObject g in gameObjects)
+        {
+            print(g.name + " " + name + " " + (g.name == name));
+            if (g.name == name)
+            {
                 return g;
+            }
         }
-        throw new NullReferenceException();
+        throw new NullReferenceException(""+gameObjects.Count());
     }
     private Sprite GetSprite(string name) {
         foreach (Sprite s in sprites) {
-            if (s.name.Equals(name)) {
+            if (s.name == name) {
                 return s;
             }
         }
@@ -108,7 +112,7 @@ public class ItemType{
                 }
             }
             return 0;
-        } catch (Exception e){
+        } catch {
             return 0;
         }
     }

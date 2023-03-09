@@ -95,7 +95,6 @@ GameObject:
   - component: {fileID: 3006255005811268583}
   - component: {fileID: 8644267501311678951}
   - component: {fileID: 2715142200527115096}
-  - component: {fileID: -3069084211028246353}
   m_Layer: 0
   m_Name: Block_Foundation_Tier3
   m_TagString: Untagged
@@ -167,16 +166,3 @@ MonoBehaviour:
   plasticRequirements: 5
   scrapRequirements: 0
   leavesRequirements: 0
---- !u!114 &-3069084211028246353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2700247923638820473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a29f294389da734aa5c069cae93f2b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 40
