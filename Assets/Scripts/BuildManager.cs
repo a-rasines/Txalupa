@@ -38,11 +38,7 @@ public class BuildManager : MonoBehaviour {
             hovered = rh.transform.gameObject;
         }else
             return;
-        float offsetX = rh.transform.position.x - raftBase.transform.position.x;
-        offsetX -= offsetX % 1.5f;
-        float offsetZ = rh.transform.position.z - raftBase.transform.position.z;
-        offsetZ -= offsetZ % 1.5f; 
-        model.transform.position = new Vector3(rh.point.x + offsetX, rh.point.y, rh.point.z + offsetZ);
+        model.transform.position = new Vector3(rh.point.x - rh.point.x % 1.5f + raftBase.transform.position.x % 1.5f, rh.point.y, rh.point.z - rh.point.z % 1.5f + raftBase.transform.position.z);
         
     }
     
