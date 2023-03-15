@@ -5,6 +5,7 @@ using UnityEngine;
 public class TrashSpawner : MonoBehaviour {
     // Start is called before the first frame update
     public GameObject[] trashObjects;
+    public Transform parent;
     public enum Direction {
         North,
         South,
@@ -73,7 +74,8 @@ public class TrashSpawner : MonoBehaviour {
                     transform.position.y + 0.1f,
                     startPosition[direction].y == -1 ? Random.Range(maxVertex.y * 1 / 3, maxVertex.y * 2 / 3) : startPosition[direction].y
                 ),
-                go.transform.rotation
+                go.transform.rotation,
+                parent                
             ).GetComponent<TrashMovement>().Init(directions[direction], new Vector2(transform.position.x, -transform.position.z) + startPosition[OppositeDirection(direction)], GetComponent<WaterMesh>().maxHeight) ;
         }
     }

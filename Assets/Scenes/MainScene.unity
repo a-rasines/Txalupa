@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.34239647, g: 0.43276674, b: 0.573189, a: 1}
+  m_IndirectSpecularColor: {r: 0.35229683, g: 0.43593043, b: 0.58513546, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -949,7 +949,7 @@ GameObject:
   - component: {fileID: 95439043}
   - component: {fileID: 95439045}
   - component: {fileID: 95439044}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2155,7 +2155,7 @@ GameObject:
   - component: {fileID: 328553886}
   - component: {fileID: 328553888}
   - component: {fileID: 328553887}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2232,7 +2232,7 @@ GameObject:
   - component: {fileID: 333192315}
   - component: {fileID: 333192314}
   - component: {fileID: 333192313}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: OptionPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4322,7 +4322,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 571061189}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4672,7 +4672,7 @@ GameObject:
   - component: {fileID: 589467107}
   - component: {fileID: 589467109}
   - component: {fileID: 589467108}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5064,7 +5064,7 @@ GameObject:
   - component: {fileID: 619680131}
   - component: {fileID: 619680130}
   - component: {fileID: 619680132}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5518,7 +5518,7 @@ GameObject:
   - component: {fileID: 646319678}
   - component: {fileID: 646319677}
   - component: {fileID: 646319680}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LeftHand Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8124,7 +8124,7 @@ GameObject:
   - component: {fileID: 1017953589}
   - component: {fileID: 1017953591}
   - component: {fileID: 1017953590}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8331,7 +8331,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1037655537}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HUD Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9119,6 +9119,7 @@ MonoBehaviour:
   - {fileID: 5553795535709472465, guid: a40acd58ed89be24ca2daf55d3ae0bee, type: 3}
   - {fileID: 7796198806209273873, guid: cd7bddbdfa24a9a42b692406657be74e, type: 3}
   - {fileID: 882936412774956376, guid: f611ad4842e67ba4b847ecfe9b4f38a1, type: 3}
+  parent: {fileID: 1829380970}
   direction: 0
   probability: 1
 --- !u!65 &1098481078
@@ -9792,7 +9793,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1200574362}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Inventory Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9903,7 +9904,7 @@ GameObject:
   - component: {fileID: 1265924706}
   - component: {fileID: 1265924708}
   - component: {fileID: 1265924707}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10476,7 +10477,7 @@ GameObject:
   - component: {fileID: 1289388082}
   - component: {fileID: 1289388081}
   - component: {fileID: 1289388083}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11399,7 +11400,7 @@ GameObject:
   - component: {fileID: 1373391215}
   - component: {fileID: 1373391214}
   - component: {fileID: 1373391218}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: XRCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12578,7 +12579,7 @@ GameObject:
   - component: {fileID: 1415799471}
   - component: {fileID: 1415799470}
   - component: {fileID: 1415799472}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Settings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13672,7 +13673,7 @@ GameObject:
   - component: {fileID: 1554779010}
   - component: {fileID: 1554779009}
   - component: {fileID: 1554779012}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Crafting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13842,7 +13843,7 @@ GameObject:
   - component: {fileID: 1561089383}
   - component: {fileID: 1561089382}
   - component: {fileID: 1561089384}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Inventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14108,6 +14109,7 @@ Transform:
   - {fileID: 517697507}
   - {fileID: 1397761777}
   - {fileID: 758935452}
+  - {fileID: 1829380970}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15491,7 +15493,7 @@ GameObject:
   - component: {fileID: 1666894979}
   - component: {fileID: 1666894978}
   - component: {fileID: 1666894982}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RightHand Controller RC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16893,6 +16895,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1814310449}
   m_CullTransparentMesh: 0
+--- !u!1 &1829380969
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1829380970}
+  m_Layer: 0
+  m_Name: --- TRASH ---
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1829380970
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829380969}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1572303907}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1832006801
 GameObject:
   m_ObjectHideFlags: 0
@@ -16905,7 +16938,7 @@ GameObject:
   - component: {fileID: 1832006806}
   - component: {fileID: 1832006805}
   - component: {fileID: 1832006804}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RightHand Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
