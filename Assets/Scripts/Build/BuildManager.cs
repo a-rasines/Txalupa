@@ -12,6 +12,7 @@ public class BuildManager : MonoBehaviour {
     public GameObject raftBase;
     public GameObject model;
     public Material buildableMaterial;
+    public Inventory inventory;
     void OnEnable() {
         if (model == null) {
             enabled = false;
@@ -40,7 +41,17 @@ public class BuildManager : MonoBehaviour {
         Destroy(model);
     }
     public void OnInteraction(SelectEnterEventArgs _) {
-        print("Selected");
+        ItemType type = ItemTypes.Of(model);
+        GameObject built = Instantiate(type.GetModel());
+        built.transform.position = model.transform.position;
+        built.transform.parent = raftBase.transform;
+        built.transform.localPosition = new Vector3((float)Math.Round(built.transform.localPosition.x / 1.5f) * 1.5f, (float)Math.Round(built.transform.localPosition.y / 1.5f) * 1.5f, (float)Math.Round(built.transform.localPosition.z / 1.5f) * 1.5f);
+        built.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+        inventory.RemoveFromInventory(type, 1);
+        if(inventory.GetAmountOf(type) <= 0) {
+            Destroy(model);
+            enabled = false;
+        }
     }
     private void HoverChange() {
         RaycastHit rh;
