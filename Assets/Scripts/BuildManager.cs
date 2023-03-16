@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class BuildManager : MonoBehaviour {
     // Start is called before the first frame update
@@ -31,6 +33,9 @@ public class BuildManager : MonoBehaviour {
         renderer.materials = materials;
 
 
+    }
+    public void OnInteraction() {
+        print("Selected");
     }
     private void HoverChange() {
         RaycastHit rh;
