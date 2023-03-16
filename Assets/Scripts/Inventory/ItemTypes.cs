@@ -88,7 +88,7 @@ public class ItemType{
     private Dictionary<GameObject, int> go;
     public readonly int stackCount;
     public readonly Sprite icon;
-    public new readonly string name;
+    public readonly string name;
     public readonly int buildable;
     public readonly BuildConstrain buildConstrain;
     public int GetCuantityFrom(GameObject g) {

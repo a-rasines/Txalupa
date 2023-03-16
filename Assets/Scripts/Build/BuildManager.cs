@@ -8,7 +8,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class BuildManager : MonoBehaviour {
     // Start is called before the first frame update
-    public bool isWaterBuildable;
+    public ItemType.BuildConstrain buildConstrain;
     public GameObject raftBase;
     public GameObject model;
     public Material buildableMaterial;
@@ -57,6 +57,16 @@ public class BuildManager : MonoBehaviour {
         RaycastHit rh;
         if (!Physics.Raycast(transform.position, transform.forward, out rh, 10, LayerMask.GetMask("Water", "Default")))
             return;
+        Collider[] colliders = Physics.OverlapSphere(rh.point, 0.5f);
+        foreach(Collider c in colliders)
+            if(c.gameObject != model) {
+                model.transform.position = new Vector3(0, -3, 0);
+                return;
+            }
+        if ((rh.collider.gameObject.layer == LayerMask.NameToLayer("Water")) != (buildConstrain == ItemType.BuildConstrain.WaterBuildable)) {
+            model.transform.position = new Vector3(0, -3, 0);
+            return;
+        }
         Vector3 offset = new Vector3(rh.point.x % 1.5f - raftBase.transform.position.x % 1.5f, 0, rh.point.z % 1.5f - raftBase.transform.position.z % 1.5f);
         if (offset.x > 0.75)
             offset.x = offset.x - 1.5f;
@@ -66,7 +76,7 @@ public class BuildManager : MonoBehaviour {
             offset.z = offset.z - 1.5f;
         else if (offset.z < -0.75)
             offset.z = offset.z + 1.5f;
-        model.transform.position = new Vector3(rh.point.x - offset.x, isWaterBuildable?raftBase.transform.position.y:rh.point.y, rh.point.z - offset.z);
+        model.transform.position = new Vector3(rh.point.x - offset.x, (buildConstrain == ItemType.BuildConstrain.WaterBuildable) ? raftBase.transform.position.y:rh.point.y, rh.point.z - offset.z);
         
     }
     
