@@ -11,7 +11,6 @@ public class BuildManager : MonoBehaviour {
     public bool isWaterBuildable;
     public GameObject raftBase;
     public GameObject model;
-    GameObject hovered;
     public Material buildableMaterial;
     void OnEnable() {
         if (model == null) {
@@ -22,6 +21,9 @@ public class BuildManager : MonoBehaviour {
         model.layer = LayerMask.NameToLayer("Ignore Raycast");
         model.transform.position = new Vector3(0, -3, 0);
         Destroy(model.GetComponent<TrozosBalsa>());
+        XRSimpleInteractable interactable= model.AddComponent<XRSimpleInteractable>();
+        interactable.selectEntered.AddListener(new UnityAction<SelectEnterEventArgs>(OnInteraction));
+        interactable.interactionLayers = InteractionLayerMask.GetMask("UI");
         MeshRenderer renderer = model.GetComponent<MeshRenderer>();
         if(renderer == null ) {
             renderer = model.GetComponentInChildren<MeshRenderer>();
@@ -34,14 +36,15 @@ public class BuildManager : MonoBehaviour {
 
 
     }
-    public void OnInteraction() {
+    public void OnDisable() {
+        Destroy(model);
+    }
+    public void OnInteraction(SelectEnterEventArgs _) {
         print("Selected");
     }
     private void HoverChange() {
         RaycastHit rh;
-        if (Physics.Raycast(transform.position, transform.forward, out rh, 10, LayerMask.GetMask("Water", "Default"))) {
-            hovered = rh.transform.gameObject;
-        }else
+        if (!Physics.Raycast(transform.position, transform.forward, out rh, 10, LayerMask.GetMask("Water", "Default")))
             return;
         Vector3 offset = new Vector3(rh.point.x % 1.5f - raftBase.transform.position.x % 1.5f, 0, rh.point.z % 1.5f - raftBase.transform.position.z % 1.5f);
         if (offset.x > 0.75)
