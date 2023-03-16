@@ -38,7 +38,16 @@ public class BuildManager : MonoBehaviour {
             hovered = rh.transform.gameObject;
         }else
             return;
-        model.transform.position = new Vector3(rh.point.x - rh.point.x % 1.5f + raftBase.transform.position.x % 1.5f, isWaterBuildable?raftBase.transform.position.y:rh.point.y, rh.point.z - rh.point.z % 1.5f + raftBase.transform.position.z);
+        Vector3 offset = new Vector3(rh.point.x % 1.5f - raftBase.transform.position.x % 1.5f, 0, rh.point.z % 1.5f - raftBase.transform.position.z % 1.5f);
+        if (offset.x > 0.75)
+            offset.x = offset.x - 1.5f;
+        else if (offset.x < -0.75)
+            offset.x = offset.x + 1.5f;
+        if (offset.z > 0.75)
+            offset.z = offset.z - 1.5f;
+        else if (offset.z < -0.75)
+            offset.z = offset.z + 1.5f;
+        model.transform.position = new Vector3(rh.point.x - offset.x, isWaterBuildable?raftBase.transform.position.y:rh.point.y, rh.point.z - offset.z);
         
     }
     
