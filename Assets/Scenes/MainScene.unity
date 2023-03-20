@@ -4001,6 +4001,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 518032129}
   m_CullTransparentMesh: 1
+--- !u!1001 &527761608
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 758935452}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: a24bde223739bc54fa8b0efc55ef423d, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a24bde223739bc54fa8b0efc55ef423d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a24bde223739bc54fa8b0efc55ef423d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a24bde223739bc54fa8b0efc55ef423d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a24bde223739bc54fa8b0efc55ef423d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a24bde223739bc54fa8b0efc55ef423d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a24bde223739bc54fa8b0efc55ef423d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a24bde223739bc54fa8b0efc55ef423d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a24bde223739bc54fa8b0efc55ef423d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a24bde223739bc54fa8b0efc55ef423d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a24bde223739bc54fa8b0efc55ef423d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a24bde223739bc54fa8b0efc55ef423d, type: 3}
+      propertyPath: m_Name
+      value: Block_Wall_Half_Tier3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a24bde223739bc54fa8b0efc55ef423d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a24bde223739bc54fa8b0efc55ef423d, type: 3}
 --- !u!1 &550835179
 GameObject:
   m_ObjectHideFlags: 0
@@ -6897,6 +6958,7 @@ Transform:
   - {fileID: 443292408}
   - {fileID: 1399691575}
   - {fileID: 640120637}
+  - {fileID: 944308730}
   m_Father: {fileID: 1572303907}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8105,6 +8167,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 902133806}
   m_CullTransparentMesh: 1
+--- !u!4 &944308730 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a24bde223739bc54fa8b0efc55ef423d, type: 3}
+  m_PrefabInstance: {fileID: 527761608}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &995152423
 GameObject:
   m_ObjectHideFlags: 0
@@ -14403,7 +14470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6529415330526082146, guid: be3a74ee4c9d4d899462b72a41f62728, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6529415330526082146, guid: be3a74ee4c9d4d899462b72a41f62728, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16368,10 +16435,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a12eba39bab5c114c853bc2ea09a6c60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isWaterBuildable: 0
+  buildConstrain: 0
   raftBase: {fileID: 758935450}
   model: {fileID: 0}
   buildableMaterial: {fileID: 2100000, guid: 8da8767890e2ba44b885e908e2ca0a4c, type: 2}
+  inventory: {fileID: 555998653}
 --- !u!1 &1669011362
 GameObject:
   m_ObjectHideFlags: 0
