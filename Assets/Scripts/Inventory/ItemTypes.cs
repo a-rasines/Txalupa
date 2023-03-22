@@ -64,13 +64,16 @@ public class ItemTypes : MonoBehaviour {
                     { GetGameObject("Thatch3"), 1 },
                     { GetGameObject("Thatch4"), 3 }
                 }),
-                new ItemType("Suelo",20, GetSprite("BuildingIcon_FoundationTier3"), new Dictionary<GameObject, int>
+                new ItemType("Suelo_Mejorado", 20, GetSprite("BuildingIcon_FoundationTier3"), new Dictionary<GameObject, int>
                 {
                     {GetGameObject("Block_Foundation_Tier3"), 1 }
                 }, BuildConstrain.WaterBuildable),
                 new ItemType("Lanza", 1, GetSprite("Item_WoodSpear"), new Dictionary<GameObject, int>
                 {
                     {GetGameObject("WoodSpear.L"),1 }
+                }, BuildConstrain.GridBuildable),
+                new ItemType("Media_Pared_Mejorada", 20, GetSprite("BuildingIcon_HalfWallWoodTier3"), new Dictionary<GameObject, int> {
+                    {GetGameObject("Block_Wall_Half_Tier3"), 1}
                 })
             };
         isReady = true;

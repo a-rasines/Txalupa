@@ -88,7 +88,8 @@ public class Inventory : AbstractInventory {
         }
     }
     public override void RegisterSlot(int pos) {
-        inventory.TryAdd(pos, new Stack(0));
+        if (!inventory.TryAdd(pos, new Stack(0)))
+            TriggerOnItemChanged(pos, inventory[pos].it, inventory[pos].q);
     }
     public override Dictionary<int, Stack>.KeyCollection GetSlotPositions() {
         return inventory.Keys;
@@ -107,9 +108,10 @@ public class Inventory : AbstractInventory {
             if (s.it.Equals(type)) {
                 int newAm = s.q - amount;
                 amount -= s.q;
-                if(newAm < 0) {
+                if (newAm < 0) {
                     RemoveFromInventory(key);
                 } else {
+                    TriggerOnItemChanged(key, type, s.q);
                     s.q = newAm;
                     return true;
                 }

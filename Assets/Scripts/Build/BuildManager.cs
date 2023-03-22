@@ -67,6 +67,21 @@ public class BuildManager : MonoBehaviour {
             model.transform.position = new Vector3(0, -3, 0);
             return;
         }
+        switch (buildConstrain) {
+            case ItemType.BuildConstrain.WaterBuildable: 
+                WaterBuildableBuild(rh);
+                break;
+            case ItemType.BuildConstrain.GridBuildable:
+                GridBuildableBuild(rh);
+                break;
+            case ItemType.BuildConstrain.WallBuildable:
+                WallBuildableBuild(rh);
+                break;
+            default:
+                break;
+        }
+    }
+    private void WaterBuildableBuild(RaycastHit rh) {
         Vector3 offset = new Vector3(rh.point.x % 1.5f - raftBase.transform.position.x % 1.5f, 0, rh.point.z % 1.5f - raftBase.transform.position.z % 1.5f);
         if (offset.x > 0.75)
             offset.x = offset.x - 1.5f;
@@ -76,8 +91,34 @@ public class BuildManager : MonoBehaviour {
             offset.z = offset.z - 1.5f;
         else if (offset.z < -0.75)
             offset.z = offset.z + 1.5f;
-        model.transform.position = new Vector3(rh.point.x - offset.x, (buildConstrain == ItemType.BuildConstrain.WaterBuildable) ? raftBase.transform.position.y:rh.point.y, rh.point.z - offset.z);
-        
+        model.transform.position = new Vector3(rh.point.x - offset.x, raftBase.transform.position.y, rh.point.z - offset.z);
+    }
+    private void WallBuildableBuild(RaycastHit rh) {
+
+    }
+    private void GridBuildableBuild(RaycastHit rh) {
+        float x = rh.point.x % 1.5f - raftBase.transform.position.x % 1.5f;
+        float z = rh.point.z % 1.5f - raftBase.transform.position.z % 1.5f;
+        /*     x
+         * |-------|
+         * |\     /|
+         * | \ 1 / |
+         * |  \ /  |
+         * | 2 X 3 |z
+         * |  / \  |
+         * | / 4 \ |
+         * |/     \|
+         * |-------|
+         */
+        if(z > 0.75 && Math.Abs(x-0.75) <= z -0.75) { //1
+            x += 0.75f;
+        }else if(x < 0.75 && Math.Abs(z - 0.75) <= x) {//2
+            z -= 0.75f;
+        }else if(x > 0.75 && Math.Abs(z - 0.75) <= x - 0.75) {//3
+            z += 0.75f; 
+        }else {//4 o medio
+            x -= 0.75f;
+        }
     }
     
     // Update is called once per frame
