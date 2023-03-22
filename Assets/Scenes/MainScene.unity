@@ -3267,6 +3267,7 @@ MonoBehaviour:
   ignorePositions: 01000000020000000300000004000000050000000600000007000000
   itemTypesToAllow:
   - {fileID: 2700247923638820473, guid: 04f21f6ba80ea3d449ef5e1922654cb4, type: 3}
+  - {fileID: 919132149155446097, guid: a24bde223739bc54fa8b0efc55ef423d, type: 3}
   inventory: {fileID: 555998653}
 --- !u!114 &435381755
 MonoBehaviour:
