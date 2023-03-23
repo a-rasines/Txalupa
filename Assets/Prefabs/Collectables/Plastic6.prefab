@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -5460362704931217031}
   - component: {fileID: -8241802340178322141}
   - component: {fileID: -7914134425706556237}
+  - component: {fileID: -5695873451400454095}
   m_Layer: 3
   m_Name: Plastic6
   m_TagString: Grabable
@@ -233,6 +234,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd0ce48358c416428f08123d957c114, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5695873451400454095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142302043082457641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectInterest: 1
+  DefaultInterestGroups: []
+  DestroyWhenStateAuthorityLeaves: 0
+  AllowStateAuthorityOverride: 1
+  AoiPositionSource: {fileID: 0}
+  Flags: 2305
+  NetworkGuid:
+    RawGuidValue: 68d2527ef86afdb4a8c3ec224dd3fbee
+  NestedObjects: []
+  NetworkedBehaviours: []
+  SimulationBehaviours: []
 --- !u!1 &2624210572204545170
 GameObject:
   m_ObjectHideFlags: 0

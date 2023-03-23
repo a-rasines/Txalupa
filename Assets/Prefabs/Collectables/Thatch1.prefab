@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8803521810299372121}
   - component: {fileID: -5858566259797529008}
   - component: {fileID: 7151098065942730285}
+  - component: {fileID: 2965364803807480353}
   m_Layer: 3
   m_Name: Thatch1
   m_TagString: Grabable
@@ -204,6 +205,29 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+--- !u!114 &2965364803807480353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4629887627253338102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectInterest: 1
+  DefaultInterestGroups: []
+  DestroyWhenStateAuthorityLeaves: 0
+  AllowStateAuthorityOverride: 1
+  AoiPositionSource: {fileID: 0}
+  Flags: 2305
+  NetworkGuid:
+    RawGuidValue: 40902b644b9bc8d4ea9c9040b0002545
+  NestedObjects: []
+  NetworkedBehaviours: []
+  SimulationBehaviours: []
 --- !u!1 &8706101837921461776
 GameObject:
   m_ObjectHideFlags: 0
