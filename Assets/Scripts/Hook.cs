@@ -37,6 +37,7 @@ public class Hook : MonoBehaviour {
         }
     }
     public void OnRopeInteraction() {
+        print("RopeInteraction");
         transform.parent.position = Vector3.MoveTowards(endPosition, startPosition, 1);
         CreateRope();
     }

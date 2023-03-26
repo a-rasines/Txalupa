@@ -6,13 +6,13 @@ public class TrashSpawner : MonoBehaviour {
     // Start is called before the first frame update
     public GameObject[] trashObjects;
     public Transform parent;
+    public Vector3 maxDistance;
     public enum Direction {
         North,
         South,
         East,
         West
     }
-    private Vector2 maxVertex = Vector2.zero;
     private Dictionary<Direction, Vector2> directions = new Dictionary<Direction, Vector2>{
         { Direction.North, new Vector2(-1, 0) },
         { Direction.South, new Vector2(1, 0) },
@@ -32,7 +32,6 @@ public class TrashSpawner : MonoBehaviour {
         }
     }
     private Dictionary<Direction, Vector2> startPosition;
-    private float heightMid;
     public Direction direction;
     public int probability;
     public int _probability {
@@ -44,39 +43,31 @@ public class TrashSpawner : MonoBehaviour {
         }
     }
     void Start() {
-        GetComponent<WaterMesh>().MeshChanged += UpdateVertex;
+        //GetComponent<WaterMesh>().MeshChanged += UpdateVertex;
+        UpdateVertex(GetComponent<MeshFilter>().mesh);
     }
     void UpdateVertex(Mesh mesh) {
-        maxVertex = new Vector2(int.MinValue, int.MinValue);
-        Vector2 heightTemp = new Vector2(float.MaxValue, float.MinValue);
-        foreach (Vector3 vertex in mesh.vertices) { 
-            maxVertex = new Vector2(Mathf.Max(maxVertex.x, vertex.x), Mathf.Max(maxVertex.y, vertex.z));
-            heightTemp = new Vector2(Mathf.Min(maxVertex.x, vertex.y), Mathf.Min(maxVertex.y, vertex.y));
-        }
-        heightMid = (heightTemp.x + heightTemp.y) / 2;
         startPosition = new Dictionary<Direction, Vector2>{
-            {Direction.North, new Vector2(maxVertex.x * 2 / 3, -1)},
-            {Direction.South, new Vector2(maxVertex.x *1/3, -1)},
-            {Direction.East, new Vector2(-1, maxVertex.y * 1 / 3)},
-            {Direction.West, new Vector2(-1, maxVertex.y * 2 / 3)},
+            {Direction.North, new Vector2(transform.position.x + maxDistance.x, -1)},
+            {Direction.South, new Vector2(transform.position.x - maxDistance.x, -1)},
+            {Direction.East, new Vector2(-1, transform.position.z + maxDistance.z)},
+            {Direction.West, new Vector2(-1, transform.position.z - maxDistance.z)},
         };
     }
     void Update() {
-        if (maxVertex == Vector2.zero)
-            UpdateVertex(GetComponent<WaterMesh>().mesh);
         if (Random.Range(0, 100) < probability) {
             GameObject go = trashObjects[Random.Range(0, trashObjects.Length)];
             Instantiate(
                 go,
-                gameObject.transform.position + new Vector3(0, 0, -maxVertex.y)/*No se el por qué de esta suma, pero funciona*/ +
+                gameObject.transform.position + new Vector3(0, 0, -maxDistance.z)/*No se el por qué de esta suma, pero funciona*/ +
                 new Vector3(
-                    startPosition[direction].x == -1 ? Random.Range(maxVertex.x * 1 / 3, maxVertex.x * 2 / 3) : startPosition[direction].x,
-                    transform.position.y + 0.1f,
-                    startPosition[direction].y == -1 ? Random.Range(maxVertex.y * 1 / 3, maxVertex.y * 2 / 3) : startPosition[direction].y
+                    startPosition[direction].x == -1 ? Random.Range(maxDistance.x * 1 / 3, maxDistance.x * 2 / 3) : startPosition[direction].x,
+                    transform.position.y + 2f,
+                    startPosition[direction].y == -1 ? Random.Range(maxDistance.z * 1 / 3, maxDistance.z * 2 / 3) : startPosition[direction].y
                 ),
                 go.transform.rotation,
-                parent                
-            ).GetComponent<TrashMovement>().Init(directions[direction], new Vector2(transform.position.x, -transform.position.z) + startPosition[OppositeDirection(direction)], GetComponent<WaterMesh>().maxHeight) ;
+                parent
+            ).GetComponent<TrashMovement>().Init(directions[direction], new Vector2(transform.position.x, -transform.position.z) + startPosition[OppositeDirection(direction)], maxDistance.y) ;
         }
     }
 }
