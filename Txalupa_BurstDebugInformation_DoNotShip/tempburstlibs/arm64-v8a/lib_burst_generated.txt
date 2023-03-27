@@ -116,6 +116,7 @@ Library: lib_burst_generated
 --compilation-defines=ENABLE_TIMELINE
 --compilation-defines=ENABLE_INPUT_SYSTEM
 --compilation-defines=ENABLE_LEGACY_INPUT_MANAGER
+--compilation-defines=FUSION_WEAVER
 --compilation-defines=INPUT_SYSTEM_1_1_OR_NEWER
 --compilation-defines=LIH_PRESENT_V2API
 --compilation-defines=LIH_PRESENT
@@ -181,6 +182,7 @@ Library: lib_burst_generated
 --root-assembly=C:\Users\Marian\Documents\GitHub\Txalupa\Temp\StagingArea\Data\Managed\Unity.Services.Core.Scheduler.dll
 --root-assembly=C:\Users\Marian\Documents\GitHub\Txalupa\Temp\StagingArea\Data\Managed\Unity.Services.Core.Device.dll
 --root-assembly=C:\Users\Marian\Documents\GitHub\Txalupa\Temp\StagingArea\Data\Managed\Unity.Services.Core.Analytics.dll
+--root-assembly=C:\Users\Marian\Documents\GitHub\Txalupa\Temp\StagingArea\Data\Managed\Fusion.Addressables.dll
 --root-assembly=C:\Users\Marian\Documents\GitHub\Txalupa\Temp\StagingArea\Data\Managed\Unity.XR.Management.dll
 --root-assembly=C:\Users\Marian\Documents\GitHub\Txalupa\Temp\StagingArea\Data\Managed\Unity.Services.Core.Threading.dll
 --root-assembly=C:\Users\Marian\Documents\GitHub\Txalupa\Temp\StagingArea\Data\Managed\Unity.Services.Core.Configuration.dll
