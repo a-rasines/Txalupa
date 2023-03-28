@@ -7,7 +7,6 @@ using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class BuildManager : MonoBehaviour {
-    // Start is called before the first frame update
     public ItemType.BuildConstrain buildConstrain;
     public GameObject raftBase;
     public GameObject model;
@@ -72,9 +71,11 @@ public class BuildManager : MonoBehaviour {
             return;
         ItemType type = ItemTypes.Of(model);
         GameObject built = Instantiate(type.GetModel());
-        built.transform.position = model.transform.position;
         built.transform.parent = type.buildConstrain == ItemType.BuildConstrain.WaterBuildable?raftBase.transform.Find("--- Floors ---") : raftBase.transform;
-        built.transform.localPosition = new Vector3((float)Math.Round(built.transform.localPosition.x / 1.5f) * 1.5f, (float)Math.Round(built.transform.localPosition.y / 1.5f) * 1.5f, (float)Math.Round(built.transform.localPosition.z / 1.5f) * 1.5f);
+        built.transform.localPosition = new Vector3(
+            model.transform.position.x - built.transform.parent.position.x + (float)Math.Round(built.transform.localPosition.x / 1.5f) * 1.5f,
+            model.transform.position.y - built.transform.parent.position.y + (float)Math.Round(built.transform.localPosition.y / 1.5f) * 1.5f,
+            model.transform.position.z - built.transform.parent.position.z + (float)Math.Round(built.transform.localPosition.z / 1.5f) * 1.5f);
         built.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         inventory.RemoveFromInventory(type, 1);
         if(inventory.GetAmountOf(type) <= 0) {
