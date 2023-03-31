@@ -72,10 +72,11 @@ public class BuildManager : MonoBehaviour {
         ItemType type = ItemTypes.Of(model);
         GameObject built = Instantiate(type.GetModel());
         built.transform.parent = type.buildConstrain == ItemType.BuildConstrain.WaterBuildable?raftBase.transform.Find("--- Floors ---") : raftBase.transform;
+        
         built.transform.localPosition = new Vector3(
-            model.transform.position.x - built.transform.parent.position.x + (float)Math.Round(built.transform.localPosition.x / 1.5f) * 1.5f,
-            model.transform.position.y - built.transform.parent.position.y + (float)Math.Round(built.transform.localPosition.y / 1.5f) * 1.5f,
-            model.transform.position.z - built.transform.parent.position.z + (float)Math.Round(built.transform.localPosition.z / 1.5f) * 1.5f);
+            built.transform.position.x - built.transform.parent.position.x + (float)Math.Round(built.transform.localPosition.x / 1.5f) * 1.5f,
+            built.transform.position.y - built.transform.parent.position.y + (float)Math.Round(built.transform.localPosition.y / 1.5f) * 1.5f,
+            built.transform.position.z - built.transform.parent.position.z + (float)Math.Round(built.transform.localPosition.z / 1.5f) * 1.5f);
         built.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         inventory.RemoveFromInventory(type, 1);
         if(inventory.GetAmountOf(type) <= 0) {
@@ -85,9 +86,9 @@ public class BuildManager : MonoBehaviour {
     }
     private void HoverChange() {
         RaycastHit rh;
-        if (!Physics.Raycast(transform.position, transform.forward, out rh, 10, LayerMask.GetMask("Water", "Default")))
+        if (!Physics.Raycast(transform.position, transform.forward, out rh, 10, LayerMask.GetMask("WaterRaycast", "Default")))
             return;
-        if ((rh.collider.gameObject.layer == LayerMask.NameToLayer("Water")) != (buildConstrain == ItemType.BuildConstrain.WaterBuildable)) {
+        if ((rh.collider.gameObject.layer == LayerMask.NameToLayer("WaterRaycast")) != (buildConstrain == ItemType.BuildConstrain.WaterBuildable)) {
             model.transform.position = new Vector3(0, -3, 0);
             return;
         }
@@ -104,11 +105,11 @@ public class BuildManager : MonoBehaviour {
             default:
                 break;
         }
-        clone.transform.position = model.transform.position;
+        //clone.transform.position = model.transform.position;
         clone.transform.localPosition = new Vector3(
-            model.transform.position.x - clone.transform.parent.position.x + (float)Math.Round(clone.transform.localPosition.x / 1.5f) * 1.5f,
-            model.transform.position.y - clone.transform.parent.position.y + (float)Math.Round(clone.transform.localPosition.y / 1.5f) * 1.5f,
-            model.transform.position.z - clone.transform.parent.position.z + (float)Math.Round(clone.transform.localPosition.z / 1.5f) * 1.5f);
+            model.transform.position.x - clone.transform.parent.position.x,
+            model.transform.position.y - clone.transform.parent.position.y,
+            model.transform.position.z - clone.transform.parent.position.z);
         clone.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
     }
     private void WaterBuildableBuild(RaycastHit rh) {
