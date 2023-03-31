@@ -72,11 +72,8 @@ public class BuildManager : MonoBehaviour {
         ItemType type = ItemTypes.Of(model);
         GameObject built = Instantiate(type.GetModel());
         built.transform.parent = type.buildConstrain == ItemType.BuildConstrain.WaterBuildable?raftBase.transform.Find("--- Floors ---") : raftBase.transform;
-        
-        built.transform.localPosition = new Vector3(
-            built.transform.position.x - built.transform.parent.position.x + (float)Math.Round(built.transform.localPosition.x / 1.5f) * 1.5f,
-            built.transform.position.y - built.transform.parent.position.y + (float)Math.Round(built.transform.localPosition.y / 1.5f) * 1.5f,
-            built.transform.position.z - built.transform.parent.position.z + (float)Math.Round(built.transform.localPosition.z / 1.5f) * 1.5f);
+
+        built.transform.position = clone.transform.position;
         built.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         inventory.RemoveFromInventory(type, 1);
         if(inventory.GetAmountOf(type) <= 0) {
