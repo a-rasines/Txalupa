@@ -7,6 +7,7 @@ public class TrashSpawner : MonoBehaviour {
     public GameObject[] trashObjects;
     public Transform parent;
     public Vector3 maxDistance;
+    public Transform raft;
     public enum Direction {
         North,
         South,
@@ -48,26 +49,27 @@ public class TrashSpawner : MonoBehaviour {
     }
     void UpdateVertex(Mesh mesh) {
         startPosition = new Dictionary<Direction, Vector2>{
-            {Direction.North, new Vector2(transform.position.x + maxDistance.x, -1)},
-            {Direction.South, new Vector2(transform.position.x - maxDistance.x, -1)},
-            {Direction.East, new Vector2(-1, transform.position.z + maxDistance.z)},
-            {Direction.West, new Vector2(-1, transform.position.z - maxDistance.z)},
+            {Direction.North, new Vector2(maxDistance.x, -1)},
+            {Direction.South, new Vector2(-maxDistance.x, -1)},
+            {Direction.East, new Vector2(-1, maxDistance.z)},
+            {Direction.West, new Vector2(-1, -maxDistance.z)},
         };
     }
     void Update() {
         if (Random.Range(0, 100) < probability) {
             GameObject go = trashObjects[Random.Range(0, trashObjects.Length)];
-            Instantiate(
+
+            go = Instantiate(
                 go,
-                gameObject.transform.position + new Vector3(0, 0, -maxDistance.z)/*No se el por qué de esta suma, pero funciona*/ +
                 new Vector3(
-                    startPosition[direction].x == -1 ? Random.Range(maxDistance.x * 1 / 3, maxDistance.x * 2 / 3) : startPosition[direction].x,
+                    startPosition[direction].x == -1 ? Random.Range(-maxDistance.x, maxDistance.x) : startPosition[direction].x,
                     transform.position.y + 2f,
-                    startPosition[direction].y == -1 ? Random.Range(maxDistance.z * 1 / 3, maxDistance.z * 2 / 3) : startPosition[direction].y
+                    startPosition[direction].y == -1 ? Random.Range(-maxDistance.z, maxDistance.z) : startPosition[direction].y
                 ),
                 go.transform.rotation,
                 parent
-            ).GetComponent<TrashMovement>().Init(directions[direction], new Vector2(transform.position.x, -transform.position.z) + startPosition[OppositeDirection(direction)], maxDistance.y) ;
+            );
+            go.GetComponent<TrashMovement>().Init(directions[direction], startPosition[OppositeDirection(direction)], maxDistance.y) ;
         }
     }
 }

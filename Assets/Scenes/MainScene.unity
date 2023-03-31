@@ -9526,6 +9526,7 @@ MonoBehaviour:
   - {fileID: 882936412774956376, guid: f611ad4842e67ba4b847ecfe9b4f38a1, type: 3}
   parent: {fileID: 1829380970}
   maxDistance: {x: 0, y: 0, z: 0}
+  raft: {fileID: 0}
   direction: 0
   probability: 1
 --- !u!65 &1098481078
@@ -16946,7 +16947,8 @@ MonoBehaviour:
   - {fileID: 7796198806209273873, guid: cd7bddbdfa24a9a42b692406657be74e, type: 3}
   - {fileID: 882936412774956376, guid: f611ad4842e67ba4b847ecfe9b4f38a1, type: 3}
   parent: {fileID: 1829380970}
-  maxDistance: {x: 100, y: 0.15, z: 100}
+  maxDistance: {x: 75, y: 0.15, z: 75}
+  raft: {fileID: 758935452}
   direction: 0
   probability: 1
 --- !u!1 &1751164656
