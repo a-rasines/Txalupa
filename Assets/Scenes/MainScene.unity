@@ -13618,6 +13618,7 @@ MonoBehaviour:
     x: 0
     y: 1
     z: 0
+  upsideDownFix: 0
   maxDirOffset: {x: 0, y: 45, z: 0}
   position:
     x: 1
@@ -15378,6 +15379,7 @@ MonoBehaviour:
     x: 0
     y: 1
     z: 0
+  upsideDownFix: 1
   maxDirOffset: {x: -1, y: 0, z: -1}
   position:
     x: 1
