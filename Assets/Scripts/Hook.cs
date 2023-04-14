@@ -16,6 +16,7 @@ public class Hook : MonoBehaviour {
     public int vertex = 8;
     public float thickness = 0.5f;
     private bool thrown = true;
+    private bool returning = false;
     private float startTime = 0;
     void Start() {
         startPosition = start.position;
@@ -36,11 +37,15 @@ public class Hook : MonoBehaviour {
             GetComponent<Rigidbody>().constraints = GetComponent<Rigidbody>().constraints | RigidbodyConstraints.FreezePositionY;
         }
     }
-    public void OnRopeInteraction() {
-        print("RopeInteraction");
-        transform.parent.position = Vector3.MoveTowards(endPosition, startPosition, 1);
-        CreateRope();
+    public void OnRopeInteractionStart() {
+        print("RopeInteractionStart");
+        returning = true;
+        
     }
+    public void OnRopeInteractionEnd() {
+        returning = false;
+    }
+
     public void OnGrab() {
         thrown = false;
         collider1.enabled = false;
@@ -156,7 +161,10 @@ public class Hook : MonoBehaviour {
     }
     // Update is called once per frame
     void Update() {
-        if(thrown && (start.position != startPosition || start.eulerAngles != startRotation || endPosition != end.position || endRotation != end.eulerAngles)) {
+        if (returning) {
+            transform.position = Vector3.MoveTowards(transform.position, collider1.transform.position, Time.deltaTime);
+            CreateRope();
+        }else if(thrown && (start.position != startPosition || start.eulerAngles != startRotation || endPosition != end.position || endRotation != end.eulerAngles)) {
             CreateRope();
         }
 

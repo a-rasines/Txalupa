@@ -2683,6 +2683,7 @@ GameObject:
   - component: {fileID: 2039656785}
   - component: {fileID: 2039656787}
   - component: {fileID: 2039656786}
+  - component: {fileID: 2039656788}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -2750,3 +2751,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2039656784}
   m_CullTransparentMesh: 1
+--- !u!65 &2039656788
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039656784}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 202.10164, y: 252.85461, z: 1}
+  m_Center: {x: 0.17307007, y: 0.72256327, z: 1.16}

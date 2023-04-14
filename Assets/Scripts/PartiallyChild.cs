@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PartiallyChild : MonoBehaviour {
 
     public Transform parent;
 
     public bool3 direction;
+    public bool upsideDownFix = false;
     //public bool3 exactDirection;
     public Vector3 maxDirOffset;
     public bool3 position;
@@ -51,26 +53,27 @@ public class PartiallyChild : MonoBehaviour {
                 : transform.position.z
             : transform.position.z
             );
+        print(parent.up + " " + parent.eulerAngles);
         transform.eulerAngles = new Vector3(
             direction.x ?
                 maxDirOffset.x < 0 ?
                 parent.eulerAngles.x + dir.x
                 : transform.eulerAngles.x - parent.eulerAngles.x < -maxDirOffset.x || transform.eulerAngles.x - parent.eulerAngles.x > maxDirOffset.x ?
-                parent.eulerAngles.x + Math.Clamp(transform.eulerAngles.x - parent.eulerAngles.x, -maxDirOffset.x, maxDirOffset.x)
+                parent.eulerAngles.x + Math.Clamp(Mathf.DeltaAngle(parent.eulerAngles.x, transform.eulerAngles.x), -maxDirOffset.x, maxDirOffset.x)
                 : transform.eulerAngles.x
             : transform.eulerAngles.x,
             direction.y ?
-                maxDirOffset.y < 0 ?
-                parent.eulerAngles.y + dir.y
-                : transform.eulerAngles.y - parent.eulerAngles.y < -maxDirOffset.y || transform.eulerAngles.y - parent.eulerAngles.y > maxDirOffset.y ?
-                parent.eulerAngles.y + Math.Clamp(transform.eulerAngles.y - parent.eulerAngles.y, -maxDirOffset.y, maxDirOffset.y)
-                : transform.eulerAngles.y
-            : transform.eulerAngles.y,
+                (maxDirOffset.y < 0 ?
+                    parent.eulerAngles.y + dir.y
+                    : transform.eulerAngles.y - parent.eulerAngles.y < -maxDirOffset.y || transform.eulerAngles.y - parent.eulerAngles.y > maxDirOffset.y ?
+                        parent.eulerAngles.y + Math.Clamp(Mathf.DeltaAngle(parent.eulerAngles.y, transform.eulerAngles.y), -maxDirOffset.y, maxDirOffset.y)
+                        : transform.eulerAngles.y) - (parent.up.y < 0 && upsideDownFix ? 180:0)
+                : transform.eulerAngles.y,
             direction.z ?
                 maxDirOffset.z < 0 ?
                 parent.eulerAngles.z + dir.z
                 : transform.eulerAngles.z - parent.eulerAngles.z < -maxDirOffset.z || transform.eulerAngles.z - parent.eulerAngles.z > maxDirOffset.z ?
-                parent.eulerAngles.z + Math.Clamp(transform.eulerAngles.z - parent.eulerAngles.z, -maxDirOffset.z, maxDirOffset.z)
+                parent.eulerAngles.z + Math.Clamp(Mathf.DeltaAngle(parent.eulerAngles.z, transform.eulerAngles.z), -maxDirOffset.z, maxDirOffset.z)
                 : transform.eulerAngles.z
             : transform.eulerAngles.z
         );
