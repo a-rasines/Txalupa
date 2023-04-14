@@ -5,11 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
+    string actualScene = SceneManager.GetActiveScene().name;
     public void StartBtn()
     {
-        SceneManager.LoadScene(1); // ("SampleScene"); //ENARA Mejor por orden
+        if (actualScene == "InitialScene")
+        {
+            //SceneManager.LoadScene(1);
+            SceneManager.LoadScene("MainScene"); // ("SampleScene"); //ENARA Mejor por orden
+        }else if (actualScene == "VRStart")
+        {
+            SceneManager.LoadScene("InitialScene");
+        }
     }
-
     public void ExitBtn()
     {
         Application.Quit();
