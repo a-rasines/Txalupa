@@ -5,7 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    string actualScene = SceneManager.GetActiveScene().name;
+    string actualScene;
+    public void Awake()
+    {
+        actualScene = SceneManager.GetActiveScene().name;
+    }
     public void StartBtn()
     {
         if (actualScene == "InitialScene")
