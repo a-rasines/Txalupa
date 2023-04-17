@@ -74,7 +74,7 @@ public class ItemTypes : MonoBehaviour {
                 }, BuildConstrain.GridBuildable),
                 new ItemType("Media_Pared_Mejorada", 20, GetSprite("BuildingIcon_HalfWallWoodTier3"), new Dictionary<GameObject, int> {
                     {GetGameObject("Block_Wall_Half_Tier3"), 1}
-                })
+                }, BuildConstrain.GridBuildable)
             };
         isReady = true;
     }

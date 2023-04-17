@@ -2637,7 +2637,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
@@ -2982,7 +2982,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &417741308
 Transform:
   m_ObjectHideFlags: 0
@@ -3223,6 +3223,7 @@ GameObject:
   - component: {fileID: 435381756}
   - component: {fileID: 435381755}
   - component: {fileID: 435381754}
+  - component: {fileID: 435381759}
   m_Layer: 5
   m_Name: BuildCanvas
   m_TagString: Untagged
@@ -3349,6 +3350,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!65 &435381759
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435381752}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1202.8665, y: 704.7513, z: 0.99999964}
+  m_Center: {x: 1.5653073, y: -1.153916, z: 2}
 --- !u!4 &443292408 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e164651933254c44c900aafff4709cb7, type: 3}
@@ -4011,7 +4025,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a24bde223739bc54fa8b0efc55ef423d, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a24bde223739bc54fa8b0efc55ef423d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6374,7 +6388,7 @@ MonoBehaviour:
   DestroyWhenStateAuthorityLeaves: 0
   AllowStateAuthorityOverride: 1
   AoiPositionSource: {fileID: 0}
-  Flags: 133633
+  Flags: 2561
   NetworkGuid:
     RawGuidValue: d85bcaa094ac433588f9fc75b40f7dfe
   NestedObjects: []
@@ -9974,6 +9988,7 @@ GameObject:
   - component: {fileID: 1175437097}
   - component: {fileID: 1175437096}
   - component: {fileID: 1175437099}
+  - component: {fileID: 1175437100}
   m_Layer: 5
   m_Name: SettingsCanvas
   m_TagString: Untagged
@@ -10084,6 +10099,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RaycastTriggerInteraction: 1
+--- !u!65 &1175437100
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175437094}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1199.8469, y: 605.56915, z: 0.99999964}
+  m_Center: {x: 0.055521723, y: -1.1769234, z: 2}
 --- !u!1001 &1180464978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16783,6 +16811,7 @@ GameObject:
   - component: {fileID: 1669011366}
   - component: {fileID: 1669011365}
   - component: {fileID: 1669011369}
+  - component: {fileID: 1669011370}
   m_Layer: 5
   m_Name: QuickInventoryCanvas
   m_TagString: Untagged
@@ -16892,6 +16921,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RaycastTriggerInteraction: 1
+--- !u!65 &1669011370
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669011362}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1201.24, y: 176.13, z: 1}
+  m_Center: {x: 0, y: 0, z: 0.87}
 --- !u!1 &1678564067
 GameObject:
   m_ObjectHideFlags: 0
@@ -16905,6 +16947,7 @@ GameObject:
   - component: {fileID: 1678564069}
   - component: {fileID: 1678564068}
   - component: {fileID: 1678564072}
+  - component: {fileID: 1678564073}
   m_Layer: 5
   m_Name: InventoryCanvas
   m_TagString: Untagged
@@ -17014,6 +17057,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RaycastTriggerInteraction: 1
+--- !u!65 &1678564073
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678564067}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1205.6923, y: 702.3136, z: 1}
+  m_Center: {x: 2.9782054, y: 0.8386373, z: 1.5}
 --- !u!1 &1691158786 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1152052189803245944, guid: be3a74ee4c9d4d899462b72a41f62728, type: 3}
@@ -19809,6 +19865,7 @@ GameObject:
   - component: {fileID: 2077275394}
   - component: {fileID: 2077275393}
   - component: {fileID: 2077275396}
+  - component: {fileID: 2077275397}
   m_Layer: 5
   m_Name: CraftCanvas
   m_TagString: Untagged
@@ -19920,6 +19977,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RaycastTriggerInteraction: 1
+--- !u!65 &2077275397
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077275391}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1205.6923, y: 605.56915, z: 0.9999999}
+  m_Center: {x: 2.9782054, y: -1.1769234, z: 2}
 --- !u!114 &2118115063 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7120902040236092603, guid: 275e2ebc5123e4e41960236594a1880f, type: 3}
@@ -19980,7 +20050,7 @@ MonoBehaviour:
   - {fileID: 919132149155446097, guid: 6c3d93e2e920dda4ca5f2e114c6dca76, type: 3}
   - {fileID: 8099010895529402538, guid: 646186fac2b4c1b4eaacbc14a5f309a7, type: 3}
   - {fileID: 2700247923638820473, guid: 04f21f6ba80ea3d449ef5e1922654cb4, type: 3}
-  - {fileID: 919132149155446097, guid: a24bde223739bc54fa8b0efc55ef423d, type: 3}
+  - {fileID: 4082808924417981124, guid: 25f0d2c4845a7dd4fb807990431bab7a, type: 3}
   sprites:
   - {fileID: 21300000, guid: 28ea2fb79adf8f747bfd21e7d1222bc9, type: 3}
   - {fileID: 21300000, guid: c8676bc3d64fa864ea040749f57c188a, type: 3}

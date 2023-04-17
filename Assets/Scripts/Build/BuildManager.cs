@@ -140,6 +140,7 @@ public class BuildManager : MonoBehaviour {
         }else {//4 o medio
             x -= 0.75f;
         }
+        model.transform.position = new Vector3(x, model.transform.position.y, z);
     }
     
     // Update is called once per frame
