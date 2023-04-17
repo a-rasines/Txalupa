@@ -105,10 +105,12 @@ public class Inventory : AbstractInventory {
         Dictionary<int, Stack> cl = new Dictionary<int, Stack>(inventory);
         foreach(int key in inventory.Keys) {
             Stack s = cl[key];
+            if (s.it == null)
+                continue;
             if (s.it.Equals(type)) {
                 int newAm = s.q - amount;
                 amount -= s.q;
-                if (newAm < 0) {
+                if (newAm <= 0) {
                     RemoveFromInventory(key);
                 } else {
                     TriggerOnItemChanged(key, type, s.q);
@@ -151,7 +153,8 @@ public class Inventory : AbstractInventory {
         Stack s = inventory[position];
         print(s.it.name);
         itemCounts[s.it] -= s.q;
-        inventory[position] = new Stack(0);
+        s.it = null;
+        s.q = 0;
         TriggerOnItemChanged(position, null, 0);
         return s;
 

@@ -53,7 +53,6 @@ public class PartiallyChild : MonoBehaviour {
                 : transform.position.z
             : transform.position.z
             );
-        print(parent.up + " " + parent.eulerAngles);
         transform.eulerAngles = new Vector3(
             direction.x ?
                 maxDirOffset.x < 0 ?
