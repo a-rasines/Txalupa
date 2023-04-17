@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &77091303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df4ff9cfd8d17184ead05de19e153e09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RunnerPrefab: {fileID: 0}
+  RunnerPrefab: {fileID: 3688251556206288519, guid: def02cff2004c9e4abe94bd800aabf81, type: 3}
   StartMode: 1
   AutoStartAs: 1
   AutoHideGUI: 1
@@ -287,7 +287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
@@ -1552,6 +1552,7 @@ GameObject:
   - component: {fileID: 1149443388}
   - component: {fileID: 1149443387}
   - component: {fileID: 1149443395}
+  - component: {fileID: 1149443396}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1722,6 +1723,20 @@ MonoBehaviour:
   - {fileID: 1724391218}
   NetworkedBehaviours: []
   SimulationBehaviours: []
+--- !u!114 &1149443396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149443386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 397fd6234795fc94b9cccd1a7d05c9aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _networkRunnerPrefab: {fileID: 4348269882062334018, guid: 5ef7271a74d7b584893c06fc86d319b5, type: 3}
+  _gameSceneName: InitialScene
 --- !u!1 &1248062916
 GameObject:
   m_ObjectHideFlags: 0
@@ -2726,8 +2741,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 77091303}
-        m_TargetAssemblyTypeName: ConnectionHelper, Assembly-CSharp
+      - m_Target: {fileID: 1149443396}
+        m_TargetAssemblyTypeName: StartMenu, Assembly-CSharp
         m_MethodName: StartClient
         m_Mode: 1
         m_Arguments:
@@ -2977,8 +2992,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 77091303}
-        m_TargetAssemblyTypeName: ConnectionHelper, Assembly-CSharp
+      - m_Target: {fileID: 1149443396}
+        m_TargetAssemblyTypeName: StartMenu, Assembly-CSharp
         m_MethodName: StartHost
         m_Mode: 1
         m_Arguments:
