@@ -151,7 +151,6 @@ public class Inventory : AbstractInventory {
     }
     public override Stack RemoveFromInventory(int position) {
         Stack s = inventory[position];
-        print(s.it.name);
         itemCounts[s.it] -= s.q;
         s.it = null;
         s.q = 0;

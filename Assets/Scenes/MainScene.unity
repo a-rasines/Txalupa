@@ -2637,7 +2637,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
@@ -2982,7 +2982,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &417741308
 Transform:
   m_ObjectHideFlags: 0
@@ -3365,8 +3365,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.49, y: 0.7, z: 1.49}
-  m_Center: {x: 0, y: -0.3, z: 0}
+  m_Size: {x: 1.48, y: 0.6887687, z: 1.47}
+  m_Center: {x: -0.000991106, y: -0.34353736, z: -0.0024955273}
 --- !u!114 &443292410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5606,8 +5606,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.49, y: 0.7, z: 1.49}
-  m_Center: {x: 0, y: -0.3, z: 0}
+  m_Size: {x: 1.48, y: 0.6887687, z: 1.47}
+  m_Center: {x: -0.000991106, y: -0.34353736, z: -0.0024955273}
 --- !u!114 &640120639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6374,7 +6374,7 @@ MonoBehaviour:
   DestroyWhenStateAuthorityLeaves: 0
   AllowStateAuthorityOverride: 1
   AoiPositionSource: {fileID: 0}
-  Flags: 2561
+  Flags: 133633
   NetworkGuid:
     RawGuidValue: d85bcaa094ac433588f9fc75b40f7dfe
   NestedObjects: []
@@ -8263,8 +8263,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.49, y: 0.7, z: 1.49}
-  m_Center: {x: 0, y: -0.3, z: 0}
+  m_Size: {x: 1.48, y: 0.6887687, z: 1.47}
+  m_Center: {x: -0.000991106, y: -0.34353736, z: -0.0024955273}
 --- !u!114 &895702307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12964,8 +12964,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.49, y: 0.7, z: 1.49}
-  m_Center: {x: 0, y: -0.3, z: 0}
+  m_Size: {x: 1.48, y: 0.6887687, z: 1.47}
+  m_Center: {x: -0.000991106, y: -0.34353736, z: -0.0024955273}
 --- !u!114 &1399691577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15794,8 +15794,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.49, y: 0.7, z: 1.49}
-  m_Center: {x: 0, y: -0.3, z: 0}
+  m_Size: {x: 1.48, y: 0.6887687, z: 1.47}
+  m_Center: {x: -0.000991106, y: -0.34353736, z: -0.0024955273}
 --- !u!114 &1635211546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20483,11 +20483,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3006255005811268583, guid: 04f21f6ba80ea3d449ef5e1922654cb4, type: 3}
       propertyPath: m_Size.x
-      value: 1.49
+      value: 1.48
       objectReference: {fileID: 0}
     - target: {fileID: 3006255005811268583, guid: 04f21f6ba80ea3d449ef5e1922654cb4, type: 3}
       propertyPath: m_Size.z
-      value: 1.49
+      value: 1.47
       objectReference: {fileID: 0}
     - target: {fileID: 3328975423492719811, guid: 04f21f6ba80ea3d449ef5e1922654cb4, type: 3}
       propertyPath: m_RootOrder

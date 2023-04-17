@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,7 +10,6 @@ public class BuildManager : MonoBehaviour {
     public ItemType.BuildConstrain buildConstrain;
     public GameObject raftBase;
     public GameObject model;
-    private GameObject clone;
     public Material buildableMaterial;
     public Inventory inventory;
     private int collisions = 0;
@@ -23,15 +22,9 @@ public class BuildManager : MonoBehaviour {
         model.layer = LayerMask.NameToLayer("Ignore Raycast");
         model.transform.position = new Vector3(0, -3, 0);
         Destroy(model.GetComponent<TrozosBalsa>());
-        clone = Instantiate(model);
-        clone.layer = LayerMask.NameToLayer("Ignore Raycast");
-        clone.transform.parent = raftBase.transform;
-        MeshRenderer renderer = clone.GetComponent<MeshRenderer>();
-        if(renderer == null)
-            renderer= clone.GetComponentInChildren<MeshRenderer>();
-        renderer.enabled = false;
+        model.transform.parent = raftBase.transform;
 
-        ColliderEvents ce = clone.AddComponent<ColliderEvents>();
+        ColliderEvents ce = model.AddComponent<ColliderEvents>();
         ce.CollisionEnterEvent += CollisionEnter;
         ce.TriggerEnterEvent += CollisionEnter;
         ce.CollisionExitEvent += CollisionExit;
@@ -40,15 +33,15 @@ public class BuildManager : MonoBehaviour {
         XRSimpleInteractable interactable= model.AddComponent<XRSimpleInteractable>();
         interactable.selectEntered.AddListener(new UnityAction<SelectEnterEventArgs>(OnInteraction));
         interactable.interactionLayers = InteractionLayerMask.GetMask("UI");
-        renderer = model.GetComponent<MeshRenderer>();
-        if(renderer == null ) {
+        MeshRenderer renderer = model.GetComponent<MeshRenderer>();
+        if(GetComponent<Renderer>() == null ) {
             renderer = model.GetComponentInChildren<MeshRenderer>();
         }
-        Material[] materials = new Material[renderer.materials.Length];
-        for (int i = 0; i < renderer.materials.Length; i++) {
+        Material[] materials = new Material[GetComponent<Renderer>().materials.Length];
+        for (int i = 0; i < GetComponent<Renderer>().materials.Length; i++) {
             materials[i] = buildableMaterial;
         }
-        renderer.materials = materials;
+        GetComponent<Renderer>().materials = materials;
 
 
     }
@@ -73,7 +66,7 @@ public class BuildManager : MonoBehaviour {
         GameObject built = Instantiate(type.GetModel());
         built.transform.parent = type.buildConstrain == ItemType.BuildConstrain.WaterBuildable?raftBase.transform.Find("--- Floors ---") : raftBase.transform;
 
-        built.transform.position = clone.transform.position;
+        built.transform.position = model.transform.position;
         built.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         inventory.RemoveFromInventory(type, 1);
         if(inventory.GetAmountOf(type) <= 0) {
@@ -103,11 +96,11 @@ public class BuildManager : MonoBehaviour {
                 break;
         }
         //clone.transform.position = model.transform.position;
-        clone.transform.localPosition = new Vector3(
-            model.transform.position.x - clone.transform.parent.position.x,
-            model.transform.position.y - clone.transform.parent.position.y,
-            model.transform.position.z - clone.transform.parent.position.z);
-        clone.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+        model.transform.localPosition = new Vector3(
+            model.transform.position.x - model.transform.parent.position.x,
+            model.transform.position.y - model.transform.parent.position.y,
+            model.transform.position.z - model.transform.parent.position.z);
+        model.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
     }
     private void WaterBuildableBuild(RaycastHit rh) {
         Vector3 offset = new Vector3(rh.point.x % 1.5f - raftBase.transform.position.x % 1.5f, 0, rh.point.z % 1.5f - raftBase.transform.position.z % 1.5f);
