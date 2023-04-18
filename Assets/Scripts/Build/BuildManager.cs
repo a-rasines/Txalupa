@@ -50,7 +50,7 @@ public class BuildManager : MonoBehaviour {
     public void OnDisable() {
         Destroy(model);
     }
-    private void CollisionEnter(object collision) {
+    private void CollisionEnter(object collision) {//Invalidate construction
         GameObject go = (GameObject)collision.GetType().GetProperty("gameObject").GetValue(collision);
         if(collisions == 0) {
             Material[] materials = new Material[modelRenderer.materials.Length];
@@ -63,7 +63,7 @@ public class BuildManager : MonoBehaviour {
             collisions++;
         
     }
-    private void CollisionExit(object collision) {
+    private void CollisionExit(object collision) {//Validate construction?
         GameObject go = (GameObject)collision.GetType().GetProperty("gameObject").GetValue(collision);
         if (go != model)
             collisions--;
@@ -75,7 +75,7 @@ public class BuildManager : MonoBehaviour {
             modelRenderer.materials = materials;
         }
     }
-    public void OnInteraction(SelectEnterEventArgs _) {
+    public void OnInteraction(SelectEnterEventArgs _) {//Build
         if (collisions != 0)
             return;
         ItemType type = ItemTypes.Of(model);
@@ -123,11 +123,6 @@ public class BuildManager : MonoBehaviour {
             default:
                 break;
         }
-        //clone.transform.position = model.transform.position;
-        model.transform.localPosition = new Vector3(
-            model.transform.position.x - model.transform.parent.position.x,
-            model.transform.position.y - model.transform.parent.position.y,
-            model.transform.position.z - model.transform.parent.position.z);
     }
     private void WaterBuildableBuild(RaycastHit rh) {
         Vector3 offset = new Vector3(rh.point.x % 1.5f - raftBase.transform.position.x % 1.5f, 0, rh.point.z % 1.5f - raftBase.transform.position.z % 1.5f);
@@ -139,7 +134,10 @@ public class BuildManager : MonoBehaviour {
             offset.z = offset.z - 1.5f;
         else if (offset.z < -0.75)
             offset.z = offset.z + 1.5f;
-        model.transform.position = new Vector3(rh.point.x - offset.x, raftBase.transform.position.y, rh.point.z - offset.z);
+        model.transform.localPosition = new Vector3(
+            x: rh.point.x - offset.x - model.transform.parent.position.x,
+            y: raftBase.transform.position.y - model.transform.parent.position.y,
+            z: rh.point.z - offset.z - model.transform.parent.position.z);
     }
     private void WallBuildableBuild(RaycastHit rh) {
 
@@ -160,14 +158,21 @@ public class BuildManager : MonoBehaviour {
          */
         if(z > 0.75 && Math.Abs(x-0.75) <= z -0.75) { //1
             x += 0.75f;
-        }else if(x < 0.75 && Math.Abs(z - 0.75) <= x) {//2
+            model.transform.rotation = Quaternion.Euler(x: model.transform.eulerAngles.x, y: 0, z: transform.eulerAngles.z);
+        } else if(x < 0.75 && Math.Abs(z - 0.75) <= x) {//2
             z -= 0.75f;
+            model.transform.rotation = Quaternion.Euler(x:model.transform.eulerAngles.x, y: 90, z: transform.eulerAngles.z);
         }else if(x > 0.75 && Math.Abs(z - 0.75) <= x - 0.75) {//3
-            z += 0.75f; 
-        }else {//4 o medio
+            z += 0.75f;
+            model.transform.rotation = Quaternion.Euler(x: model.transform.eulerAngles.x, y: 90, z: transform.eulerAngles.z);
+        } else {//4 o medio
             x -= 0.75f;
+            model.transform.rotation = Quaternion.Euler(x: model.transform.eulerAngles.x, y: 0, z: transform.eulerAngles.z);
         }
-        model.transform.position = new Vector3(x, model.transform.position.y, z);
+        model.transform.localPosition = new Vector3(
+            x: rh.point.x - x,// - model.transform.parent.position.x, 
+            y: rh.point.y,
+            z: rh.point.z - z);// - model.transform.parent.position.z);
     }
     
     // Update is called once per frame
