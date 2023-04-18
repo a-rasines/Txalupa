@@ -11,7 +11,9 @@ public class BuildManager : MonoBehaviour {
     public GameObject raftBase;
     public GameObject model;
     public Material buildableMaterial;
+    public Material invalidMaterial;
     public Inventory inventory;
+    private MeshRenderer modelRenderer;
     private int collisions = 0;
     void OnEnable() {
         if (model == null) {
@@ -33,15 +35,15 @@ public class BuildManager : MonoBehaviour {
         XRSimpleInteractable interactable= model.AddComponent<XRSimpleInteractable>();
         interactable.selectEntered.AddListener(new UnityAction<SelectEnterEventArgs>(OnInteraction));
         interactable.interactionLayers = InteractionLayerMask.GetMask("UI");
-        MeshRenderer renderer = model.GetComponent<MeshRenderer>();
-        if(renderer == null ) {
-            renderer = model.GetComponentInChildren<MeshRenderer>();
+        modelRenderer = model.GetComponent<MeshRenderer>();
+        if(modelRenderer == null ) {
+            modelRenderer = model.GetComponentInChildren<MeshRenderer>();
         }
-        Material[] materials = new Material[renderer.materials.Length];
-        for (int i = 0; i < GetComponent<Renderer>().materials.Length; i++) {
+        Material[] materials = new Material[modelRenderer.materials.Length];
+        for (int i = 0; i < modelRenderer.materials.Length; i++) {
             materials[i] = buildableMaterial;
         }
-        renderer.materials = materials;
+        modelRenderer.materials = materials;
 
 
     }
@@ -50,6 +52,13 @@ public class BuildManager : MonoBehaviour {
     }
     private void CollisionEnter(object collision) {
         GameObject go = (GameObject)collision.GetType().GetProperty("gameObject").GetValue(collision);
+        if(collisions == 0) {
+            Material[] materials = new Material[modelRenderer.materials.Length];
+            for (int i = 0; i < modelRenderer.materials.Length; i++) {
+                materials[i] = invalidMaterial;
+            }
+            modelRenderer.materials = materials;
+        }
         if (go != model)
             collisions++;
         
@@ -58,12 +67,19 @@ public class BuildManager : MonoBehaviour {
         GameObject go = (GameObject)collision.GetType().GetProperty("gameObject").GetValue(collision);
         if (go != model)
             collisions--;
+        if (collisions == 0) {
+            Material[] materials = new Material[modelRenderer.materials.Length];
+            for (int i = 0; i < modelRenderer.materials.Length; i++) {
+                materials[i] = buildableMaterial;
+            }
+            modelRenderer.materials = materials;
+        }
     }
     public void OnInteraction(SelectEnterEventArgs _) {
         if (collisions != 0)
             return;
         ItemType type = ItemTypes.Of(model);
-        GameObject built = Instantiate(model);
+        GameObject built = Instantiate(type.GetModel());
         built.transform.parent = type.buildConstrain == ItemType.BuildConstrain.WaterBuildable?raftBase.transform.Find("--- Floors ---") : raftBase.transform;
 
         built.transform.position = model.transform.position;
@@ -78,7 +94,6 @@ public class BuildManager : MonoBehaviour {
         if(!enabled) return;
         switch(buildConstrain) {
             case ItemType.BuildConstrain.WaterBuildable:
-                print('r');
                 model.transform.Rotate(0, 90, 0);
                 break;
             case ItemType.BuildConstrain.GridBuildable:

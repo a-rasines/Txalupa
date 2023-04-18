@@ -2982,7 +2982,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &417741308
 Transform:
   m_ObjectHideFlags: 0
@@ -3379,7 +3379,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.48, y: 0.6887687, z: 1.47}
+  m_Size: {x: 1.47, y: 0.6887687, z: 1.47}
   m_Center: {x: -0.000991106, y: -0.34353736, z: -0.0024955273}
 --- !u!114 &443292410
 MonoBehaviour:
@@ -4263,7 +4263,7 @@ MonoBehaviour:
   initialInventory:
   - position: 11
     model: {fileID: 2700247923638820473, guid: 04f21f6ba80ea3d449ef5e1922654cb4, type: 3}
-    quantity: 1
+    quantity: 3
   - position: 13
     model: {fileID: 919132149155446097, guid: a24bde223739bc54fa8b0efc55ef423d, type: 3}
     quantity: 1
@@ -5620,7 +5620,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.48, y: 0.6887687, z: 1.47}
+  m_Size: {x: 1.47, y: 0.6887687, z: 1.47}
   m_Center: {x: -0.000991106, y: -0.34353736, z: -0.0024955273}
 --- !u!114 &640120639
 MonoBehaviour:
@@ -6388,7 +6388,7 @@ MonoBehaviour:
   DestroyWhenStateAuthorityLeaves: 0
   AllowStateAuthorityOverride: 1
   AoiPositionSource: {fileID: 0}
-  Flags: 2561
+  Flags: 133633
   NetworkGuid:
     RawGuidValue: d85bcaa094ac433588f9fc75b40f7dfe
   NestedObjects: []
@@ -8277,7 +8277,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.48, y: 0.6887687, z: 1.47}
+  m_Size: {x: 1.47, y: 0.6887687, z: 1.47}
   m_Center: {x: -0.000991106, y: -0.34353736, z: -0.0024955273}
 --- !u!114 &895702307
 MonoBehaviour:
@@ -12992,7 +12992,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.48, y: 0.6887687, z: 1.47}
+  m_Size: {x: 1.47, y: 0.6887687, z: 1.47}
   m_Center: {x: -0.000991106, y: -0.34353736, z: -0.0024955273}
 --- !u!114 &1399691577
 MonoBehaviour:
@@ -15822,7 +15822,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.48, y: 0.6887687, z: 1.47}
+  m_Size: {x: 1.47, y: 0.6887687, z: 1.47}
   m_Center: {x: -0.000991106, y: -0.34353736, z: -0.0024955273}
 --- !u!114 &1635211546
 MonoBehaviour:
@@ -16798,6 +16798,7 @@ MonoBehaviour:
   raftBase: {fileID: 758935450}
   model: {fileID: 0}
   buildableMaterial: {fileID: 2100000, guid: 8da8767890e2ba44b885e908e2ca0a4c, type: 2}
+  invalidMaterial: {fileID: 2100000, guid: d7ba67ba88645fd469556e0f8cdda77e, type: 2}
   inventory: {fileID: 555998653}
 --- !u!114 &1666894983
 MonoBehaviour:
@@ -20606,7 +20607,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3006255005811268583, guid: 04f21f6ba80ea3d449ef5e1922654cb4, type: 3}
       propertyPath: m_Size.x
-      value: 1.48
+      value: 1.47
       objectReference: {fileID: 0}
     - target: {fileID: 3006255005811268583, guid: 04f21f6ba80ea3d449ef5e1922654cb4, type: 3}
       propertyPath: m_Size.z

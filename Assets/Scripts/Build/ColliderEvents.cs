@@ -9,8 +9,13 @@ public class ColliderEvents : MonoBehaviour {
         if(GetComponent<Rigidbody>() == null) {
             gameObject.AddComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         }
-        
+        CollisionEnterEvent += Unused;
+        CollisionExitEvent += Unused;
+        TriggerEnterEvent += Unused;
+        TriggerExitEvent += Unused;
+
     }
+    private void Unused(object o) { }
     public delegate void CollisionEvent(Collision col);
     public event CollisionEvent CollisionEnterEvent;
     public event CollisionEvent CollisionExitEvent;
