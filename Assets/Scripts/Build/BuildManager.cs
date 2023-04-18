@@ -34,14 +34,14 @@ public class BuildManager : MonoBehaviour {
         interactable.selectEntered.AddListener(new UnityAction<SelectEnterEventArgs>(OnInteraction));
         interactable.interactionLayers = InteractionLayerMask.GetMask("UI");
         MeshRenderer renderer = model.GetComponent<MeshRenderer>();
-        if(GetComponent<Renderer>() == null ) {
+        if(renderer == null ) {
             renderer = model.GetComponentInChildren<MeshRenderer>();
         }
-        Material[] materials = new Material[GetComponent<Renderer>().materials.Length];
+        Material[] materials = new Material[renderer.materials.Length];
         for (int i = 0; i < GetComponent<Renderer>().materials.Length; i++) {
             materials[i] = buildableMaterial;
         }
-        GetComponent<Renderer>().materials = materials;
+        renderer.materials = materials;
 
 
     }
@@ -63,15 +63,28 @@ public class BuildManager : MonoBehaviour {
         if (collisions != 0)
             return;
         ItemType type = ItemTypes.Of(model);
-        GameObject built = Instantiate(type.GetModel());
+        GameObject built = Instantiate(model);
         built.transform.parent = type.buildConstrain == ItemType.BuildConstrain.WaterBuildable?raftBase.transform.Find("--- Floors ---") : raftBase.transform;
 
         built.transform.position = model.transform.position;
-        built.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+        built.transform.localRotation = model.transform.localRotation;
         inventory.RemoveFromInventory(type, 1);
         if(inventory.GetAmountOf(type) <= 0) {
             Destroy(model);
             enabled = false;
+        }
+    }
+    public void OnPrimaryButton() {//Rotate
+        if(!enabled) return;
+        switch(buildConstrain) {
+            case ItemType.BuildConstrain.WaterBuildable:
+                print('r');
+                model.transform.Rotate(0, 90, 0);
+                break;
+            case ItemType.BuildConstrain.GridBuildable:
+                model.transform.Rotate(0, 180, 0);
+                break;
+            default: break;
         }
     }
     private void HoverChange() {
@@ -100,7 +113,6 @@ public class BuildManager : MonoBehaviour {
             model.transform.position.x - model.transform.parent.position.x,
             model.transform.position.y - model.transform.parent.position.y,
             model.transform.position.z - model.transform.parent.position.z);
-        model.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
     }
     private void WaterBuildableBuild(RaycastHit rh) {
         Vector3 offset = new Vector3(rh.point.x % 1.5f - raftBase.transform.position.x % 1.5f, 0, rh.point.z % 1.5f - raftBase.transform.position.z % 1.5f);

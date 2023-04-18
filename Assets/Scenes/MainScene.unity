@@ -2637,7 +2637,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
@@ -16285,6 +16285,7 @@ GameObject:
   - component: {fileID: 1666894979}
   - component: {fileID: 1666894978}
   - component: {fileID: 1666894982}
+  - component: {fileID: 1666894983}
   m_Layer: 6
   m_Name: RightHand Controller RC
   m_TagString: Untagged
@@ -16798,6 +16799,58 @@ MonoBehaviour:
   model: {fileID: 0}
   buildableMaterial: {fileID: 2100000, guid: 8da8767890e2ba44b885e908e2ca0a4c, type: 2}
   inventory: {fileID: 555998653}
+--- !u!114 &1666894983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666894975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28a5398ac767a9d4a8a1d0ef5e41eef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_Name: Action
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a40a258b-3c6b-44bd-8887-11ee41c9b223
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: b4816119-58ec-4746-b3b5-ee965f626b9a
+      m_Path: <XRSimulatedController>{RightHand}/primaryButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Action
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 6d02e322-8783-40c6-a923-fce00909a4e9
+      m_Path: <XRController>{RightHand}/primary
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Action
+      m_Flags: 0
+    m_Flags: 0
+  OnPress:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1666894982}
+        m_TargetAssemblyTypeName: BuildManager, Assembly-CSharp
+        m_MethodName: OnPrimaryButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1669011362
 GameObject:
   m_ObjectHideFlags: 0
