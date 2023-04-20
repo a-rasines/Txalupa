@@ -143,8 +143,8 @@ public class BuildManager : MonoBehaviour {
 
     }
     private void GridBuildableBuild(RaycastHit rh) {
-        float x = rh.point.x % 1.5f - raftBase.transform.position.x % 1.5f;
-        float z = rh.point.z % 1.5f - raftBase.transform.position.z % 1.5f;
+        float x = rh.point.x - rh.collider.gameObject.transform.position.x;
+        float z = rh.point.z - rh.collider.gameObject.transform.position.z;
         /*     x
          * |-------|
          * |\     /|
@@ -156,27 +156,52 @@ public class BuildManager : MonoBehaviour {
          * |/     \|
          * |-------|
          */
-        if(z > 0.75 && Math.Abs(x-0.75) <= z -0.75) { //1
-            x += 0.75f;
-            model.transform.rotation = Quaternion.Euler(x: model.transform.eulerAngles.x, y: 0, z: transform.eulerAngles.z);
-        } else if(x < 0.75 && Math.Abs(z - 0.75) <= x) {//2
-            z -= 0.75f;
-            model.transform.rotation = Quaternion.Euler(x:model.transform.eulerAngles.x, y: 90, z: transform.eulerAngles.z);
-        }else if(x > 0.75 && Math.Abs(z - 0.75) <= x - 0.75) {//3
-            z += 0.75f;
-            model.transform.rotation = Quaternion.Euler(x: model.transform.eulerAngles.x, y: 90, z: transform.eulerAngles.z);
-        } else {//4 o medio
-            x -= 0.75f;
-            model.transform.rotation = Quaternion.Euler(x: model.transform.eulerAngles.x, y: 0, z: transform.eulerAngles.z);
+        //print(x + " " + z);
+        Vector3 raycastColliderPosition = rh.collider.gameObject.transform.localPosition;
+        if (raycastColliderPosition.x %1.5 == 0 && raycastColliderPosition.x % 1.5 == 0) {//Floor or ceiling
+            if (z > 0 && Math.Abs(x) <= z) { //1
+                print(1);
+                z = 0.75f;
+                x = 0;
+                model.transform.localRotation = Quaternion.Euler(x: model.transform.localEulerAngles.x, y: 0, z: 0);
+            } else if (x < 0 && Math.Abs(z) <= -x) {//2
+                print(2);
+                z = 0;
+                x = -0.75f;
+                model.transform.localRotation = Quaternion.Euler(x: model.transform.localEulerAngles.x, y: 90, z: 0);
+            } else if (x > 0 && Math.Abs(z) <= x) {//3
+                print(3);
+                z = 0;
+                x = 0.75f;
+                model.transform.localRotation = Quaternion.Euler(x: model.transform.localEulerAngles.x, y: 90, z: 0);
+            } else {//4 o medio
+                print(4);
+                z = -0.75f;
+                x = 0;
+                model.transform.localRotation = Quaternion.Euler(x: model.transform.localEulerAngles.x, y: 0, z: 0);
+            }
+            model.transform.localPosition = raycastColliderPosition + new Vector3(x, -raycastColliderPosition.y, z);
+        }else if((raycastColliderPosition.x % 1.5 == 0) != (raycastColliderPosition.x % 1.5 == 0)) {//Another wall
+            model.transform.localRotation = Quaternion.Euler(
+                x: model.transform.localEulerAngles.x,
+                y: raycastColliderPosition.x % 1.5 != 0? 
+                    Mathf.Abs(model.transform.localEulerAngles.y) == 90 ?
+                            model.transform.localEulerAngles.y
+                        : 90
+                    :Mathf.Abs(model.transform.localEulerAngles.y) == 90 ?
+                            0
+                        : model.transform.localEulerAngles.y,
+                z: model.transform.localEulerAngles.z
+            );
+            model.transform.localPosition = new Vector3(raycastColliderPosition.x, 0, raycastColliderPosition.z);
         }
-        model.transform.localPosition = new Vector3(
-            x: rh.point.x - x,// - model.transform.parent.position.x, 
-            y: rh.point.y,
-            z: rh.point.z - z);// - model.transform.parent.position.z);
     }
     
     // Update is called once per frame
     void Update() {
-        HoverChange();       
+        HoverChange();
+        if(collisions > 0 && buildConstrain == ItemType.BuildConstrain.GridBuildable) {
+            model.transform.Translate(0, 1.5f, 0, model.transform.parent);
+        }
     }
 }
