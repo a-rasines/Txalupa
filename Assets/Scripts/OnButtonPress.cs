@@ -8,8 +8,7 @@ using UnityEngine.InputSystem;
 public class OnButtonPress : MonoBehaviour
 {
     [Tooltip("Actions to check")]
-    public InputAction action;
-    public InputActionReference _action;
+    public UnityEngine.InputSystem.InputAction action;
 
     // When the button is pressed
     public UnityEvent OnPress = new UnityEvent();
@@ -17,7 +16,7 @@ public class OnButtonPress : MonoBehaviour
     private void Awake()
     {
         //action.started += Pressed;
-        _action.action.started += Pressed; ;
+        action.started += Pressed; ;
     }
 
     private void Pressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -27,16 +26,16 @@ public class OnButtonPress : MonoBehaviour
 
     private void OnDestroy()
     {
-        _action.action.started -= Pressed;
+        action.started -= Pressed;
     }
 
     private void OnEnable()
     {
-        _action.action.Enable();
+        action.Enable();
     }
 
     private void OnDisable()
     {
-        _action.action.Disable();
+        action.Disable();
     }
 }
