@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DeathScene.unity
     guid: 747448d62b8a46e4d8ac5344585e0fe3
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer.unity
+    guid: 931d76e33dff81a40883957e575da0bd
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: aba3cf63ec7511e4cb5be062f250d047, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 7d5bc43ff6c0ec94fbaf77067f60ae6f, type: 2}

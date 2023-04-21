@@ -66,7 +66,7 @@ public class LocalRigSpawner : SimulationBehaviour, ISpawned
 
     void SpawnPlayer( PlayerInputHandler prefab )
     {
-        //ObserverCamera.DisableObserverCamera();
+        ObserverCamera.DisableObserverCamera();
 
         _showPlayerSpawnChoice = false;
         var rig = Instantiate( prefab, transform );

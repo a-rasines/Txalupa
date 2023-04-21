@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
 
-public class PlayerSpawner : Fusion.Behaviour
+public class DragonHuntersPlayerSpawner : Fusion.Behaviour
 {
     [SerializeField] Player _playerPrefab;
 

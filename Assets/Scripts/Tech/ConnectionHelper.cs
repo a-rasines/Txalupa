@@ -21,7 +21,7 @@ public class ConnectionHelper : MonoBehaviour
 
     public void StartHost()
     {
-        ChangeConnection( GameMode.AutoHostOrClient );
+        ChangeConnection( GameMode.Host );
     }
     public void StartClient()
     {

@@ -21,6 +21,12 @@ public class MenuController : MonoBehaviour
             SceneManager.LoadScene("InitialScene");
         }
     }
+
+    public void MultiBtn()
+    {
+        SceneManager.LoadScene("Multiplayer"); // ("SampleScene"); //ENARA Mejor por orden
+    }
+
     public void ExitBtn()
     {
         Application.Quit();
