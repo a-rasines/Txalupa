@@ -12,6 +12,8 @@ public class MenuController : MonoBehaviour
     }
     public void StartBtn()
     {
+        SceneManager.LoadScene("MainScene");
+        /*
         if (actualScene == "InitialScene")
         {
             //SceneManager.LoadScene(1);
@@ -20,11 +22,12 @@ public class MenuController : MonoBehaviour
         {
             SceneManager.LoadScene("InitialScene");
         }
+        */
     }
 
     public void MultiBtn()
     {
-        SceneManager.LoadScene("Multiplayer"); // ("SampleScene"); //ENARA Mejor por orden
+        SceneManager.LoadScene("VRStart"); // ("SampleScene"); //ENARA Mejor por orden
     }
 
     public void ExitBtn()
