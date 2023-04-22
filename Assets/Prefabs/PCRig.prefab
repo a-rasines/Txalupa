@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1229773582797760937}
   m_Father: {fileID: 2370450950846344846}
@@ -110,6 +111,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2121928302698900471}
   m_Father: {fileID: 2370450951321249331}
@@ -143,6 +145,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2370450950846344846}
   m_Father: {fileID: 0}
@@ -187,7 +190,8 @@ MonoBehaviour:
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
-    m_Reference: {fileID: 4920285905692197099, guid: 28d0adc60806f894a93b9bd0f80bd24a, type: 3}
+      m_Flags: 0
+    m_Reference: {fileID: 4920285905692197099, guid: c13e5e29542bc004d8e2cfc48eab150a, type: 3}
   _look:
     m_UseReference: 1
     m_Action:
@@ -198,7 +202,8 @@ MonoBehaviour:
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
-    m_Reference: {fileID: -7818614094600453675, guid: 28d0adc60806f894a93b9bd0f80bd24a, type: 3}
+      m_Flags: 0
+    m_Reference: {fileID: -7818614094600453675, guid: c13e5e29542bc004d8e2cfc48eab150a, type: 3}
   _rootTransform: {fileID: 2370450950846344846}
   _cameraTransform: {fileID: 2121928302698900471}
   _lookSpeed: {x: 0.08, y: -0.08}

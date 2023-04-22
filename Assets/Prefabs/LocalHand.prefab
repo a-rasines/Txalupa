@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -46,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _showDebugValues: 0
   _relativeTo: {fileID: 0}
-  _actionMap: {fileID: -944628639613478452, guid: 28d0adc60806f894a93b9bd0f80bd24a, type: 3}
+  _actionMap: {fileID: -944628639613478452, guid: c13e5e29542bc004d8e2cfc48eab150a, type: 3}
   _grab:
     m_UseReference: 1
     m_Action:
@@ -57,7 +58,8 @@ MonoBehaviour:
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
-    m_Reference: {fileID: 6976394061837971580, guid: 28d0adc60806f894a93b9bd0f80bd24a, type: 3}
+      m_Flags: 0
+    m_Reference: {fileID: 6976394061837971580, guid: c13e5e29542bc004d8e2cfc48eab150a, type: 3}
   _drop:
     m_UseReference: 1
     m_Action:
@@ -68,7 +70,8 @@ MonoBehaviour:
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
-    m_Reference: {fileID: 8987514773993323888, guid: 28d0adc60806f894a93b9bd0f80bd24a, type: 3}
+      m_Flags: 0
+    m_Reference: {fileID: 8987514773993323888, guid: c13e5e29542bc004d8e2cfc48eab150a, type: 3}
   _teleport:
     m_UseReference: 1
     m_Action:
@@ -79,7 +82,8 @@ MonoBehaviour:
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
-    m_Reference: {fileID: -4667234071960788385, guid: 28d0adc60806f894a93b9bd0f80bd24a, type: 3}
+      m_Flags: 0
+    m_Reference: {fileID: -4667234071960788385, guid: c13e5e29542bc004d8e2cfc48eab150a, type: 3}
   _teleportMode:
     m_UseReference: 1
     m_Action:
@@ -90,7 +94,8 @@ MonoBehaviour:
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
-    m_Reference: {fileID: -6159890885323779375, guid: 28d0adc60806f894a93b9bd0f80bd24a, type: 3}
+      m_Flags: 0
+    m_Reference: {fileID: -6159890885323779375, guid: c13e5e29542bc004d8e2cfc48eab150a, type: 3}
 --- !u!114 &7457177274747063087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,6 +110,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TrackingType: 0
   m_UpdateType: 0
+  m_PositionInput:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Position
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 695102da-550a-4078-944e-a3e4d500cee6
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 0fe94803-1af7-49b5-a3aa-5e880bfc9323
+        m_Path: <XRController>{LeftHand}/devicePosition
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Position
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_RotationInput:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Rotation
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 9c84c330-3d67-44ff-92d6-64b4f0d98e25
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 1bce7641-1ce8-4d7a-9db0-420149c5e52b
+        m_Path: <XRController>{LeftHand}/deviceRotation
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Rotation
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
   m_PositionAction:
     m_Name: Position
     m_Type: 0
@@ -121,6 +166,7 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Position
       m_Flags: 0
+    m_Flags: 0
   m_RotationAction:
     m_Name: Rotation
     m_Type: 0
@@ -137,3 +183,5 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Rotation
       m_Flags: 0
+    m_Flags: 0
+  m_HasMigratedActions: 1
