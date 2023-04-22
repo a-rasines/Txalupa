@@ -283,11 +283,11 @@ PrefabInstance:
     - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
       propertyPath: _drop.m_Reference
       value: 
-      objectReference: {fileID: -5029536398462184518, guid: 28d0adc60806f894a93b9bd0f80bd24a, type: 3}
+      objectReference: {fileID: -5029536398462184518, guid: c13e5e29542bc004d8e2cfc48eab150a, type: 3}
     - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
       propertyPath: _grab.m_Reference
       value: 
-      objectReference: {fileID: -2882657349442718954, guid: 28d0adc60806f894a93b9bd0f80bd24a, type: 3}
+      objectReference: {fileID: -2882657349442718954, guid: c13e5e29542bc004d8e2cfc48eab150a, type: 3}
     - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
       propertyPath: Teleport.m_Reference
       value: 
@@ -295,7 +295,7 @@ PrefabInstance:
     - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
       propertyPath: _teleport.m_Reference
       value: 
-      objectReference: {fileID: -2419199028084224920, guid: 28d0adc60806f894a93b9bd0f80bd24a, type: 3}
+      objectReference: {fileID: -2419199028084224920, guid: c13e5e29542bc004d8e2cfc48eab150a, type: 3}
     - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
       propertyPath: TeleportMode.m_Reference
       value: 
@@ -303,7 +303,7 @@ PrefabInstance:
     - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
       propertyPath: _teleportMode.m_Reference
       value: 
-      objectReference: {fileID: -4932127206870018082, guid: 28d0adc60806f894a93b9bd0f80bd24a, type: 3}
+      objectReference: {fileID: -4932127206870018082, guid: c13e5e29542bc004d8e2cfc48eab150a, type: 3}
     - target: {fileID: 7121056257567072760, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
       propertyPath: m_UIPressAction.m_Reference
       value: 
