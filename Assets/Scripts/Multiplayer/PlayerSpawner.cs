@@ -3,10 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSpawner : NetworkBehaviour, ISpawned
+public class PlayerSpawner : NetworkBehaviour, ISpawned, IPlayerJoined
 {
     [SerializeField] private NetworkObject playerPrefab;
     private MultiplayerStart multiplayerStart;
+
+    public void PlayerJoined(PlayerRef player)
+    {
+        SpawnPlayer(player);
+    }
 
     public override void Spawned()
     {
