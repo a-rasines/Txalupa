@@ -101,7 +101,7 @@ public class MultiplayerStart : MonoBehaviour, INetworkRunnerCallbacks
 
     public void StartHost()
     {
-        StartGame(GameMode.Host);
+        StartGame(GameMode.AutoHostOrClient);
     }
 
     public void StartClient()
