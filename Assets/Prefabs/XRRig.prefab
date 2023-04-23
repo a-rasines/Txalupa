@@ -29,6 +29,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2370450950846344846}
   m_RootOrder: 0
@@ -204,6 +205,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 615736129467364546}
   - {fileID: 1229773582797760937}
@@ -239,6 +241,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2370450950846344846}
   m_Father: {fileID: 0}
@@ -347,11 +350,11 @@ PrefabInstance:
     - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
       propertyPath: _drop.m_Reference
       value: 
-      objectReference: {fileID: 5810827652234020314, guid: 28d0adc60806f894a93b9bd0f80bd24a, type: 3}
+      objectReference: {fileID: 5810827652234020314, guid: c13e5e29542bc004d8e2cfc48eab150a, type: 3}
     - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
       propertyPath: _grab.m_Reference
       value: 
-      objectReference: {fileID: 1443005053615697449, guid: 28d0adc60806f894a93b9bd0f80bd24a, type: 3}
+      objectReference: {fileID: 1443005053615697449, guid: c13e5e29542bc004d8e2cfc48eab150a, type: 3}
     - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
       propertyPath: _drop.m_Action.m_Id
       value: 2137e551-2829-4bd8-9866-0da7c595b03f
@@ -375,7 +378,7 @@ PrefabInstance:
     - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
       propertyPath: _teleport.m_Reference
       value: 
-      objectReference: {fileID: -67774348043679940, guid: 28d0adc60806f894a93b9bd0f80bd24a, type: 3}
+      objectReference: {fileID: -67774348043679940, guid: c13e5e29542bc004d8e2cfc48eab150a, type: 3}
     - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
       propertyPath: _teleport.m_Action.m_Id
       value: 7a36e792-93fb-482a-8bd9-4713da135503
@@ -391,7 +394,7 @@ PrefabInstance:
     - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
       propertyPath: _teleportMode.m_Reference
       value: 
-      objectReference: {fileID: -1299994589735071180, guid: 28d0adc60806f894a93b9bd0f80bd24a, type: 3}
+      objectReference: {fileID: -1299994589735071180, guid: c13e5e29542bc004d8e2cfc48eab150a, type: 3}
     - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
       propertyPath: _teleportMode.m_Action.m_Id
       value: 96762137-424b-4f24-b989-32057037f328
