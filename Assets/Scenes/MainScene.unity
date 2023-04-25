@@ -3629,6 +3629,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block_Foundation_Tier3 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e164651933254c44c900aafff4709cb7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452239524697547023, guid: e164651933254c44c900aafff4709cb7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e164651933254c44c900aafff4709cb7, type: 3}
 --- !u!1 &501219832
@@ -7125,6 +7133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 565a1cda0e4f8c747a0bb1168fe71d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlledChildren: []
   speed: 1.8
   strenght: 0.2
   x: 0
@@ -8054,6 +8063,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block_Foundation_Tier3 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e164651933254c44c900aafff4709cb7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452239524697547023, guid: e164651933254c44c900aafff4709cb7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e164651933254c44c900aafff4709cb7, type: 3}
 --- !u!1 &892580489
@@ -8718,6 +8735,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e164651933254c44c900aafff4709cb7, type: 3}
       propertyPath: m_Name
       value: Block_Foundation_Tier3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e164651933254c44c900aafff4709cb7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452239524697547023, guid: e164651933254c44c900aafff4709cb7, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e164651933254c44c900aafff4709cb7, type: 3}
@@ -13440,6 +13465,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block_Foundation_Tier3 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e164651933254c44c900aafff4709cb7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452239524697547023, guid: e164651933254c44c900aafff4709cb7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e164651933254c44c900aafff4709cb7, type: 3}
 --- !u!1 &1450859234
@@ -17701,6 +17734,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block_Foundation_Tier3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e164651933254c44c900aafff4709cb7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452239524697547023, guid: e164651933254c44c900aafff4709cb7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e164651933254c44c900aafff4709cb7, type: 3}
 --- !u!1 &1814310449
@@ -20601,9 +20642,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1370995762}
     m_Modifications:
+    - target: {fileID: 842250255519072807, guid: 04f21f6ba80ea3d449ef5e1922654cb4, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2700247923638820473, guid: 04f21f6ba80ea3d449ef5e1922654cb4, type: 3}
       propertyPath: m_Name
       value: Block_Foundation_Tier3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2700247923638820473, guid: 04f21f6ba80ea3d449ef5e1922654cb4, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3006255005811268583, guid: 04f21f6ba80ea3d449ef5e1922654cb4, type: 3}
       propertyPath: m_Size.x

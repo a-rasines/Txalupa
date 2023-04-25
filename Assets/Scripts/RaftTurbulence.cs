@@ -4,22 +4,20 @@ using UnityEngine;
 
 public class RaftTurbulence : MonoBehaviour
 {
+    public Transform[] controlledChildren;
+    private Dictionary<Transform, int> controlledChildrenCounts = new Dictionary<Transform, int>();
     void Start(){
-        calculateMotion();
+        childCount= transform.childCount;
+        foreach(Transform t in controlledChildren)
+            controlledChildrenCounts[t] = t.childCount;
+        CalculateMotion();
     }
-    public void SetupBuild(GameObject go) {
-        if (go.transform.localPosition.x % 1.5 != 0 || go.transform.localPosition.x % 1.5 != 0)
-            return;//No sigue la cuadricula
-        else if(go.transform.localPosition.y == 0)
-            go.AddComponent<TrozosBalsa>();//Es suelo
-        calculateMotion();
-
-    }
-    private void calculateMotion() {
+    private void CalculateMotion() {
         float maxX = 0;
         float maxY = 0;
         float minX = 0;
         float minY = 0;
+        childCount = transform.childCount;
         for (int i = 0; i < transform.childCount; i++) {
             Transform t = transform.GetChild(i);
             if (t.localPosition.x + t.lossyScale.x / 2 > maxX) {
@@ -32,9 +30,25 @@ public class RaftTurbulence : MonoBehaviour
             } else if (t.localPosition.y - t.lossyScale.y / 2 < minY) {
                 minY = t.localPosition.y - t.lossyScale.y / 2;
             }
-            sizeX = maxX - minX;
-            hipotenusa = Mathf.Sqrt(Mathf.Pow(maxY - minY, 2) + Mathf.Pow(sizeX, 2));
         }
+        foreach(Transform tr in controlledChildren) {
+            for (int i = 0; i < tr.childCount; i++) {
+                Transform t = tr.GetChild(i);
+                if (t.localPosition.x + t.lossyScale.x / 2 > maxX) {
+                    maxX = t.localPosition.x + t.lossyScale.x / 2;
+                } else if (t.localPosition.x - t.lossyScale.x / 2 < minX) {
+                    minX = t.localPosition.x - t.lossyScale.x / 2;
+                }
+                if (t.localPosition.y + t.lossyScale.y / 2 > maxY) {
+                    maxY = t.localPosition.y + t.lossyScale.y / 2;
+                } else if (t.localPosition.y - t.lossyScale.y / 2 < minY) {
+                    minY = t.localPosition.y - t.lossyScale.y / 2;
+                }
+            }
+            controlledChildrenCounts[tr] = tr.childCount;
+        }
+        sizeX = maxX - minX;
+        hipotenusa = Mathf.Sqrt(Mathf.Pow(maxY - minY, 2) + Mathf.Pow(sizeX, 2));
     }
     private float rotation = 0;
     public float speed = 1;
@@ -43,7 +57,14 @@ public class RaftTurbulence : MonoBehaviour
     public float z = 1;
     private float sizeX;
     private float hipotenusa;
-    void Update(){
+    private int childCount;
+    void FixedUpdate(){
+        if(transform.childCount != childCount) 
+            CalculateMotion();
+        else 
+            foreach(Transform t in controlledChildren)  
+                if(t.childCount != controlledChildrenCounts[t])
+                    CalculateMotion();
         rotation += speed * Time.deltaTime;
         rotation %= 2 * Mathf.PI;
         float height = Mathf.Sin(rotation) * strenght / 2;

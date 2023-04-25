@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4940333539216534510}
   - component: {fileID: 4179670113126646721}
   - component: {fileID: 1101375585266397196}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Block_Foundation_Tier3_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8644267501311678951}
   - component: {fileID: 2715142200527115096}
   - component: {fileID: 4152235723100966822}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Block_Foundation_Tier3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

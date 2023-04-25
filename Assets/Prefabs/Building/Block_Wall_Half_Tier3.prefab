@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3738794428702793854}
   - component: {fileID: 2892305712487258396}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Block_Wall_Half_Tier3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 5751817386058244021}
   - component: {fileID: 4121438913953943423}
   - component: {fileID: 5437049552378881622}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Block_Wall_Half_Tier3_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

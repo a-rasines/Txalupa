@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -18,6 +19,7 @@ public class Hook : MonoBehaviour {
     private bool thrown = true;
     private bool returning = false;
     private float startTime = 0;
+    private bool onRaft = false;
     void Start() {
         startPosition = start.position;
         startRotation = start.eulerAngles;
@@ -32,9 +34,19 @@ public class Hook : MonoBehaviour {
         }
     }
     private void OnCollisionEnter(Collision collision) {
-        if(collision.gameObject.layer == 4) {
+        if(collision.gameObject.layer == 4 && !onRaft) {
             GetComponent<Collider>().enabled = false;
             GetComponent<Rigidbody>().constraints = GetComponent<Rigidbody>().constraints | RigidbodyConstraints.FreezePositionY;
+        } else if (collision.gameObject.layer == 8) {
+            onRaft = true;
+        }
+    }
+    private void OnCollisionExit(Collision collision) {
+        if (collision.gameObject.layer == 4 && !onRaft) {
+            GetComponent<Collider>().enabled = true;
+            GetComponent<Rigidbody>().constraints = GetComponent<Rigidbody>().constraints | ~RigidbodyConstraints.FreezePositionY;
+        }else if(collision.gameObject.layer == 8) {
+            onRaft = false;
         }
     }
     public void OnRopeInteractionStart() {
