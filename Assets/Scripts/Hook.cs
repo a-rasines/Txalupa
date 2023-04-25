@@ -38,7 +38,6 @@ public class Hook : MonoBehaviour {
         }
     }
     public void OnRopeInteractionStart() {
-        print("RopeInteractionStart");
         returning = true;
         
     }
