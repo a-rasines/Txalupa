@@ -283,10 +283,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2370450950846344846}
     m_Modifications:
-    - target: {fileID: 709542785478381259, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: m_SelectAction.m_Reference
-      value: 
-      objectReference: {fileID: -67774348043679940, guid: 28d0adc60806f894a93b9bd0f80bd24a, type: 3}
     - target: {fileID: 2971603315885565522, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
       propertyPath: m_Name
       value: 'LocalRightHand '
@@ -334,94 +330,6 @@ PrefabInstance:
     - target: {fileID: 3643350291958323339, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4086413894260311979, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: m_InvalidColorGradient.key1.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: Drop.m_Reference
-      value: 
-      objectReference: {fileID: 5810827652234020314, guid: 28d0adc60806f894a93b9bd0f80bd24a, type: 3}
-    - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: Grab.m_Reference
-      value: 
-      objectReference: {fileID: 1443005053615697449, guid: 28d0adc60806f894a93b9bd0f80bd24a, type: 3}
-    - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: _drop.m_Reference
-      value: 
-      objectReference: {fileID: 5810827652234020314, guid: c13e5e29542bc004d8e2cfc48eab150a, type: 3}
-    - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: _grab.m_Reference
-      value: 
-      objectReference: {fileID: 1443005053615697449, guid: c13e5e29542bc004d8e2cfc48eab150a, type: 3}
-    - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: _drop.m_Action.m_Id
-      value: 2137e551-2829-4bd8-9866-0da7c595b03f
-      objectReference: {fileID: 0}
-    - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: _grab.m_Action.m_Id
-      value: 76feefde-2ced-436e-acf4-341b62b1e453
-      objectReference: {fileID: 0}
-    - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: Teleport.m_Reference
-      value: 
-      objectReference: {fileID: -67774348043679940, guid: 28d0adc60806f894a93b9bd0f80bd24a, type: 3}
-    - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: _drop.m_Action.m_Name
-      value: Drop
-      objectReference: {fileID: 0}
-    - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: _grab.m_Action.m_Name
-      value: Grab
-      objectReference: {fileID: 0}
-    - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: _teleport.m_Reference
-      value: 
-      objectReference: {fileID: -67774348043679940, guid: c13e5e29542bc004d8e2cfc48eab150a, type: 3}
-    - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: _teleport.m_Action.m_Id
-      value: 7a36e792-93fb-482a-8bd9-4713da135503
-      objectReference: {fileID: 0}
-    - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: TeleportMode.m_Reference
-      value: 
-      objectReference: {fileID: -1299994589735071180, guid: 28d0adc60806f894a93b9bd0f80bd24a, type: 3}
-    - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: _teleport.m_Action.m_Name
-      value: Teleport
-      objectReference: {fileID: 0}
-    - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: _teleportMode.m_Reference
-      value: 
-      objectReference: {fileID: -1299994589735071180, guid: c13e5e29542bc004d8e2cfc48eab150a, type: 3}
-    - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: _teleportMode.m_Action.m_Id
-      value: 96762137-424b-4f24-b989-32057037f328
-      objectReference: {fileID: 0}
-    - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: _teleportMode.m_Action.m_Name
-      value: Teleport Mode
-      objectReference: {fileID: 0}
-    - target: {fileID: 7121056257567072760, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: m_UIPressAction.m_Reference
-      value: 
-      objectReference: {fileID: 1443005053615697449, guid: 28d0adc60806f894a93b9bd0f80bd24a, type: 3}
-    - target: {fileID: 7457177274747063087, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: m_PositionAction.m_SingletonActionBindings.Array.data[0].m_Path
-      value: <XRController>{RightHand}/devicePosition
-      objectReference: {fileID: 0}
-    - target: {fileID: 7457177274747063087, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: m_RotationAction.m_SingletonActionBindings.Array.data[0].m_Path
-      value: <XRController>{RightHand}/deviceRotation
-      objectReference: {fileID: 0}
-    - target: {fileID: 7457177274747063087, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: m_PositionInput.m_Action.m_SingletonActionBindings.Array.data[0].m_Path
-      value: <XRController>{RightHand}/devicePosition
-      objectReference: {fileID: 0}
-    - target: {fileID: 7457177274747063087, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: m_RotationInput.m_Action.m_SingletonActionBindings.Array.data[0].m_Path
-      value: <XRController>{RightHand}/deviceRotation
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
@@ -497,37 +405,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: _drop.m_Action.m_Id
-      value: 59a903a7-9aae-4bfd-9347-05f1cd3cc360
-      objectReference: {fileID: 0}
-    - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: _grab.m_Action.m_Id
-      value: 8c21a2c5-f5ea-4f45-9d0d-534537f3c77d
-      objectReference: {fileID: 0}
-    - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: _drop.m_Action.m_Name
-      value: Drop
-      objectReference: {fileID: 0}
-    - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: _grab.m_Action.m_Name
-      value: Grab
-      objectReference: {fileID: 0}
-    - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: _teleport.m_Action.m_Id
-      value: 58e6f47c-14f4-4f91-adb6-4664614baf69
-      objectReference: {fileID: 0}
-    - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: _teleport.m_Action.m_Name
-      value: Teleport
-      objectReference: {fileID: 0}
-    - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: _teleportMode.m_Action.m_Id
-      value: e3493a9d-b82c-4999-b819-13ab49868770
-      objectReference: {fileID: 0}
-    - target: {fileID: 6565861094546626051, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
-      propertyPath: _teleportMode.m_Action.m_Name
-      value: Teleport Mode
-      objectReference: {fileID: 0}
+      propertyPath: _actionMap
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: c13e5e29542bc004d8e2cfc48eab150a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1d89d6af1ad32246a71dc576cfc32bd, type: 3}
 --- !u!4 &1229773582797760937 stripped
