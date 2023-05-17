@@ -17,8 +17,8 @@ TagManager:
   - Hand
   - WaterRaycast
   - Build
-  - 
-  - 
+  - Body
+  - Grabable
   - 
   - 
   - 
