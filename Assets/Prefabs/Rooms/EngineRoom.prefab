@@ -174,7 +174,11 @@ MonoBehaviour:
   northConnection: {fileID: 0}
   southConnection: {fileID: 1468640461835142630}
   _rooms: []
-  maxSpawns: 5
+  maxSpawns: 2
+  origin: {fileID: 0}
+  pregenerationPosition: {x: 0, y: 0, z: 0}
+  colliderPosition: {x: 0, y: 0, z: 0}
+  finalPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1468640462191949694
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,7 +357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1468640463791087966
 Transform:
   m_ObjectHideFlags: 0
