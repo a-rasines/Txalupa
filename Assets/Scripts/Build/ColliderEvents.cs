@@ -5,8 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class ColliderEvents : MonoBehaviour {
     // Start is called before the first frame update
+    public bool addRigidBody = true;
     void Start() {
-        if(GetComponent<Rigidbody>() == null) {
+        if(GetComponent<Rigidbody>() == null && addRigidBody) {
             gameObject.AddComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         }
         CollisionEnterEvent += Unused;

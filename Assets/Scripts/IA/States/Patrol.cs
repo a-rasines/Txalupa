@@ -20,7 +20,7 @@ public class Patrol : State
 
     public override void Enter()
     {
-        seconds = Random.Range((1*(npc.GetComponent<SharkBehaviour>().vida)*Random.Range(1,2)), 300);
+       // seconds = Random.Range((1*(npc.GetComponent<SharkBehaviour>().vida)*Random.Range(1,2)), 300);
         float lastDistance = Mathf.Infinity;
 
         for (int i = 0; i < GameEnvironment.Singleton.Checkpoints.Count; ++i)

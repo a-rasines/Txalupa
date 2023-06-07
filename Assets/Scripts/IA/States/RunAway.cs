@@ -36,8 +36,6 @@ public class RunAway : State
 
     public override void Exit()
     {
-
-        anim.ResetTrigger("isRunning");
         base.Exit();
     }
 }

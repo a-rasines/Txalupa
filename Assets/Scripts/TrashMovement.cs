@@ -25,7 +25,6 @@ public class TrashMovement : MonoBehaviour {
             (direction.x == 0 || (direction.x < 0 && transform.position.x < end.x) || (direction.x > 0 && transform.position.x > end.x)) &&
             (direction.y == 0 || (direction.y < 0 && transform.position.y < end.y) || (direction.y > 0 && transform.position.y > end.y))
         ) {
-            print(transform.position + " " + end);
             Destroy(gameObject);
         }
     }
