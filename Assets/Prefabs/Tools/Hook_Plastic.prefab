@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1336370975601709290}
   - component: {fileID: 7812734053347713265}
   - component: {fileID: 7120902039985307632}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Hook_Plastic_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 7120902039906532233}
   - component: {fileID: 7120902039906532232}
   - component: {fileID: 7120902039906532234}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: RopeEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 7120902040236092603}
   - component: {fileID: 7120902040236092580}
   - component: {fileID: -6332719516725698094}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Hook_Plastic
   m_TagString: Untagged
   m_Icon: {fileID: 0}

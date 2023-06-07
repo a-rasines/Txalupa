@@ -4394,6 +4394,9 @@ MonoBehaviour:
   - position: 13
     model: {fileID: 919132149155446097, guid: a24bde223739bc54fa8b0efc55ef423d, type: 3}
     quantity: 1
+  - position: 13
+    model: {fileID: 8099010895529402538, guid: 646186fac2b4c1b4eaacbc14a5f309a7, type: 3}
+    quantity: 1
 --- !u!114 &555998654
 MonoBehaviour:
   m_ObjectHideFlags: 0
