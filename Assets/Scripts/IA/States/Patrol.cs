@@ -20,7 +20,7 @@ public class Patrol : State
 
     public override void Enter()
     {
-        //seconds = Random.Range(0, 120);
+        //seconds = Random.Range((1*(npc.GetComponent<SharkBehaviour>().vida)*Random.Range(1,2)), 300);
         float lastDistance = Mathf.Infinity;
 
         for (int i = 0; i < GameEnvironment.Singleton.Checkpoints.Count; ++i)
@@ -65,7 +65,7 @@ public class Patrol : State
         {
             nextState = new AttackShip(npc, agent, anim, player, raft);
             stage = EVENT.EXIT;
-            seconds = 20f;//Random.Range(0, 120);
+            seconds = 20f;//Random.Range((1*(npc.GetComponent<SharkBehaviour>().vida)*Random.Range(1,2)), 120);
         }
     }
 
