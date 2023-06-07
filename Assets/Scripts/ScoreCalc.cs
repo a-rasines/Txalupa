@@ -6,30 +6,24 @@ using TMPro;
 
 public class ScoreCalc : MonoBehaviour
 {
-    public TextMeshProUGUI scoreText;
-    private int score;
-    private Vector3 startPosition;
+    [SerializeField]
+    Transform[] startPosition;
+
     private Quaternion startRotation;
     // Start is called before the first frame update
 
     void Start()
     {
-        startPosition = this.transform.position;
-        startRotation = this.transform.rotation;
-    }
-
-    void Update()
-    {
-        scoreText.text = ("Score: ") + score.ToString();
+        
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer.Equals("Cube"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Cube"))
         {
-            score++;
-            this.transform.position = startPosition;
-            this.transform.rotation = startRotation;
+            Debug.Log("Funciona");
+            Counter.score++;
+            this.transform.position = startPosition[Random.Range(0, startPosition.Length)].position;
         }
     }
 }
