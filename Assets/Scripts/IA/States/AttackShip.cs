@@ -23,8 +23,8 @@ public class AttackShip : State
 
     public override void Enter()
     {
-
-        anim.SetTrigger("isShooting");
+        objetivo = SelectTrozo().GetComponent<TrozosBalsa>();
+        anim.SetTrigger("Swim_Regular");
         agent.isStopped = true;
         //shoot.Play();
         base.Enter();
@@ -32,11 +32,12 @@ public class AttackShip : State
 
     public override void Update()
     {
-
-        npc.transform.position = Vector3.MoveTowards(npc.transform.position, objetivo.transform.position, 0.05f);
-        npc.transform.LookAt(objetivo.transform);
-        if (Vector3.Distance(npc.transform.position, objetivo.transform.position) <= 0.75f)
+        npc.transform.parent.position = Vector3.MoveTowards(npc.transform.parent.position, objetivo.transform.position, 0.05f);
+        npc.transform.parent.LookAt(objetivo.transform);
+        Debug.Log(Vector3.Distance(npc.transform.position, objetivo.transform.position));
+        if (Vector3.Distance(npc.transform.position, objetivo.transform.position) <=  1.5f)
         {
+            anim.SetTrigger("HoldBite");
             damageFloor = false;
             cooldown -= Time.deltaTime;
             if (cooldown <= 0)
@@ -45,44 +46,55 @@ public class AttackShip : State
                 objetivo.vida--;
                 if (objetivo.vida < 0)
                 {
+                    anim.SetTrigger("Swim_Regular");
                     nextState = new Patrol(npc, agent, anim, player, raft);
                     objetivo.GetComponent<TrozosBalsa>().destruirTrozo();
+                    objetivo = null;
+                    stage = EVENT.EXIT;
                 }
             }
-            
+
+        }
+        else
+        {
+            anim.SetTrigger("Swim_Regular");
         }
         if (attacked)
         {
-            nextState = new RunAway(npc, agent, anim, player, raft);
+            anim.SetTrigger("TakeDamage");
+            npc.GetComponent<SharkBehaviour>().Daño();
+            if (IsSharkDead())
+            {
+                nextState = new Idle(npc, agent, anim, player, raft);
+                stage = EVENT.EXIT;
+            }
+            else
+            {
+                anim.SetTrigger("Swim_Regular");
+                nextState = new RunAway(npc, agent, anim, player, raft);
+                stage = EVENT.EXIT;
+            }
             //shoot.Stop();
-            stage = EVENT.EXIT;
         }
     }
 
     public override void Exit()
     {
 
-        anim.ResetTrigger("isShooting");
+        anim.ResetTrigger("Swim_Calm");
         base.Exit();
     }
-    private void SelectTrozo()
+    private GameObject SelectTrozo()
     {
-        bool select = false;
-        while (!select)
+        GameObject objetivo = raft.transform.GetChild(0).gameObject;
+        foreach(Transform tsb in raft.transform)
         {
-            int n = Random.Range(0, raft.transform.childCount);
-            TrozosBalsa tb = null;
-            while (tb == null)
+            if(Vector3.Distance(npc.transform.position, objetivo.transform.position)>Vector3.Distance(npc.transform.position, tsb.position))
             {
-                n = Random.Range(0, raft.transform.childCount);
-                tb = raft.transform.GetChild(n).GetComponent<TrozosBalsa>();
+                objetivo = tsb.gameObject;
             }
-            if (tb.norte != null || tb.sur != null || tb.este != null || tb.oeste != null)//NullPointer
-            {
-                objetivo = tb;
-            }
-            select = true;
         }
+        return objetivo;
     }
     public void Colision(Collision col)
     {

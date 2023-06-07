@@ -5,39 +5,30 @@ using UnityEngine.AI;
 
 public class Idle : State
 {
+    private float cooldown;
     public Idle(GameObject _npc, NavMeshAgent _agent, Animator _anim, Transform _player, GameObject raft)
         : base(_npc, _agent, _anim, _player, raft)
     {
-
+        cooldown = 60f;
         name = STATE.IDLE;
     }
     public override void Enter()
     {
-
-        anim.SetTrigger("isIdle");
+        anim.SetTrigger("Dead");
         base.Enter();
     }
 
     public override void Update()
     {
-
-        if (CanSeePlayer())
+        cooldown -= Time.deltaTime;
+        if(cooldown <= 0f)
         {
-
-            nextState = new AttackPlayer(npc, agent, anim, player, raft);
-            stage = EVENT.EXIT;
-        }
-        else if (Random.Range(0, 100) < 20) //20% of the time 
-        {
-            nextState = new AttackShip(npc, agent, anim, player, raft);
+            nextState = new Patrol(npc, agent, anim, player, raft);
             stage = EVENT.EXIT;
         }
     }
-
     public override void Exit()
     {
-
-        anim.ResetTrigger("isIdle");
         base.Exit();
     }
 }

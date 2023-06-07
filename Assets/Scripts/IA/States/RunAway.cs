@@ -18,8 +18,7 @@ public class RunAway : State
 
     public override void Enter()
     {
-
-        anim.SetTrigger("isRunning");
+        anim.SetTrigger("Swim_Regular");
         agent.isStopped = false;
         agent.speed = 6;
         agent.SetDestination(safeLocation.transform.position);
@@ -28,10 +27,8 @@ public class RunAway : State
 
     public override void Update()
     {
-
         if (agent.remainingDistance < 1.0f)
         {
-
             nextState = new Patrol(npc, agent, anim, player, raft);
             stage = EVENT.EXIT;
         }

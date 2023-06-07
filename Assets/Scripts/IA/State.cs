@@ -46,7 +46,6 @@ public class State {
 
     public State Process()
     {
-
         if (stage == EVENT.ENTER) Enter();
         if (stage == EVENT.UPDATE) Update();
         if (stage == EVENT.EXIT)
@@ -78,6 +77,14 @@ public class State {
             return true;
         }
 
+        return false;
+    }
+    public bool IsSharkDead()
+    {
+        if (npc.GetComponent<SharkBehaviour>().vida <= 0)
+        {
+            return true;
+        }
         return false;
     }
 }
