@@ -23,6 +23,7 @@ public class Idle : State
         cooldown -= Time.deltaTime;
         if(cooldown <= 0f)
         {
+            npc.GetComponent<SharkBehaviour>().vida = 50;
             nextState = new Patrol(npc, agent, anim, player, raft);
             stage = EVENT.EXIT;
         }

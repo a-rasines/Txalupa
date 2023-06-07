@@ -59,7 +59,7 @@ public class State {
 
     public bool CanSeePlayer()
     {
-        if (player.localPosition.y < -1)
+        if (player.localPosition.y < -0.3f)
         {
 
             return true;

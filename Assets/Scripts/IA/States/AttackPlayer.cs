@@ -26,10 +26,10 @@ public class AttackPlayer : State
 
     public override void Update()
     {
-        Vector3 direction = player.position - npc.transform.position;
-        direction.y = 0.0f;
-        npc.transform.rotation =
-            Quaternion.Slerp(npc.transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * rotationSpeed);
+        float directionx = player.transform.position.x - npc.transform.parent.position.x;
+        float directionz = player.transform.position.z - npc.transform.parent.position.z;
+        Vector3 direction = new Vector3(directionx, npc.transform.position.y, directionz);
+        npc.transform.parent.rotation = Quaternion.Slerp(npc.transform.parent.rotation, Quaternion.LookRotation(direction), Time.deltaTime * rotationSpeed);
         if(Vector3.Distance(npc.transform.position, player.transform.position) < 1f)
         {
             anim.SetTrigger("Bite");
