@@ -47,4 +47,8 @@ public class TrozosBalsa : MonoBehaviour
     void Update()
     {
     }
+    public void destruirTrozo()
+    {
+        Destroy(gameObject);
+    }
 }

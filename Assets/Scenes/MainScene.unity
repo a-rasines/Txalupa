@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: d4e43d741d3d32c4398b3e8ad1e05da4, type: 2}
 --- !u!1 &1573689 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e164651933254c44c900aafff4709cb7, type: 3}
@@ -6361,24 +6361,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 159020809c7a6574ebc5f3771ee0b5a1, type: 3}
   m_PrefabInstance: {fileID: 1287664094}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &684748833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 684748831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4db747d45ffbc9d4cae5074533ea147d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tF: {fileID: 319945861}
-  attackedPlayer: 0
-  damageFloor: 0
-  attackingRaft: 0
-  keepAttackingRaft: 0
-  raft: {fileID: 1370995761}
 --- !u!95 &684748834
 Animator:
   serializedVersion: 4
@@ -6388,8 +6370,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 684748831}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 371ab73358e39214b9478d69644d712e, type: 2}
+  m_Avatar: {fileID: 9000000, guid: 159020809c7a6574ebc5f3771ee0b5a1, type: 3}
+  m_Controller: {fileID: 9100000, guid: bc2c5d6947fd3ee4ea0f6cdf701a1b02, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -6482,6 +6464,42 @@ MonoBehaviour:
   Offset: {x: 0, y: 0, z: 0}
   GizmosColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   Hitboxes: []
+--- !u!195 &684748839
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684748831}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &684748840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684748831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410f98edd3a10414289c959f8d2a195c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 585538983}
+  raft: {fileID: 1370995761}
 --- !u!1 &705284831
 GameObject:
   m_ObjectHideFlags: 0
@@ -18894,6 +18912,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterPlane
       objectReference: {fileID: 0}
+    - target: {fileID: 1497385316721672, guid: 19a72b4c2e356f54b91c6bcefb897a09, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4710258381128052, guid: 19a72b4c2e356f54b91c6bcefb897a09, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -18948,7 +18970,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 64014879297968692, guid: 19a72b4c2e356f54b91c6bcefb897a09, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19a72b4c2e356f54b91c6bcefb897a09, type: 3}
