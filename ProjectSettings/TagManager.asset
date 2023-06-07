@@ -23,7 +23,7 @@ TagManager:
   - Grabable
   - Room
   - Cube
-  - 
+  - Grabable_Collider
   - 
   - 
   - 

@@ -37,7 +37,7 @@ public class Slot : MonoBehaviour
         pulled.AddComponent<ItemStack>().quantity = s.q;
         Destroy(pulled.GetComponent<TrashMovement>());
         Destroy(pulled.GetComponent<TrozosBalsa>());
-        pulled.layer = 0;
+        pulled.layer = LayerMask.NameToLayer("Grabable");
         inv.RemoveFromInventory(position);
     }
 }
