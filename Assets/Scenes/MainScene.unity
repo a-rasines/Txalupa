@@ -3915,8 +3915,9 @@ GameObject:
   - component: {fileID: 517697506}
   - component: {fileID: 517697505}
   - component: {fileID: 517697504}
+  - component: {fileID: 517697508}
   m_Layer: 4
-  m_Name: Plane
+  m_Name: WaterBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3931,7 +3932,7 @@ MeshCollider:
   m_GameObject: {fileID: 517697503}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -4001,6 +4002,19 @@ Transform:
   m_Father: {fileID: 1572303907}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &517697508
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517697503}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 4, z: 10}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &518032129
 GameObject:
   m_ObjectHideFlags: 0
@@ -11531,11 +11545,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 159020809c7a6574ebc5f3771ee0b5a1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.28
+      value: 0.427
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 159020809c7a6574ebc5f3771ee0b5a1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.64
+      value: 0.47
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 159020809c7a6574ebc5f3771ee0b5a1, type: 3}
       propertyPath: m_LocalRotation.w

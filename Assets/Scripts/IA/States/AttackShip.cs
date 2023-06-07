@@ -12,9 +12,11 @@ public class AttackShip : State
     private bool damageFloor = true;
     private float cooldown = 5f;
     private bool attacked = false;
+    private Vector3 originalRotation;
     public AttackShip(GameObject _npc, NavMeshAgent _agent, Animator _anim, Transform _player, GameObject _raft)
         : base(_npc, _agent, _anim, _player, _raft)
     {
+        originalRotation = npc.transform.parent.eulerAngles;
         name = STATE.ATTACKSHIP;
         //shoot = _npc.GetComponent<AudioSource>();
         ColliderEvents events = npc.GetComponent<ColliderEvents>();
@@ -34,6 +36,7 @@ public class AttackShip : State
     {
         npc.transform.parent.position = Vector3.MoveTowards(npc.transform.parent.position, objetivo.transform.position, 0.05f);
         npc.transform.parent.LookAt(objetivo.transform);
+        npc.transform.parent.eulerAngles = new Vector3(originalRotation.x, npc.transform.parent.eulerAngles.y, originalRotation.z);
         Debug.Log(Vector3.Distance(npc.transform.position, objetivo.transform.position));
         if (Vector3.Distance(npc.transform.position, objetivo.transform.position) <=  1.5f)
         {
