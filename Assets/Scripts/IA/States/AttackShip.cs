@@ -19,7 +19,7 @@ public class AttackShip : State
         originalRotation = npc.transform.parent.eulerAngles;
         name = STATE.ATTACKSHIP;
         //shoot = _npc.GetComponent<AudioSource>();
-        ColliderEvents events = npc.GetComponent<ColliderEvents>();
+        ColliderEvents events = npc.GetComponentInChildren<ColliderEvents>();
         events.CollisionEnterEvent += Colision;
     }
 
