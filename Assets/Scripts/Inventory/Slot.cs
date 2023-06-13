@@ -55,15 +55,17 @@ public class Slot : MonoBehaviour
         pulled.AddComponent<ItemStack>().quantity = s.q;
         pulled.layer = LayerMask.NameToLayer("Grabable_Collider");
         Collider collider = pulled.GetComponent<Collider>();
-        foreach (Transform t in pulled.transform)
-            if (t.GetComponent<MeshRenderer>() != null) {
-                Collider c = t.GetComponent<Collider>();
-                if (c == null)
-                    t.AddComponent<BoxCollider>().isTrigger = true;
-                else
-                    c.isTrigger = true;
-                t.gameObject.layer = LayerMask.NameToLayer("Grabable");
-            }
+        if(collider != null && pulled.GetComponentInChildren<Collider>() == null) {
+            foreach (Transform t in pulled.transform)
+                if (t.GetComponent<MeshRenderer>() != null) {
+                    Collider c = t.GetComponent<Collider>();
+                    if (c == null)
+                        t.AddComponent<BoxCollider>().isTrigger = true;
+                    else
+                        c.isTrigger = true;
+                    t.gameObject.layer = LayerMask.NameToLayer("Grabable");
+                }
+        }
         if (pulled.GetComponent<Rigidbody>() == null && pulled.GetComponentInChildren<Rigidbody>() == null)
             pulled.AddComponent<Rigidbody>();
         if (pulled.GetComponentInChildren<XRGrabInteractable>() == null && pulled.GetComponentInChildren<XRGrabInteractable>() == null) {
