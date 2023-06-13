@@ -240,6 +240,7 @@ MonoBehaviour:
   inv: {fileID: 555998653}
   icon: {fileID: 580993364}
   position: 31
+  nonLaserHand: {fileID: 646319679}
 --- !u!114 &14936002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,6 +470,7 @@ MonoBehaviour:
   inv: {fileID: 435381754}
   icon: {fileID: 571782022}
   position: 23
+  nonLaserHand: {fileID: 0}
   manager: {fileID: 1666894982}
 --- !u!114 &27813297
 MonoBehaviour:
@@ -662,7 +664,7 @@ Transform:
   - {fileID: 7120902039508485525}
   - {fileID: 892580492}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &58830657
 GameObject:
@@ -1150,6 +1152,7 @@ MonoBehaviour:
   inv: {fileID: 555998653}
   icon: {fileID: 251289050}
   position: 7
+  nonLaserHand: {fileID: 646319679}
 --- !u!114 &97472874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1495,79 +1498,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173071367}
   m_CullTransparentMesh: 1
---- !u!1001 &185481321
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4916489987115582991, guid: 646186fac2b4c1b4eaacbc14a5f309a7, type: 3}
-      propertyPath: Flags
-      value: 2561
-      objectReference: {fileID: 0}
-    - target: {fileID: 4916489987115582991, guid: 646186fac2b4c1b4eaacbc14a5f309a7, type: 3}
-      propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
-      value: -3656885316620970324
-      objectReference: {fileID: 0}
-    - target: {fileID: 4916489987115582991, guid: 646186fac2b4c1b4eaacbc14a5f309a7, type: 3}
-      propertyPath: NetworkGuid.RawGuidValue.Array.data[1]
-      value: -8919623886223012946
-      objectReference: {fileID: 0}
-    - target: {fileID: 7027869852760859038, guid: 646186fac2b4c1b4eaacbc14a5f309a7, type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
-    - target: {fileID: 8099010895529402538, guid: 646186fac2b4c1b4eaacbc14a5f309a7, type: 3}
-      propertyPath: m_Name
-      value: WoodSpear.L
-      objectReference: {fileID: 0}
-    - target: {fileID: 8876216441863158288, guid: 646186fac2b4c1b4eaacbc14a5f309a7, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8876216441863158288, guid: 646186fac2b4c1b4eaacbc14a5f309a7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.50235534
-      objectReference: {fileID: 0}
-    - target: {fileID: 8876216441863158288, guid: 646186fac2b4c1b4eaacbc14a5f309a7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.092
-      objectReference: {fileID: 0}
-    - target: {fileID: 8876216441863158288, guid: 646186fac2b4c1b4eaacbc14a5f309a7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.63144785
-      objectReference: {fileID: 0}
-    - target: {fileID: 8876216441863158288, guid: 646186fac2b4c1b4eaacbc14a5f309a7, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8876216441863158288, guid: 646186fac2b4c1b4eaacbc14a5f309a7, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8876216441863158288, guid: 646186fac2b4c1b4eaacbc14a5f309a7, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8876216441863158288, guid: 646186fac2b4c1b4eaacbc14a5f309a7, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8876216441863158288, guid: 646186fac2b4c1b4eaacbc14a5f309a7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8876216441863158288, guid: 646186fac2b4c1b4eaacbc14a5f309a7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8876216441863158288, guid: 646186fac2b4c1b4eaacbc14a5f309a7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 646186fac2b4c1b4eaacbc14a5f309a7, type: 3}
 --- !u!4 &186447476 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e164651933254c44c900aafff4709cb7, type: 3}
@@ -1818,6 +1748,7 @@ MonoBehaviour:
   inv: {fileID: 555998653}
   icon: {fileID: 141861377}
   position: 21
+  nonLaserHand: {fileID: 646319679}
 --- !u!114 &193840736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2588,6 +2519,7 @@ MonoBehaviour:
   inv: {fileID: 555998653}
   icon: {fileID: 995152425}
   position: 12
+  nonLaserHand: {fileID: 646319679}
 --- !u!114 &347340478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2886,6 +2818,7 @@ MonoBehaviour:
   inv: {fileID: 435381754}
   icon: {fileID: 1977412761}
   position: 15
+  nonLaserHand: {fileID: 0}
   manager: {fileID: 1666894982}
 --- !u!114 &401604818
 MonoBehaviour:
@@ -3123,7 +3056,7 @@ Transform:
   m_Children:
   - {fileID: 1061189426}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &417934514
 GameObject:
@@ -4368,6 +4301,7 @@ MonoBehaviour:
   inv: {fileID: 555998653}
   icon: {fileID: 836314844}
   position: 32
+  nonLaserHand: {fileID: 646319679}
 --- !u!114 &550835183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5338,6 +5272,7 @@ MonoBehaviour:
   inv: {fileID: 435381754}
   icon: {fileID: 802650104}
   position: 22
+  nonLaserHand: {fileID: 0}
   manager: {fileID: 1666894982}
 --- !u!114 &619234530
 MonoBehaviour:
@@ -5827,6 +5762,7 @@ MonoBehaviour:
   inv: {fileID: 555998653}
   icon: {fileID: 661587888}
   position: 13
+  nonLaserHand: {fileID: 646319679}
 --- !u!114 &635357648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6554,6 +6490,7 @@ MonoBehaviour:
   inv: {fileID: 555998653}
   icon: {fileID: 1294624593}
   position: 14
+  nonLaserHand: {fileID: 646319679}
 --- !u!114 &678487956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7740,6 +7677,7 @@ MonoBehaviour:
   inv: {fileID: 555998653}
   icon: {fileID: 1296472105}
   position: 1
+  nonLaserHand: {fileID: 646319679}
 --- !u!114 &824163819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8039,6 +7977,7 @@ MonoBehaviour:
   inv: {fileID: 435381754}
   icon: {fileID: 501219834}
   position: 25
+  nonLaserHand: {fileID: 0}
   manager: {fileID: 1666894982}
 --- !u!114 &875750824
 MonoBehaviour:
@@ -8147,6 +8086,7 @@ MonoBehaviour:
   inv: {fileID: 555998653}
   icon: {fileID: 501219834}
   position: 25
+  nonLaserHand: {fileID: 0}
 --- !u!114 &875750826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8241,6 +8181,7 @@ MonoBehaviour:
   inv: {fileID: 435381754}
   icon: {fileID: 705602938}
   position: 31
+  nonLaserHand: {fileID: 0}
   manager: {fileID: 1666894982}
 --- !u!114 &881594075
 MonoBehaviour:
@@ -9330,6 +9271,7 @@ MonoBehaviour:
   inv: {fileID: 555998653}
   icon: {fileID: 389195925}
   position: 33
+  nonLaserHand: {fileID: 646319679}
 --- !u!114 &1047757422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9650,6 +9592,7 @@ MonoBehaviour:
   inv: {fileID: 435381754}
   icon: {fileID: 1799922496}
   position: 24
+  nonLaserHand: {fileID: 0}
   manager: {fileID: 1666894982}
 --- !u!114 &1072077380
 MonoBehaviour:
@@ -9893,6 +9836,7 @@ MonoBehaviour:
   inv: {fileID: 555998653}
   icon: {fileID: 1269649060}
   position: 2
+  nonLaserHand: {fileID: 646319679}
 --- !u!114 &1085080631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10136,6 +10080,7 @@ MonoBehaviour:
   inv: {fileID: 435381754}
   icon: {fileID: 1528751283}
   position: 35
+  nonLaserHand: {fileID: 0}
   manager: {fileID: 1666894982}
 --- !u!114 &1154358912
 MonoBehaviour:
@@ -10737,6 +10682,7 @@ MonoBehaviour:
   inv: {fileID: 555998653}
   icon: {fileID: 1479906471}
   position: 24
+  nonLaserHand: {fileID: 646319679}
 --- !u!114 &1198806542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11263,6 +11209,7 @@ MonoBehaviour:
   inv: {fileID: 435381754}
   icon: {fileID: 2135129778}
   position: 33
+  nonLaserHand: {fileID: 0}
   manager: {fileID: 1666894982}
 --- !u!114 &1271573206
 MonoBehaviour:
@@ -12153,6 +12100,7 @@ MonoBehaviour:
   inv: {fileID: 555998653}
   icon: {fileID: 733983685}
   position: 22
+  nonLaserHand: {fileID: 646319679}
 --- !u!114 &1310618812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12323,6 +12271,7 @@ MonoBehaviour:
   inv: {fileID: 435381754}
   icon: {fileID: 1013097727}
   position: 32
+  nonLaserHand: {fileID: 0}
   manager: {fileID: 1666894982}
 --- !u!114 &1314714880
 MonoBehaviour:
@@ -13844,6 +13793,7 @@ MonoBehaviour:
   inv: {fileID: 435381754}
   icon: {fileID: 719036561}
   position: 34
+  nonLaserHand: {fileID: 0}
   manager: {fileID: 1666894982}
 --- !u!114 &1406411546
 MonoBehaviour:
@@ -14297,6 +14247,7 @@ MonoBehaviour:
   inv: {fileID: 555998653}
   icon: {fileID: 323517519}
   position: 11
+  nonLaserHand: {fileID: 646319679}
 --- !u!114 &1450859239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14426,7 +14377,7 @@ Transform:
   - {fileID: 1175437095}
   - {fileID: 435381753}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1458793619
 MonoBehaviour:
@@ -14995,6 +14946,7 @@ MonoBehaviour:
   inv: {fileID: 555998653}
   icon: {fileID: 602137408}
   position: 5
+  nonLaserHand: {fileID: 646319679}
 --- !u!114 &1549324873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15562,7 +15514,7 @@ Transform:
   - {fileID: 223974228}
   - {fileID: 1972459788}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1575212171
 GameObject:
@@ -15822,6 +15774,7 @@ MonoBehaviour:
   inv: {fileID: 555998653}
   icon: {fileID: 2062099836}
   position: 4
+  nonLaserHand: {fileID: 646319679}
 --- !u!114 &1590339632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16260,6 +16213,7 @@ MonoBehaviour:
   inv: {fileID: 555998653}
   icon: {fileID: 405524726}
   position: 23
+  nonLaserHand: {fileID: 646319679}
 --- !u!114 &1608221733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16486,6 +16440,7 @@ MonoBehaviour:
   inv: {fileID: 555998653}
   icon: {fileID: 1568300359}
   position: 15
+  nonLaserHand: {fileID: 646319679}
 --- !u!114 &1618762218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16735,6 +16690,7 @@ MonoBehaviour:
   inv: {fileID: 435381754}
   icon: {fileID: 602393431}
   position: 21
+  nonLaserHand: {fileID: 0}
   manager: {fileID: 1666894982}
 --- !u!114 &1637900181
 MonoBehaviour:
@@ -17984,6 +17940,7 @@ MonoBehaviour:
   inv: {fileID: 435381754}
   icon: {fileID: 628638154}
   position: 11
+  nonLaserHand: {fileID: 0}
   manager: {fileID: 1666894982}
 --- !u!114 &1751164659
 MonoBehaviour:
@@ -18171,6 +18128,7 @@ MonoBehaviour:
   inv: {fileID: 435381754}
   icon: {fileID: 173071369}
   position: 14
+  nonLaserHand: {fileID: 0}
   manager: {fileID: 1666894982}
 --- !u!114 &1777290771
 MonoBehaviour:
@@ -18499,6 +18457,7 @@ MonoBehaviour:
   inv: {fileID: 435381754}
   icon: {fileID: 2068168688}
   position: 13
+  nonLaserHand: {fileID: 0}
   manager: {fileID: 1666894982}
 --- !u!114 &1814310452
 MonoBehaviour:
@@ -19003,7 +18962,7 @@ Transform:
   m_Children:
   - {fileID: 705507995}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1882648608
 GameObject:
@@ -19117,6 +19076,7 @@ MonoBehaviour:
   inv: {fileID: 555998653}
   icon: {fileID: 2020929168}
   position: 25
+  nonLaserHand: {fileID: 646319679}
 --- !u!114 &1882648612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19357,6 +19317,7 @@ MonoBehaviour:
   inv: {fileID: 435381754}
   icon: {fileID: 1612216152}
   position: 12
+  nonLaserHand: {fileID: 0}
   manager: {fileID: 1666894982}
 --- !u!114 &1930705550
 MonoBehaviour:
@@ -19859,6 +19820,7 @@ MonoBehaviour:
   inv: {fileID: 555998653}
   icon: {fileID: 1024874090}
   position: 34
+  nonLaserHand: {fileID: 646319679}
 --- !u!114 &1978441272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20381,6 +20343,7 @@ MonoBehaviour:
   inv: {fileID: 555998653}
   icon: {fileID: 94172192}
   position: 35
+  nonLaserHand: {fileID: 646319679}
 --- !u!114 &2016028755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20607,6 +20570,7 @@ MonoBehaviour:
   inv: {fileID: 555998653}
   icon: {fileID: 1653365466}
   position: 3
+  nonLaserHand: {fileID: 646319679}
 --- !u!114 &2027710010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21032,7 +20996,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2125644945
 MonoBehaviour:
@@ -21283,6 +21247,7 @@ MonoBehaviour:
   inv: {fileID: 555998653}
   icon: {fileID: 1317868385}
   position: 6
+  nonLaserHand: {fileID: 646319679}
 --- !u!114 &2133550498
 MonoBehaviour:
   m_ObjectHideFlags: 0
