@@ -138,6 +138,7 @@ public class BuildManager : MonoBehaviour {
             x: rh.point.x - offset.x - model.transform.parent.position.x,
             y: raftBase.transform.position.y - model.transform.parent.position.y,
             z: rh.point.z - offset.z - model.transform.parent.position.z);
+        model.transform.localRotation = Quaternion.Euler(0, model.transform.localEulerAngles.y, 0);
     }
     private void WallBuildableBuild(RaycastHit rh) {
 

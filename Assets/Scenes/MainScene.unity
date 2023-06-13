@@ -11592,6 +11592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc845f768a120e47bb27563b525c3ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisions: []
   addRigidBody: 0
 --- !u!65 &1287664099
 BoxCollider:

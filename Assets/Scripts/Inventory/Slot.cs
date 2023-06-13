@@ -1,5 +1,7 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class Slot : MonoBehaviour
 {
@@ -35,9 +37,26 @@ public class Slot : MonoBehaviour
         if (s.q == 0) return;
         pulled = Instantiate(s.it.GetModel(), Camera.main.transform.position + Camera.main.transform.forward, Quaternion.Euler(0, 0, 0));
         pulled.AddComponent<ItemStack>().quantity = s.q;
+        pulled.layer = LayerMask.NameToLayer("Grabable_Collider");
+        Collider collider = pulled.GetComponent<Collider>();
+        foreach (Transform t in pulled.transform)
+            if (t.GetComponent<MeshRenderer>() != null) {
+                Collider c = t.GetComponent<Collider>();
+                if (c == null)
+                    t.AddComponent<BoxCollider>().isTrigger = true;
+                else
+                    c.isTrigger = true;
+                t.gameObject.layer = LayerMask.NameToLayer("Grabable");
+            }
+        if (pulled.GetComponent<Rigidbody>() == null && pulled.GetComponentInChildren<Rigidbody>() == null)
+            pulled.AddComponent<Rigidbody>();
+        if (pulled.GetComponentInChildren<XRGrabInteractable>() == null && pulled.GetComponentInChildren<XRGrabInteractable>() == null) {
+            XRGrabInteractable t = pulled.AddComponent<XRGrabInteractable>();
+            t.interactionLayers = InteractionLayerMask.NameToLayer("Grab") | ~InteractionLayerMask.NameToLayer("Default");
+            t.colliders.Remove(collider);
+        }
         Destroy(pulled.GetComponent<TrashMovement>());
         Destroy(pulled.GetComponent<TrozosBalsa>());
-        pulled.layer = LayerMask.NameToLayer("Grabable");
         inv.RemoveFromInventory(position);
     }
 }

@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class ColliderEvents : MonoBehaviour {
-    // Start is called before the first frame update
+    public List<Collider> collisions = new List<Collider>();
     public bool addRigidBody = true;
     void Start() {
         if(GetComponent<Rigidbody>() == null && addRigidBody) {
@@ -26,21 +26,19 @@ public class ColliderEvents : MonoBehaviour {
     public event TriggerEvent TriggerExitEvent;
 
     private void OnCollisionEnter(Collision collision) {
+        collisions.Add(collision.collider);
         CollisionEnterEvent.Invoke(collision);
     }
     private void OnCollisionExit(Collision collision) {
+        collisions.Remove(collision.collider);
         CollisionExitEvent.Invoke(collision);
     }
     private void OnTriggerEnter(Collider col) {
+        collisions.Add(col);
         TriggerEnterEvent.Invoke(col);
     }
     private void OnTriggerExit(Collider col) {
+        collisions.Remove(col);
         TriggerExitEvent.Invoke(col);
-    }
-    
-    // Update is called once per frame
-    void Update() {
-
-        
     }
 }
