@@ -7,6 +7,7 @@ public class ColliderEvents : MonoBehaviour {
     public List<Collider> collisions = new List<Collider>();
     public bool addRigidBody = true;
     void Start() {
+        collisions.Clear();
         if(GetComponent<Rigidbody>() == null && addRigidBody) {
             gameObject.AddComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         }

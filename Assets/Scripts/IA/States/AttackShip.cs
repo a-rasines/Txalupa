@@ -37,7 +37,6 @@ public class AttackShip : State
         npc.transform.parent.position = Vector3.MoveTowards(npc.transform.parent.position, objetivo.transform.position, 0.05f);
         npc.transform.parent.LookAt(objetivo.transform);
         npc.transform.parent.eulerAngles = new Vector3(originalRotation.x, npc.transform.parent.eulerAngles.y, originalRotation.z);
-        Debug.Log(Vector3.Distance(npc.transform.position, objetivo.transform.position));
         if (Vector3.Distance(npc.transform.position, objetivo.transform.position) <=  1.5f)
         {
             anim.SetTrigger("HoldBite");

@@ -128,7 +128,9 @@ public class Inventory : AbstractInventory {
             return false;
         int outV = 0;
         itemCounts.TryGetValue(it, out outV);
-        if (!inventory.TryGetValue(position, out stack)) {//La posición está vacía
+        inventory.TryGetValue(position, out stack);
+        print(stack + ":" + stack.it);
+        if (stack.q == 0) {//La posición está vacía
             inventory[position] = new Stack(it, it.GetCuantityFrom(g));
             itemCounts[it] = outV;
             
@@ -154,6 +156,7 @@ public class Inventory : AbstractInventory {
         itemCounts[s.it] -= s.q;
         s.it = null;
         s.q = 0;
+        inventory[position] = s;
         TriggerOnItemChanged(position, null, 0);
         return s;
 

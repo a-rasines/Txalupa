@@ -9,9 +9,12 @@ public class Slot : MonoBehaviour
     public Image icon;
     public int position;
     protected GameObject pulled;
+    public ActionBasedController nonLaserHand;
+    private ColliderEvents handCollisions;
     private void Start() {
         inv.OnItemChanged += OnItemChange;
         inv.RegisterSlot(position);
+        handCollisions = nonLaserHand.GetComponent<ColliderEvents>();
     }
     private void OnItemChange(int position, ItemType it, int quantity) {
         if (this.position != position)
@@ -25,6 +28,7 @@ public class Slot : MonoBehaviour
         }
 
     }
+    /**                 Relocated, now in OnInteraction -> if (handCollisions.collisions.Count != 0)
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.Equals(pulled))
             return;
@@ -32,8 +36,20 @@ public class Slot : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+    */
     public void OnInteraction() {
         Inventory.Stack s = inv.GetSlot(position);
+        if (handCollisions.collisions.Count != 0) {//Store new item
+            Collider o = handCollisions.collisions[0];
+            if (inv.AddToInventory(position, o.gameObject)) {
+                handCollisions.collisions.Remove(o);
+                Destroy(o.gameObject);
+            }
+            return;
+        }
+
+        // Get item
+
         if (s.q == 0) return;
         pulled = Instantiate(s.it.GetModel(), Camera.main.transform.position + Camera.main.transform.forward, Quaternion.Euler(0, 0, 0));
         pulled.AddComponent<ItemStack>().quantity = s.q;
