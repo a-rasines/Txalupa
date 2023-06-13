@@ -7,7 +7,7 @@ public class AttackPlayer : State
     float rotationSpeed = 2.0f;
     //AudioSource shoot;
     private bool attacked = false;
-    private bool attacking = false;
+    private float attackTime = -1;
     public AttackPlayer(GameObject _npc, NavMeshAgent _agent, Animator _anim, Transform _player, GameObject _raft)
         : base(_npc, _agent, _anim, _player, _raft)
     {
@@ -28,17 +28,15 @@ public class AttackPlayer : State
 
     public override void Update()
     {
-        if (Vector3.Distance(npc.transform.position, player.transform.position) < 1f && !attacking) {
+        if (Vector3.Distance(npc.transform.position, player.transform.position) < 2.5f && attackTime == -1) {
             anim.SetTrigger("Bite");
-            attacking = true;
+            attackTime = 0;
         }
-        if(attacking && anim.GetCurrentAnimatorStateInfo(0).length <= anim.GetCurrentAnimatorStateInfo(0).normalizedTime) {
-            Debug.Log(anim.GetCurrentAnimatorStateInfo(0).length);
+        else if(attackTime >= 2f) {
             player.GetComponent<PlayerBehaivour>().Daño(25);
             nextState = new RunAway(npc, agent, anim, player, raft);
             stage = EVENT.EXIT;
         }
-
         if (!CanSeePlayer())
         {
             nextState = new Patrol(npc, agent, anim, player, raft);
@@ -62,6 +60,8 @@ public class AttackPlayer : State
                 stage = EVENT.EXIT;
             }
         }
+        if (attackTime >= 0)
+            attackTime += Time.deltaTime;
     }
 
     public override void Exit()

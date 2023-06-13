@@ -54,7 +54,6 @@ public class Patrol : State
         }
         if (CanSeePlayer())
         {
-            Debug.Log("npc: " + npc + " agent: " + agent + " anim: " + anim + " player: " + player + " raft: " + raft);
             nextState = new AttackPlayer(npc, agent, anim, player, raft);
             stage = EVENT.EXIT;
         }
