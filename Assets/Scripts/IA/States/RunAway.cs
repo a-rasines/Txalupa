@@ -18,7 +18,7 @@ public class RunAway : State
     {
         anim.SetTrigger("Swim_Regular");
         agent.isStopped = false;
-        agent.speed = 6;
+        agent.speed = 4;
         agent.SetDestination(exitPos);
         base.Enter();
     }

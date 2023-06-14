@@ -20,6 +20,7 @@ public class AttackPlayer : State
     public override void Enter()
     {
         anim.SetTrigger("Swim_Regular");
+        agent.speed = 6;
         agent.isStopped = false;
         agent.SetDestination(player.transform.position);
         runawayPos = player.transform.position - npc.transform.position;

@@ -27,6 +27,7 @@ public class AttackShip : State
     {
         objetivo = SelectTrozo().GetComponent<TrozosBalsa>();
         anim.SetTrigger("Swim_Regular");
+        agent.speed = 5;
         prevPos = npc.transform.position;
         agent.isStopped = true;
         //shoot.Play();
@@ -35,7 +36,7 @@ public class AttackShip : State
 
     public override void Update()
     {
-        npc.transform.parent.position = Vector3.MoveTowards(npc.transform.parent.position, objetivo.transform.position, 0.05f);
+        npc.transform.parent.position = Vector3.MoveTowards(npc.transform.parent.position, objetivo.transform.position, Time.deltaTime * 5f);
         npc.transform.parent.LookAt(objetivo.transform);
         npc.transform.parent.eulerAngles = new Vector3(originalRotation.x, npc.transform.parent.eulerAngles.y, originalRotation.z);
         if (Vector3.Distance(npc.transform.position, objetivo.transform.position) <=  1.5f)

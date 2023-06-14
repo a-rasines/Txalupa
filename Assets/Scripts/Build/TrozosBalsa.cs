@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 
 public class TrozosBalsa : MonoBehaviour
@@ -41,11 +42,15 @@ public class TrozosBalsa : MonoBehaviour
                 }
             }
         }
+        c = GetComponent<BoxCollider>();
+        if (c == null) {
+            c.GetComponentInChildren<BoxCollider>();
+        }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
+    private BoxCollider c;
+    public void OnCollisionEnter(Collision collision) {
+        if(collision.gameObject.GetComponentInParent<XROrigin>() == null)
+            collision.transform.parent = transform.parent;
     }
     public void destruirTrozo()
     {
