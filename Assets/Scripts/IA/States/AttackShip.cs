@@ -22,11 +22,12 @@ public class AttackShip : State
         ColliderEvents events = npc.GetComponentInChildren<ColliderEvents>();
         events.CollisionEnterEvent += Colision;
     }
-
+    private Vector3 prevPos;
     public override void Enter()
     {
         objetivo = SelectTrozo().GetComponent<TrozosBalsa>();
         anim.SetTrigger("Swim_Regular");
+        prevPos = npc.transform.position;
         agent.isStopped = true;
         //shoot.Play();
         base.Enter();
@@ -73,7 +74,7 @@ public class AttackShip : State
             else
             {
                 anim.SetTrigger("Swim_Regular");
-                nextState = new RunAway(npc, agent, anim, player, raft);
+                nextState = new RunAway(npc, agent, anim, player, raft, prevPos);
                 stage = EVENT.EXIT;
             }
             //shoot.Stop();

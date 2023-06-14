@@ -6,14 +6,12 @@ using UnityEngine.AI;
 public class RunAway : State
 {
 
-    GameObject safeLocation;
-
-    public RunAway(GameObject _npc, NavMeshAgent _agent, Animator _anim, Transform _player, GameObject _raft)
+    private Vector3 exitPos;
+    public RunAway(GameObject _npc, NavMeshAgent _agent, Animator _anim, Transform _player, GameObject _raft, Vector3 exitPos)
         : base(_npc, _agent, _anim, _player, _raft)
     {
-
+        this.exitPos = exitPos;
         name = STATE.RUNAWAY;
-        safeLocation = GameObject.FindGameObjectWithTag("Safe");
     }
 
     public override void Enter()
@@ -21,7 +19,7 @@ public class RunAway : State
         anim.SetTrigger("Swim_Regular");
         agent.isStopped = false;
         agent.speed = 6;
-        agent.SetDestination(safeLocation.transform.position);
+        agent.SetDestination(exitPos);
         base.Enter();
     }
 

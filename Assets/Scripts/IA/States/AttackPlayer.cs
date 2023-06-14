@@ -16,12 +16,13 @@ public class AttackPlayer : State
         ColliderEvents events = npc.GetComponentInChildren<ColliderEvents>();
         events.CollisionEnterEvent += Colision;
     }
-
+    private Vector3 runawayPos;
     public override void Enter()
     {
         anim.SetTrigger("Swim_Regular");
         agent.isStopped = false;
         agent.SetDestination(player.transform.position);
+        runawayPos = player.transform.position - npc.transform.position;
         //shoot.Play();
         base.Enter();
     }
@@ -34,7 +35,7 @@ public class AttackPlayer : State
         }
         else if(attackTime >= 2f) {
             player.GetComponent<PlayerBehaivour>().Daño(25);
-            nextState = new RunAway(npc, agent, anim, player, raft);
+            nextState = new RunAway(npc, agent, anim, player, raft, runawayPos);
             stage = EVENT.EXIT;
         }
         if (!CanSeePlayer())
@@ -55,7 +56,7 @@ public class AttackPlayer : State
             }
             else
             {
-                nextState = new RunAway(npc, agent, anim, player, raft);
+                nextState = new RunAway(npc, agent, anim, player, raft, runawayPos);
                 anim.SetTrigger("Swim_Regular");
                 stage = EVENT.EXIT;
             }
