@@ -18,8 +18,7 @@ public class PreGenRoom : MonoBehaviour {
         transform.position += new Vector3(colliderPosition.x, 0, colliderPosition.z);
     }
     private void OnCollisionEnter(Collision collision) {
-        
-        //this.enabled = false;
+        //gameObject.name = "Collision with " + collision.gameObject.name;this.enabled = false;
         Destroy(gameObject);
     }
     // Update is called once per frame
@@ -40,7 +39,7 @@ public class PreGenRoom : MonoBehaviour {
                 pr.finalPosition = pr.transform.position;
                 
             }
-            //this.enabled = false;
+            //gameObject.name = "Out of spawns";this.enabled = false;
             Destroy(gameObject);
         }
     }
